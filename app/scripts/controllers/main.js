@@ -13,31 +13,24 @@ app.controller('MainCtrl', function ($scope) {
 app.directive('navbar', function(){
 	return {
 		restrict: 'E',
-		templateUrl: 'views/navbar.html'
-	};
-});
-
-app.directive('sidebar', function(){
-	return{
-		restrict: 'E',
-		templateUrl: 'views/sidebar.html'
+		templateUrl: 'views/partials/navbar.html'
 	};
 });
 app.directive('profile', function(){
 	return {
 		restrict: 'E',
-		templateUrl: 'views/profile.html'
+		templateUrl: 'views/partials/profile.html'
 	};
 });
 app.directive('proposals', function(){
 	return {
 		restrict: 'E',
-		templateUrl: 'views/proposals.html'
+		templateUrl: 'views/partials/proposals.html'
 	};
 });
-app.directive('comparison', function(){
-	return {
-		restrict: 'E',
-		templateUrl: 'views/comparison.html'
-	};
-});
+app.directive('usermenu', function () {
+    return {
+      templateUrl: 'views/partials/navbarusermenu.html',
+      restrict: 'E'
+    };
+  });

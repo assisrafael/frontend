@@ -13,14 +13,14 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl'
       })
-      .when('/comparison', {
-        templateUrl: 'views/comparison.html',
-        controller: 'ComparisonCtrl'
+      .when('/profile', {
+        templateUrl: 'views/profile.html',
+        controller: 'MainCtrl'
       })
       .otherwise({
         redirectTo: '/'
       });
-  
+
      $sceDelegateProvider.resourceUrlWhitelist([
        // Allow same origin resource loads.
        'self',
