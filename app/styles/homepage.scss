@@ -1,0 +1,419 @@
+@import "sass/fonts";
+@import "sass/config";
+@import "compass/css3/images";
+@import "compass/css3/background-size";
+@import "compass/css3/border-radius";
+
+.homepage{
+
+  // Geral
+
+  section{
+    padding: 50px 0;
+  }
+
+  // Slideshow
+
+  .slide-wrapper{
+    height: 450px;
+  }
+
+  .slide-text {
+    margin-top: 145px;
+    margin-left: 10%;
+  }
+
+  .slides-navigation {
+    font-size: 3em;
+
+    a {
+      margin: 0 35px;
+      color: rgba(255,255,255,0.7);
+    }
+
+  }
+
+  .homepage-logo {
+    @include background(image-url("../images/homepage/logo-projeto-brasil.png"));
+    background-position: center;
+    background-repeat: no-repeat;
+
+    background-color: #09404C;
+    width:250px;
+    height: 63px;
+    position: relative;
+    top: 1px;
+  }
+
+  .homepage-logo img {
+    height: 70px;
+  }
+
+  // Conteudo do meio
+
+  section.meio {
+    background: url('../images/homepage/meio.jpg') center top;
+  }
+
+  .descricao-meio {
+    background-color: rgba(255, 255, 255, 0.79);
+    font-size: 1.1em;
+    text-align: center;
+    padding: 15px 20px;
+
+    p{
+      margin-bottom: 30px;
+    }
+
+    h2{
+      font-family: 'allerbold';
+      color: $verde-claro;
+    }
+
+  }
+
+  .hp-candidato{
+    text-align: center;
+    color: $verde-claro;
+
+    .avatar{
+      // @include background(image-url("../images/homepage/avatar-candidato.jpg"));
+      @include background-size(cover);
+      background-repeat: no-repeat;
+      @include border-radius(50%);
+      border: 5px solid #FAF4AB;
+      // border: 5px solid #81D3B5;
+      height: 150px;
+      width: 150px;
+      margin: auto;
+    }
+
+    .nome{
+      margin: 10px auto 0;
+      font-family: 'allerregular';
+    }
+
+    .numero{
+      font-family: 'allerbold';
+    }
+
+    .partido{
+      color: $verde-escuro;
+      margin-bottom: 20px;
+    }
+  }
+
+
+  // Rodape
+
+  section.rodape {
+      background: url('../images/homepage/rodape.jpg') center top;
+      padding: 0;
+      height: 700px;
+  }
+
+  section.rodape p{
+      font-size: 1.7em;
+      font-family: 'aller_lightregular';
+      color: #09404C;
+      width: 350px;
+      text-align: left;
+      margin-left: 17px;
+      margin-top: 20px;
+  }
+
+  section.rodape .seed {
+      font-size: 1.5em;
+      font-family: 'aller_lightregular';
+      color: #09404C;
+      text-align: center;
+      margin: 0px 0;
+      position: relative;
+      top: 80px;
+  }
+
+  section.rodape .seed img {
+      width: 70px;
+  }
+
+  section.rodape img {
+      margin-left: 20px;
+  }
+
+  section.rodape button {
+      width: 350px;
+      text-transform: uppercase;
+      font-family: 'allerbold';
+  }
+  section.rodape input {
+      width: 350px;
+      margin-left: 15px;
+  }
+
+  section.rodape p .highlight{
+      font-family: 'allerbold';
+  }
+
+  section.rodape .bloco-amarelo {
+      background-color: #F5E642;
+      height: 700px;
+      padding: 50px;
+      text-align: center;
+      width: 480px;
+  }
+
+  .chamada-rodape {
+      line-height: 1;
+      margin: 20px 0;
+  }
+
+  .chamada-rodape .linha1 {
+      font-family: 'allerregular';
+      font-size: 1.1em;
+      color: #09404C;
+      display: block;
+  }
+
+  .chamada-rodape .linha2 {
+      font-family: 'allerbold';
+      font-size: 2.8em;
+      color: #09404C;
+  }
+
+  .pergunta-rodape {
+      line-height: 1.1;
+  }
+
+  .pergunta-rodape span{
+      display: block;
+      font-size: 3em;
+      color: #09404C;
+      text-transform: uppercase;
+  }
+
+  .pergunta-rodape span.linha1 {
+      font-family: allerbold;
+  }
+
+  .pergunta-rodape span.linha2 {
+      font-family: 'aller_lightregular';
+      font-size: 3.4em;
+  }
+
+
+
+  .title {
+    font-family: 'aller_displayregular';
+    font-weight: normal;
+    text-align: left;
+    width: 20em;
+    text-transform: uppercase;
+  }
+
+  .row.praesquerda {
+      position: relative;
+      top: 15px;
+      left: -17px;
+  }
+
+  .linha-conteudo {
+      width: 100%;
+  }
+
+  .linha-conteudo p{
+      font-family: 'allerregular';
+      color: #555;
+  }
+
+  .linha-conteudo p .highlight {
+      background-color: #F5E642;
+
+   }
+
+  /* changed: use outline for wider browser support */
+  .title > span {
+    outline: .5em solid #F5E642;
+  }
+
+  .title > span > span {
+    background: #F5E642;
+    /* hide rounding gaps between text box and outline */
+    box-shadow: -1px 0 0 #F5E642,
+      1px 0 0 #F5E642;
+    color: #09404C;
+    position: relative;
+  }
+
+  .slogan {
+      font-family: 'allerbold';
+      background-color: #F5E642;
+      padding: 10px 0px;
+      font-size: 3em;
+      line-height: 50px;
+      box-shadow: -10px 0px 0 #F5E642, 10px 0px 0 #F5E642;
+  }
+
+  .slogan-container-inner {
+      margin: 16px 0;
+  }
+
+  .slogan.primeiro {
+      padding-top: 10px;
+  }
+
+  .slogan.meio {
+      padding-top: 10px;
+      padding-bottom: 10px;
+  }
+
+  .slogan.ultimo {
+      padding-bottom: 10px;
+  }
+
+  .btn-acao {
+      text-align: center;
+      padding: 50px 0;
+  }
+
+  .decoracao-slogan {
+      width: 0;
+      height: 0;
+      border-left: 30px solid transparent;
+      border-top: 15px solid rgb(89,86,30);
+      border-right: 30px solid rgb(89,86,30);
+      border-bottom: 15px solid transparent;
+      top: 10px;
+      left: -18px;
+      position: relative;
+      float: left;
+  }
+
+  .slogan-container .quadro-escuro {
+      background-color: #09404C;
+      padding:10px;
+      display: inline;
+      width: 200px;
+      color: white;
+      font-size: 2em;
+  }
+
+  .browsehappy {
+      margin: 0.2em 0;
+      background: #ccc;
+      color: #000;
+      padding: 0.2em 0;
+  }
+
+  .navbar-brand {
+      padding-top: 0;
+      padding-bottom: 0;
+  }
+
+  .titulo_pb {
+      font-family: 'AllerDisplay';
+      font-size: 3em;
+      color: #30B786;
+  }
+
+  .titulo_pb strong {
+      font-family: 'allerbold';
+  }
+
+  /* Everything but the jumbotron gets side spacing for mobile first views */
+  .header,
+  .marketing,
+  .footer {
+      padding-left: 15px;
+      padding-right: 15px;
+  }
+
+  .btn-navbar {
+      background-color: #09404C;
+      border: none;
+      color: #fff;
+  }
+
+  /* Custom page header */
+  .header {
+      background-color: #09404C;
+      padding-top: 0;
+      padding-bottom:0;
+  }
+  .header a {
+      color: white !important;
+  }
+
+  /* Make the masthead heading the same height as the navigation */
+  .header h3 {
+      margin-top: 0;
+      margin-bottom: 0;
+      line-height: 40px;
+      padding-bottom: 19px;
+  }
+
+  /* Custom page footer */
+  .footer {
+      color: #777;
+      border-top: 1px solid #e5e5e5;
+      position: fixed;
+      width: 100%;
+      height: 30px;
+      bottom: 0;
+      left: 0;
+      padding-top: 5px;
+      padding-bottom: 5px;
+      background-color: white;
+  }
+
+
+  .container-narrow > hr {
+      margin: 30px 0;
+  }
+
+  /* Main marketing message and sign up button */
+  .jumbotron {
+      text-align: center;
+      border-bottom: 1px solid #e5e5e5;
+  }
+
+  .jumbotron .btn {
+      font-size: 21px;
+      padding: 14px 24px;
+  }
+
+  /* Supporting marketing content */
+  .marketing {
+      margin: 40px 0;
+  }
+
+  .marketing p + h4 {
+      margin-top: 28px;
+  }
+
+}
+
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+
+    .homepage{
+
+      /* Remove the padding we set earlier */
+      .header,
+      .marketing,
+      .footer {
+          padding-left: 0;
+          padding-right: 0;
+      }
+      /* Space out the masthead */
+      .header {
+          margin-bottom: 30px;
+      }
+      /* Remove the bottom border on the jumbotron for visual effect */
+      .jumbotron {
+          border-bottom: 0;
+      }
+    }
+
+}
+
