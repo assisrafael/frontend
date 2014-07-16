@@ -1,6 +1,6 @@
 <ul class="nav navbar-nav navbar-right user-nav">
   <li class="dropdown profile_menu">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img alt="Avatar" src="images/avatar2.jpg" /><span>{{user.firstName}}</span> <b class="caret"></b></a>
+    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown"><img alt="Avatar" src="images/avatar2.jpg" /><span>{{user.firstName}}</span> <b class="caret"></b></a>
     <ul class="dropdown-menu">
       <li><a href="#"><span class="glyphicon glyphicon-user"></span> Minhas informações</a></li>
       <li class="divider"></li>
@@ -18,7 +18,7 @@
             <h3 class="text-center" style="color:black">Acessar com e-mail</h3>
           </div>
           <div>
-            <form style="margin-bottom: 0px !important;" class="form-horizontal" action="index.html">
+            <form style="margin-bottom: 0px !important;" class="form-horizontal" action="index.html" ng-submit="register()">
               <div class="content">
                 <div class="form-group">
                   <div class="col-sm-12">
@@ -32,14 +32,14 @@
                   <div class="col-sm-12">
                     <div class="input-group">
                       <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                      <input type="password" id="inputPassword" placeholder="Password" id="password" class="form-control" autocomplete="off" ng-model="login.password">
+                      <input type="password" placeholder="Password" id="password" class="form-control" autocomplete="off" ng-model="login.password">
                     </div>
                   </div>
                 </div>
 
               </div>
               <div class="foot">
-                <button class="btn btn-default" data-dismiss="modal" type="button">Register</button>
+                <button class="btn btn-default" data-dismiss="modal" type="submit">Register</button>
                 <button class="btn btn-primary" data-dismiss="modal" type="submit" ng-click="logIn(login.email, login.password)">Log me in</button>
               </div>
             </form>

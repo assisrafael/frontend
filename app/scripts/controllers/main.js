@@ -29,8 +29,14 @@ app.directive('proposals', function(){
 	};
 });
 app.directive('usermenu', function () {
-    return {
-      templateUrl: 'views/partials/navbarusermenu.html',
-      restrict: 'E'
-    };
-  });
+  return {
+    restrict: 'E',
+    templateUrl: 'views/partials/navbarusermenu.html',
+  };
+});
+app.directive('sidebar', function () {
+  return {
+    restrict: 'E',
+    templateUrl: 'views/partials/sidebar.html',
+  };
+});

@@ -19,5 +19,4 @@ app.controller('ProposalsCtlr', function ($scope, proposalsGetter) {
   });
 
 
-
 });
