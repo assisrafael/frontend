@@ -30,7 +30,8 @@ angular.module('projetobrasilFrontApp', [
 				controller: 'NavbarUserMenuCtrl'
 			},
 			'sidebar@_': {
-				templateUrl: 'views/sidebar.html'
+				templateUrl: 'views/sidebar.html',
+				controller: 'ProfileCtrl'
 			},
 		}
 	})

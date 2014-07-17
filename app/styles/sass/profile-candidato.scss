@@ -108,7 +108,7 @@
 
   .politic-logo{
     text-align: center;
-    
+
     img{
       max-width: 150px;
       margin-bottom: 1em;
@@ -187,7 +187,7 @@
     }
 
   }
-  
+
   .profile-wrapper .block-content,
   .politics .block-content{
     overflow-y: hidden;
@@ -203,7 +203,7 @@
 
   .three-column-grid{
     @include flex-wrap(wrap);
-  
+
     .profile-wrapper{
       @include flex(2);
     }
@@ -228,4 +228,42 @@
 /* Resolucao para tablets */
 @media (min-width: 1024px) {
 
+}
+
+#cl-wrapper .cl-sidebar .side-user {
+  padding: 0;
+}
+
+.political-side-menu .fa {
+  float:right;
+  position: relative;
+  top: -30px;
+  left: 20px;
+  font-size: 1.2em;
+  display: none;
+}
+
+.political-side-menu:hover .fa {
+  display: block;
+}
+
+#cl-wrapper.fixed-menu .menu-space {
+  height: 85%;
+}
+
+.political-side-menu a:hover {
+  cursor: pointer;
+}
+
+.activePolitical:hover,
+.activePolitical {
+  background-color: lighten(#272930,10%) !important;
+}
+
+.activePolitical .fa {
+  display: block;
+}
+
+.profile-wrapper .avatar img {
+  border-radius: 100px;
 }
