@@ -3,7 +3,7 @@
 	<div class="menu-space">
 		<div class="content">
 			<ul class="cl-vnavigation">
-				<li class="political-side-menu" ng-repeat="profile in profiles | orderBy:'nome_urna'">
+				<li class="political-side-menu" ng-repeat="profile in profiles">
 					<a id='{{profile.id}}' ng-href='' ng-click="setActive(profile)" ng-class="{'activePolitical': isActive(profile)}">
 						<div class="side-user">
 							<div class="avatar"><img ng-src="{{profile.foto}}" alt="Avatar" style="width:50px;border-radius: 25px;margin-right: 5px;"></div>

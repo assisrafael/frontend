@@ -49,6 +49,9 @@ angular.module('projetobrasilFrontApp', [
 			}
 		}
 	})
+	.state('profile.view', {
+		url: '/:profileId',
+	})
 	.state('proposal-comparative', {
 		parent: '_',
 		url: '/proposal-comparative',
