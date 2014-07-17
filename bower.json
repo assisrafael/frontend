@@ -11,7 +11,8 @@
     "bootstrap-sass-official": "~3.2.0",
     "es5-shim": "~2.1.0",
     "jquery": "~1.11.0",
-    "json3": "~3.2.6"
+    "json3": "~3.2.6",
+    "Hover": "*"
   },
   "devDependencies": {
     "angular-mocks": "1.2.15",
