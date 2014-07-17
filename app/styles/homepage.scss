@@ -3,6 +3,7 @@
 @import "compass/css3/images";
 @import "compass/css3/background-size";
 @import "compass/css3/border-radius";
+@import "compass/css3/box-shadow";
 
 .homepage{
 
@@ -10,6 +11,10 @@
 
   section{
     padding: 50px 0;
+  }
+
+  a, a:hover, a:active{
+    color: $verde-claro;
   }
 
   // Slideshow
@@ -22,6 +27,9 @@
   .slide-text {
     margin-top: 145px;
     margin-left: 10%;
+    a{
+      border-bottom: 1px dashed;
+    }
   }
 
   .slides-navigation {
@@ -50,10 +58,29 @@
     height: 70px;
   }
 
+  .video-wrapper{
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+
+    iframe, object, embed{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+  }
+
   // Conteudo do meio
 
-  section.meio {
+  .meio {
     background: url('../images/homepage/meio.jpg') center top;
+    // box-shadow: inset 0 10px 15px -7px rgba(0,0,0,0.4);
+    @include box-shadow(rgba(0,0,0,0.4) 0 10px 15px -7px inset, rgba(0,0,0,0.4) 0 -9px 15px -7px inset);
   }
 
   .descricao-meio {
@@ -75,10 +102,6 @@
 
   .hp-candidato{
     text-align: center;
-
-    a{
-      color: $verde-claro;
-    }
 
     .avatar{
       // @include background(image-url("../images/homepage/avatar-candidato.jpg"));
@@ -152,6 +175,12 @@
 
         .divulgue{
           margin-top: 0;
+
+          a{
+            color: $verde-escuro;
+            font-weight: bold;
+            border-bottom: 1px dashed $verde-escuro;
+          }
         }
       }
 
@@ -176,7 +205,7 @@
   .pergunta-rodape {
     line-height: 1.1;
     font-family: 'aller_lightregular';
-    font-size: 3em;
+    font-size: 2.8em;
     color: #09404C;
 
     span{

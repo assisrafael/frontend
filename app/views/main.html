@@ -1,5 +1,4 @@
 <div class="homepage" ng-controller="HomepageCtrl">
-
   <section class="slide-wrapper">
     <div id="slides">
       <ul class="slides-container">
@@ -8,7 +7,7 @@
           <div class="slide-text">
             <div class="homepage-logo"></div>
             <h1 class="title">
-              <span><span>Tornar a política brasileira<br>mais transparente, competente e<br>democrática.</span></span>
+              <span><span>Contribua para construir uma política brasileira mais transparente, competente e democrática</span></span>
             </h1>
             <div class="decoracao-slogan"></div>
           </div>
@@ -18,7 +17,7 @@
           <div class="slide-text">
             <div class="homepage-logo"></div>
             <h1 class="title">
-              <span><span>Promover o debate político saudável<br>entre a população</span></span>
+              <span><span>Conheça, compare e avalie candidatos e propostas</span></span>
             </h1>
             <div class="decoracao-slogan"></div>
           </div>
@@ -28,9 +27,18 @@
           <div class="slide-text">
             <div class="homepage-logo"></div>
             <h1 class="title">
-              <span><span>Fomentar a consciência política<br>dos jovens eleitores</span></span>
+              <span><span>
+                Conheça mais sobre o projeto<br>assistindo o
+                <a href="#" data-toggle="modal" data-target="#modalVideo">
+                  <i class="fa fa-youtube-play"></i>
+                   vídeo
+                </a>
+              </span></span>
             </h1>
             <div class="decoracao-slogan"></div>
+            <!-- <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#modalVideo">
+              Launch demo modal
+            </button> -->
           </div>
         </li>
       </ul>
@@ -84,7 +92,7 @@
             <span>COMPARTILHA DO </span>NOSSO SONHO?
           </div>
           <p class="divulgue">
-            Então curta nossa página e ajude a divulgar o <span class="highlight">Projeto Brasil</span>
+             Então visite nosso <a href="https://github.com/ProjetoBrasil/"><i class="fa fa-github"></i> Github</a>, curta a página e ajude a divulgar o <span class="highlight">Projeto Brasil</span>
           </p>
 
           <div class="fb-like-box" style="width: 100%" data-href="http://facebook.com/oprojetobrasil" data-height="550" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
@@ -92,6 +100,16 @@
       </div>
     </div>
   </section>
+
+  <div class="modal fade" id="modalVideo" tabindex="-1" role="dialog" aria-labelledby="modalVideo" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="video-wrapper">
+          <iframe src="" frameborder="0" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script>
     (function(d, s, id) {
@@ -102,20 +120,21 @@
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
 
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-52366317-1', 'auto');
-    ga('require', 'displayfeatures');
-    ga('send', 'pageview');
-
     $(function(){
       $('#slides').superslides({
         inherit_height_from: '.slide-wrapper',
         animation: 'fade'
       });
+
+
+      $('#modalVideo')
+        .on('shown.bs.modal', function (e) {
+          $(this).find('iframe').attr('src', '//www.youtube.com/embed/ZNCS2NUS5zo?html5=1');
+        })
+        .on('hide.bs.modal', function(e){
+          $(this).find('iframe').attr('src', '');
+        });
+
     });
   </script>
 </div>
