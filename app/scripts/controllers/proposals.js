@@ -1,8 +1,7 @@
 'use strict';
 
-var app = angular.module('projetobrasilFrontApp');
-
-app.controller('ProposalsCtlr', function ($scope, proposalsGetter) {
+angular.module('projetobrasilFrontApp')
+.controller('ProposalsCtrl', function ($scope, proposalsGetter) {
   // $scope.proposals = [{
   //   'categoria' : 'Categorias',
   //   'subcategoria' : 'Sub-categoria',
@@ -17,7 +16,4 @@ app.controller('ProposalsCtlr', function ($scope, proposalsGetter) {
   proposalsGetter.getProposals().then(function(proposals) {
     $scope.proposals = proposals;
   });
-
-
-
 });

@@ -1,36 +1,29 @@
 'use strict';
 
-var app = angular.module('projetobrasilFrontApp');
-
-app.controller('MainCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
-
-app.directive('navbar', function(){
+angular.module('projetobrasilFrontApp')
+.controller('MainCtrl', function ($scope) {})
+.controller('ProfileCtrl', function ($scope) {})
+.directive('navbar', function(){
 	return {
 		restrict: 'E',
-		templateUrl: 'views/partials/navbar.html'
+		templateUrl: 'views/navbar.html'
 	};
-});
-app.directive('profile', function(){
+})
+.directive('profile', function(){
 	return {
 		restrict: 'E',
-		templateUrl: 'views/partials/profile.html'
+		templateUrl: 'views/profile.html'
 	};
-});
-app.directive('proposals', function(){
+})
+.directive('proposals', function(){
 	return {
 		restrict: 'E',
-		templateUrl: 'views/partials/proposals.html'
+		templateUrl: 'views/proposals.html'
+	};
+})
+.directive('usermenu', function () {
+	return {
+		templateUrl: 'views/navbarusermenu.html',
+		restrict: 'E'
 	};
 });
-app.directive('usermenu', function () {
-    return {
-      templateUrl: 'views/partials/navbarusermenu.html',
-      restrict: 'E'
-    };
-  });

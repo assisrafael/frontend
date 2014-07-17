@@ -1,35 +1,60 @@
 'use strict';
 
-angular
-  .module('projetobrasilFrontApp', [
-    'ngCookies',
-    'ngResource',
-    'ngSanitize',
-    'ngRoute'
-  ])
-  .config(function ($routeProvider, $sceDelegateProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/profile', {
-        templateUrl: 'views/profile.html',
-        controller: 'MainCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
+angular.module('projetobrasilFrontApp', [
+	'ngCookies',
+	'ngResource',
+	'ngSanitize',
+	'ngTouch',
+	'ui.router'
+])
+.config(function ($stateProvider, $urlRouterProvider, $sceDelegateProvider) {
+	$urlRouterProvider.otherwise('/');
 
-     $sceDelegateProvider.resourceUrlWhitelist([
-       // Allow same origin resource loads.
-       'self',
-       // Allow loading from our assets domain.  Notice the difference between * and **.
-       'http://api.projetobrasil.org/**'
-     ]);
+	$stateProvider
+	.state('main', {
+		url: '/',
+		templateUrl: 'views/main.html',
+		controller: 'MainCtrl'
+	})
+	.state('_', {
+		abstract: true,
+		views: {
+			'': {
+				templateUrl: 'views/structure.html'
+			},
+			'navbar@_': {
+				templateUrl: 'views/navbar.html'
+			},
+			'usermenu@_': {
+				templateUrl: 'views/navbarusermenu.html',
+				controller: 'NavbarUserMenuCtrl'
+			}
+		}
+	})
+	.state('profile', {
+		parent: '_',
+		url: '/profile',
+		views: {
+			'': {
+				templateUrl: 'views/profile.html',
+				controller: 'ProfileCtrl'
+			},
+			'proposals@profile': {
+				templateUrl: 'views/proposals.html',
+				controller: 'ProposalsCtrl'
+			}
+		}
+	});
 
-     // The blacklist overrides the whitelist so the open redirect here is blocked.
-     // $sceDelegateProvider.resourceUrlBlacklist([
-     //   'http://myapp.example.com/clickThru**'
-     // ]);
-   });
+	$sceDelegateProvider.resourceUrlWhitelist([
+		// Allow same origin resource loads.
+		'self',
+		// Allow loading from our assets domain.	Notice the difference between * and **.
+		'http://api.projetobrasil.org/**'
+	]);
+
+	// The blacklist overrides the whitelist so the open redirect here is blocked.
+	// $sceDelegateProvider.resourceUrlBlacklist([
+	//	 'http://myapp.example.com/clickThru**'
+	// ]);
+});
