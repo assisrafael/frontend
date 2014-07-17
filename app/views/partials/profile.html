@@ -1,114 +1,37 @@
-<div id="cl-wrapper" class="fixed-menu" ng-controller="ProfileCtlr">
+<div id="cl-wrapper" class="fixed-menu" ng-controller="ProfileCtlr" ng-init="currentPolitical = profile[0]">
 
   <div class="cl-sidebar" data-position="right" data-step="1" data-intro="<strong>Fixed Sidebar</strong> <br/> It adjust to your needs.">
     <div class="cl-toggle"><i class="fa fa-bars"></i></div>
     <div class="cl-navblock">
-      <div class="menu-space nano nscroller" style="height: 100%;">
+      <div class="menu-space nano nscroller">
         <div class="content" tabindex="0">
 
 
           <ul class="cl-vnavigation">
-            <li class="" ng-repeat="profile in profiles | orderBy:'nome_urna'">
-              <a href="#">
-              <div class="side-user side-politicals">
-                <div class="avatar"><img src="images/avatar1_50.jpg" alt="Avatar" style="border-radius: 25px;margin-right: 5px;"></div>
+            <li class="political-side-menu" ng-repeat="profile in profiles | orderBy:'nome_urna'">
+              <a id='{{profile.id}}' ng-href='' ng-click="updateProfileView(profile.id)">
+              <div class="side-user">
+                <div class="avatar"><img ng-src="{{profile.foto}}" alt="Avatar" style="width:50px;border-radius: 25px;margin-right: 5px;"></div>
                 <div class="info">
-                  {{profile.nome_urna}}
+                  <div>{{profile.nome_urna}}</div>
+                  <span>{{profile.partido}} <strong>{{profile.numero}}</strong></span>
                 </div>
-                </div>
+              </div>
+              <i class="fa fa-chevron-right "></i>
             </a>
           </li>
         </ul>
-
-            <!-- <ul class="cl-vnavigation">
-              <li class="parent open"><a href="#"><i class="fa fa-home"></i><span>Dashboard</span></a>
-                <ul class="sub-menu" style="display: block;">
-                  <li class="active"><a href="index.html">Version 1</a></li>
-                  <li><a href="dashboard2.html"><span class="label label-primary pull-right">New</span> Version 2</a></li>
-                </ul>
-              </li>
-              <li class="parent"><a href="#"><i class="fa fa-smile-o"></i><span>UI Elements</span></a>
-                <ul class="sub-menu">
-                  <li><a href="ui-elements.html">General</a></li>
-                  <li><a href="ui-buttons.html">Buttons</a></li>
-                  <li><a href="ui-modals.html"><span class="label label-primary pull-right">New</span> Modals</a></li>
-                  <li><a href="ui-notifications.html"><span class="label label-primary pull-right">New</span> Notifications</a></li>
-                  <li><a href="ui-icons.html">Icons</a></li>
-                  <li><a href="ui-grid.html">Grid</a></li>
-                  <li><a href="ui-tabs-accordions.html">Tabs &amp; Acordions</a></li>
-                  <li><a href="ui-nestable-lists.html">Nestable Lists</a></li>
-                  <li><a href="ui-treeview.html">Tree View</a></li>
-                </ul>
-              </li>
-              <li class="parent"><a href="#"><i class="fa fa-list-alt"></i><span>Forms</span></a>
-                <ul class="sub-menu">
-                  <li><a href="form-elements.html">Components</a></li>
-                  <li><a href="form-validation.html">Validation</a></li>
-                  <li><a href="form-wizard.html">Wizard</a></li>
-                  <li><a href="form-masks.html">Input Masks</a></li>
-                  <li><a href="form-multiselect.html"><span class="label label-primary pull-right">New</span>Multi Select</a></li>
-                  <li><a href="form-wysiwyg.html"><span class="label label-primary pull-right">New</span>WYSIWYG Editor</a></li>
-                  <li><a href="form-upload.html"><span class="label label-primary pull-right">New</span>Multi Upload</a></li>
-                </ul>
-              </li>
-              <li class="parent"><a href="#"><i class="fa fa-table"></i><span>Tables</span></a>
-                <ul class="sub-menu">
-                  <li><a href="tables-general.html">General</a></li>
-                  <li><a href="tables-datatables.html"><span class="label label-primary pull-right">New</span>Data Tables</a></li>
-                </ul>
-              </li>
-              <li class="parent"><a href="#"><i class="fa fa-map-marker nav-icon"></i><span>Maps</span></a>
-                <ul class="sub-menu">
-                  <li><a href="maps.html">Google Maps</a></li>
-                  <li><a href="vector-maps.html"><span class="label label-primary pull-right">New</span>Vector Maps</a></li>
-                </ul>
-              </li>
-              <li class="parent"><a href="#"><i class="fa fa-envelope nav-icon"></i><span>Email</span></a>
-                <ul class="sub-menu">
-                  <li><a href="email-inbox.html">Inbox</a></li>
-                  <li><a href="email-read.html">Email Detail</a></li>
-                  <li><a href="email-compose.html"><span class="label label-primary pull-right">New</span>Email Compose</a></li>
-                </ul>
-              </li>
-              <li><a href="typography.html"><i class="fa fa-text-height"></i><span>Typography</span></a></li>
-              <li><a href="charts.html"><i class="fa fa-bar-chart-o"></i><span>Charts</span></a></li>
-              <li class="parent"><a href="#"><i class="fa fa-file"></i><span>Pages</span></a>
-                <ul class="sub-menu">
-                  <li><a href="pages-blank.html">Blank Page</a></li>
-                  <li><a href="pages-blank-header.html">Blank Page Header</a></li>
-                  <li><a href="pages-blank-aside.html">Blank Page Aside</a></li>
-                  <li><a href="pages-login.html">Login</a></li>
-                  <li><a href="pages-404.html">404 Page</a></li>
-                  <li><a href="pages-500.html">500 Page</a></li>
-                  <li><a href="pages-sign-up.html"><span class="label label-primary pull-right">New</span>Sign Up</a></li>
-                  <li><a href="pages-forgot-password.html"><span class="label label-primary pull-right">New</span>Forgot Password</a></li>
-                  <li><a href="pages-profile.html"><span class="label label-primary pull-right">New</span>Profile</a></li>
-                  <li><a href="pages-search.html"><span class="label label-primary pull-right">New</span>Search</a></li>
-                  <li><a href="pages-calendar.html"><span class="label label-primary pull-right">New</span>Calendar</a></li>
-                  <li><a href="pages-code-editor.html"><span class="label label-primary pull-right">New</span>Code Editor</a></li>
-                  <li><a href="pages-gallery.html">Gallery</a></li>
-                  <li><a href="pages-timeline.html">Timeline</a></li>
-                </ul>
-              </li>
-            </ul> -->
           </div>
           <div class="pane" style="display: block;"><div class="slider" style="height: 49px; top: 0px;"></div></div></div>
-        <!-- <div class="text-right collapse-button" style="padding:7px 9px;">
-          <input type="text" class="form-control search" placeholder="Search...">
-          <button id="sidebar-collapse" class="btn btn-default" style=""><i style="color:#fff;" class="fa fa-angle-left"></i></button>
-        </div> -->
       </div>
     </div>
 
-    <!-- O id pcont anula a classe container do bootstrap. Ela foi retirada, mas talvez tenha efeito no layout com a barra lateral presente -->
     <div class="container-fluid" id="pcont">
-
       <div class="cl-mcont">
         <div class="row">
           <div class="col-xs-12">
             <h1 class="name">
-              <span class="numero-candidato">88</span> -
-              Nome para a urna </h1>
+              {{currentPolitical.nome_urna}} <span class="numero-candidato">{{currentPolitical.numero}}</span></h1>
             </div>
           </div>
           <div class="row three-column-grid">
@@ -116,48 +39,24 @@
               <div class="block-flat">
                 <div class="block-content clearfix">
                   <div class="avatar col-lg-12 col-md-12 col-sm-5">
-                    <img src="images/av.jpg" class="profile-avatar">
+                    <img ng-src="{{currentPolitical.foto}}" class="profile-avatar">
                   </div>
                   <div class="col-lg-12 col-md-12 col-sm-7 profile-info">
                     <div class="info col-md-12">
                       <div class="title">Nome completo:</div>
-                      <div class="value">Candidato Sobrenome Novonome</div>
-                    </div>
-                    <div class="info col-md-12">
-                      <div class="title">Partido:</div>
-                      <div class="value">
-                        <ul class="lista-partidos">
-                          <li>
-                            <img class="logo-partido" src="images/logo-partido.png" alt="Logo do partido do candidato">
-                            Partido Pirata
-                          </li>
-                        </ul>
-                      </div>
+                      <div class="value">{{currentPolitical.nome}}</div>
                     </div>
                     <div class="info col-md-12">
                       <div class="title">Formação:</div>
-                      <div class="value">
-                        <ul class="lista-formacao">
-                          <li>
-                            <img class="logo-partido" src="images/formacao-logo-1.gif" alt="Logo do partido 1">
-                            <p class="formacao-local">Univ. Corsária do Pacífico</p>
-                            <p class="formacao">Graduação / 1998-2001</p>
-                          </li>
-                          <li>
-                            <img class="logo-partido" src="images/formacao-logo-2.png" alt="Logo do partido 2">
-                            <p class="formacao-local">Universidade Oceânica</p>
-                            <p class="formacao">Graduação / 1998-2001</p>
-                          </li>
-                        </ul>
-                      </div>
+                      <div class="value">{{currentPolitical.formacao}}</div>
                     </div>
                     <div class="info col-md-12">
                       <div class="title">Site:</div>
-                      <div class="value">www.meusiteminhacampanha.com</div>
+                      <div class="value">{{currentPolitical.site}}</div>
                     </div>
                     <div class="info col-md-12">
                       <div class="title">Email:</div>
-                      <div class="value">falacandidato@partido.com.br</div>
+                      <div class="value">{{currentPolitical.email}}</div>
                     </div>
                     <div class="info col-md-12">
                      <div class="title">Redes sociais</div>
@@ -197,26 +96,15 @@
                 </div>
                 <div class="info">
                   <div class="title">Nome do partido:</div>
-                  <div class="value">Partido Pirata</div>
+                  <div class="value">{{currentPolitical.partido}}</div>
                 </div>
                 <div class="info">
                   <div class="title">Nome da coligação:</div>
-                  <div class="value">Coligação dos 7 mares</div>
+                  <div class="value">{{currentPolitical.coligacao.nome}}</div>
                 </div>
                 <div class="info">
                   <div class="title">Composição da coligação:</div>
-                  <div class="value">
-                    <ul class="lista-partidos">
-                      <li>
-                        <img class="logo-partido" src="images/partido-coligacao-2.png" alt="Logo do partido 2">
-                        Partido dos tesouros
-                      </li>
-                      <li>
-                        <img class="logo-partido" src="images/partido-coligacao-1.jpg" alt="Logo do partido 1">
-                        Partido dos corsários
-                      </li>
-                    </ul>
-                  </div>
+                  <div class="value">{{currentPolitical.coligacao.composicao}}</div>
                 </div>
               </div>
               <div class="block-controls">
