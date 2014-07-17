@@ -16,6 +16,7 @@
 
   .slide-wrapper{
     height: 450px;
+    padding: 0;
   }
 
   .slide-text {
@@ -74,7 +75,10 @@
 
   .hp-candidato{
     text-align: center;
-    color: $verde-claro;
+
+    a{
+      color: $verde-claro;
+    }
 
     .avatar{
       // @include background(image-url("../images/homepage/avatar-candidato.jpg"));
@@ -82,7 +86,6 @@
       background-repeat: no-repeat;
       @include border-radius(50%);
       border: 5px solid #FAF4AB;
-      // border: 5px solid #81D3B5;
       height: 150px;
       width: 150px;
       margin: auto;
@@ -106,23 +109,87 @@
 
   // Rodape
 
-  section.rodape {
+  $altura-rodape: 550px;
+
+  .rodape {
       background: url('../images/homepage/rodape.jpg') center top;
       padding: 0;
       height: 700px;
+
+      .bloco{
+        height: $altura-rodape;
+        margin-top: 75px;
+        padding: 0px;
+
+        .conteudo{
+          margin: 50px;
+        }
+      }
+
+      .bloco-amarelo {
+        background-color: #F5E642;
+
+        .titulo_pb {
+            font-family: 'AllerDisplay';
+            font-size: 3em;
+            color: #09404C;
+        }
+
+        .titulo_pb strong {
+          font-family: 'allerbold';
+        }
+
+      }
+
+      .decoracao-slogan {
+        top: 70px;
+        left: initial;
+        float: none;
+      }
+
+      .bloco-branco{
+        background-color: rgba(255, 255, 255, 0.91);
+
+        .divulgue{
+          margin-top: 0;
+        }
+      }
+
   }
 
-  section.rodape p{
-      font-size: 1.7em;
-      font-family: 'aller_lightregular';
-      color: #09404C;
-      width: 350px;
-      text-align: left;
-      margin-left: 17px;
-      margin-top: 20px;
+
+
+  .rodape p .highlight{
+    font-family: 'allerbold';
   }
 
-  section.rodape .seed {
+  .rodape p{
+    font-size: 1.2em;
+    font-family: 'aller_lightregular';
+    color: #09404C;
+    text-align: justify;
+    margin-top: 20px;
+    line-height: 25px;
+  }
+
+
+  .pergunta-rodape {
+    line-height: 1.1;
+    font-family: 'aller_lightregular';
+    font-size: 3em;
+    color: #09404C;
+
+    span{
+      font-family: 'allerbold';
+    }
+  }
+
+  .fb-like-box, .fb-like-box span, .fb-like-box iframe{
+    width: 100% !important;
+    height: 350px !important;
+  }
+
+  .rodape .seed {
       font-size: 1.5em;
       font-family: 'aller_lightregular';
       color: #09404C;
@@ -132,35 +199,25 @@
       top: 80px;
   }
 
-  section.rodape .seed img {
+  .rodape .seed img {
       width: 70px;
   }
 
-  section.rodape img {
+  .rodape img {
       margin-left: 20px;
   }
 
-  section.rodape button {
+  .rodape button {
       width: 350px;
       text-transform: uppercase;
       font-family: 'allerbold';
   }
-  section.rodape input {
+  .rodape input {
       width: 350px;
       margin-left: 15px;
   }
 
-  section.rodape p .highlight{
-      font-family: 'allerbold';
-  }
 
-  section.rodape .bloco-amarelo {
-      background-color: #F5E642;
-      height: 700px;
-      padding: 50px;
-      text-align: center;
-      width: 480px;
-  }
 
   .chamada-rodape {
       line-height: 1;
@@ -180,28 +237,6 @@
       color: #09404C;
   }
 
-  .pergunta-rodape {
-      line-height: 1.1;
-  }
-
-  .pergunta-rodape span{
-      display: block;
-      font-size: 3em;
-      color: #09404C;
-      text-transform: uppercase;
-  }
-
-  .pergunta-rodape span.linha1 {
-      font-family: allerbold;
-  }
-
-  .pergunta-rodape span.linha2 {
-      font-family: 'aller_lightregular';
-      font-size: 3.4em;
-  }
-
-
-
   .title {
     font-family: 'aller_displayregular';
     font-weight: normal;
@@ -215,20 +250,6 @@
       top: 15px;
       left: -17px;
   }
-
-  .linha-conteudo {
-      width: 100%;
-  }
-
-  .linha-conteudo p{
-      font-family: 'allerregular';
-      color: #555;
-  }
-
-  .linha-conteudo p .highlight {
-      background-color: #F5E642;
-
-   }
 
   /* changed: use outline for wider browser support */
   .title > span {
@@ -309,15 +330,6 @@
       padding-bottom: 0;
   }
 
-  .titulo_pb {
-      font-family: 'AllerDisplay';
-      font-size: 3em;
-      color: #30B786;
-  }
-
-  .titulo_pb strong {
-      font-family: 'allerbold';
-  }
 
   /* Everything but the jumbotron gets side spacing for mobile first views */
   .header,
@@ -394,7 +406,7 @@
 
 
 /* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
+@media screen and (max-width: 1200px) {
 
     .homepage{
 
@@ -413,7 +425,42 @@
       .jumbotron {
           border-bottom: 0;
       }
+
+      .rodape .bloco{
+        margin-top: 50px;
+        height: 600px;
+
+        .decoracao-slogan{
+          top: 20px;
+        }
+      }
+
     }
 
 }
 
+@media screen and (max-width: 1024px) {
+
+  .homepage {
+
+    .rodape{
+
+      height: 1107px;
+
+      .bloco.bloco-amarelo {
+        background-color: #F5E642;
+        height: 395px;
+        padding: 1px;
+
+        .decoracao-logo{
+          display: none;
+        }
+      }
+
+      .bloco-branco{
+        margin-top: 0;
+      }
+
+    }
+  }
+}

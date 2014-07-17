@@ -1,6 +1,6 @@
 <div class="homepage" ng-controller="HomepageCtrl">
 
-  <div class="slide-wrapper">
+  <section class="slide-wrapper">
     <div id="slides">
       <ul class="slides-container">
         <li>
@@ -43,7 +43,7 @@
         </a>
       </nav>
     </div>
-  </div>
+  </section>
 
   <section class="meio">
     <div class="container">
@@ -52,10 +52,12 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
         consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         <div class="row">
-          <div class="hp-candidato col-lg-4 col-md-6 col-sm-6 col-xs-12" ng-repeat="politico in politicos | orderBy:'nome_urna' ">
-            <div class="avatar" ng-style="{'background-image':'url('+politico.foto+')'}"></div>
-            <h3 class="nome">{{politico.nome_urna}} - <span class="numero">{{politico.numero}}</span></h3>
-            <div class="partido">{{politico.partido}}</div>
+          <div class="hp-candidato col-lg-4 col-md-6 col-sm-6 col-xs-12 grow" ng-repeat="politico in politicos | orderBy:'nome_urna' ">
+            <a href="#">
+              <div class="avatar" ng-style="{'background-image':'url('+politico.foto+')'}"></div>
+              <h3 class="nome">{{politico.nome_urna}} - <span class="numero">{{politico.numero}}</span></h3>
+              <div class="partido">{{politico.partido}}</div>
+            </a>
           </div>
 
         </div>
@@ -63,50 +65,30 @@
     </div>
   </section>
 
-  <!-- <section class="linha-conteudo meio">
-    <div class="container">
-      <div class="conteudo-meio">
-        <span class="titulo_pb"><strong>projetobrasil</strong>.org</span>
-        <p>Somos uma startup que sonha e busca <span class="highlight">tornar a política brasileira mais transparente, competente e democrática</span>. Queremos informar, engajar e aproximar políticos e cidadãos. Lançaremos a primeira etapa do projeto em julho de 2014, com o foco nas eleições.
-        </p>
-        <p>
-          Nessa primeira etapa, o Projeto Brasil oferecerá ao cidadão a oportunidade de <span class="highlight">conhecer, avaliar e comparar os candidatos</span> com base em suas propostas, histórico eleitoral, profissional e pessoal, entre outros parâmetros. você poderá ainda compartilhar, avaliar e comentar todas as políticas públicas propostas pelos candidatos.
-        </p>
-      </div>
-    </div>
-  </section> -->
-
   <section class="linha-conteudo rodape">
     <div class="container">
-      <div class="bloco-amarelo">
-        <div class="pergunta-rodape">
-          <span class="linha1">Compartilha do</span><span class="linha2">nosso sonho?</span>
+      <div class="bloco bloco-amarelo clearfix col-lg-5 col-md-5">
+        <div class="conteudo">
+          <span class="titulo_pb"><strong>projetobrasil</strong>.org</span>
+          <p>Somos uma startup que sonha e busca <span class="highlight">tornar a política brasileira mais transparente, competente e democrática</span>. Queremos informar, engajar e aproximar políticos e cidadãos. Lançaremos a primeira etapa do projeto em julho de 2014, com o foco nas eleições.
+          </p>
+          <p>
+            Nessa primeira etapa, o Projeto Brasil oferecerá ao cidadão a oportunidade de <span class="highlight">conhecer, avaliar e comparar os candidatos</span> com base em suas propostas, histórico eleitoral, profissional e pessoal, entre outros parâmetros. você poderá ainda compartilhar, avaliar e comentar todas as políticas públicas propostas pelos candidatos.
+          </p>
         </div>
-        <p style="text-align:center">Então curta nossa página e ajude a divulgar o <span class="highlight">Projeto Brasil</span></p>
-
-        <div  style="margin: 30px 0" class="fb-like" data-href="http://facebook.com/oprojetobrasil" data-width="300" data-layout="standard" data-action="like" data-show-faces="true" data-share="false"></div>
-        <!-- <p>Cadastre seu email para receber novidades sobre o Projeto Brasil</p> -->
-
-        <!-- <form role="form">
-          <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+        <div class="decoracao-slogan"></div>
+      </div>
+      <div class="bloco bloco-branco clearfix col-lg-7 col-md-7">
+        <div class="conteudo">
+          <div class="pergunta-rodape">
+            <span>COMPARTILHA DO </span>NOSSO SONHO?
           </div>
-          <button type="submit" class="btn btn-default">Quero receber novidades</button>
-        </form> -->
-        <div class="chamada-rodape">
-          <span class="linha1">Envie suas fotos pelas redes sociais com a hashtag</span><span class="linha2">#fotosprojetobrasil</span>
-        </div>
+          <p class="divulgue">
+            Então curta nossa página e ajude a divulgar o <span class="highlight">Projeto Brasil</span>
+          </p>
 
-        <div class="chamada-rodape">
-          <span class="linha1">(Fotos do rodapé enviadas por Filipe Galgani)</span>
+          <div class="fb-like-box" style="width: 100%" data-href="http://facebook.com/oprojetobrasil" data-height="550" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
         </div>
-        <!--
-          <div class="seed">
-            Empresa acelerada pelo<a href="http://www.seed.mg.gov.br">
-            <span style="height:70px; width:70px; background: url('images/seed.gif') center top no-repeat;display: inline-block;background-size: 100% 100%; background-size: 100% 100%;position: relative;top: 20px;left: 10px;"></span></a>
-          </div>
-         -->
       </div>
     </div>
   </section>
