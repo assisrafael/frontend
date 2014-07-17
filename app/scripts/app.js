@@ -51,6 +51,7 @@ angular.module('projetobrasilFrontApp', [
 	.state('proposal-comparative', {
 		parent: '_',
 		url: '/proposal-comparative',
+		controller: 'ProposalsComparativeCtrl',
 		templateUrl: 'views/proposal-comparative.html'
 	});
 

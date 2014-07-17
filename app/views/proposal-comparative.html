@@ -5,3 +5,35 @@
 		<li class="active">Comparativo das propostas</li>
 	</ol>
 </div>
+<div class="cl-mcont">
+	<div class="row dash-cols">
+		<div class="col-sm-12 col-md-12" ng-repeat="(category, proposal) in proposals">
+			<div class="block-flat">
+				<div class="header">
+					<div class="pull-right actions">
+					</div>
+					<h3>{{category}}</h3>
+				</div>
+				<div class="content">
+					<div class="row">
+						<div class="col-sm-4" ng-repeat="(politician, statements) in proposal">
+							<div class="list-group tickets">
+								<li class="list-group-item" href="#">
+									<span class="label label-primary pull-right">Normal</span> <img class="avatar" src="images/avatar_50.jpg">
+									<h4 class="name">{{politician}}</h4>
+									<p>My vMaps plugin doesn't work</p>
+									<span class="date">17 Feb</span>
+								</li>
+							</div>
+							<div class="alert {{s.rating}} alert-white rounded" ng-repeat="s in statements">
+								<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+								<div class="icon"><i class="fa fa-check"></i></div>
+								{{s.proposal}}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
