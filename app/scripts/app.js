@@ -28,7 +28,10 @@ angular.module('projetobrasilFrontApp', [
 			'usermenu@_': {
 				templateUrl: 'views/navbarusermenu.html',
 				controller: 'NavbarUserMenuCtrl'
-			}
+			},
+			'sidebar@_': {
+				templateUrl: 'views/sidebar.html'
+			},
 		}
 	})
 	.state('profile', {
@@ -44,6 +47,11 @@ angular.module('projetobrasilFrontApp', [
 				controller: 'ProposalsCtrl'
 			}
 		}
+	})
+	.state('proposal-comparative', {
+		parent: '_',
+		url: '/proposal-comparative',
+		templateUrl: 'views/proposal-comparative.html'
 	});
 
 	$sceDelegateProvider.resourceUrlWhitelist([
