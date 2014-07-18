@@ -1,68 +1,61 @@
-<navbar></navbar>
-<div id="cl-wrapper" class="fixed-menu">
-  <div class="container">
-    <div class="cl-mcont">
-
-      <div class="row">
-        <div class="col-xs-12">
-          <h1 class="name">{{proposal.titulo}}</h1>
-          <span>{{proposal.tema}}/{{proposal.subtema}}</span>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-xs-12">
-          <p>{{proposal.descricao}}</p>
-          <p class="text-right">{{proposal.fonte}}</p>
-          <div><b>Palavras-chave:</b> {{proposal.palavras_chaves}}</div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-xs-6">
-          <div data-brasil-map data-data="rating" data-filter='filter'></div>
-        </div>
-        <div class="col-xs-6">
-          <span>Avalia&ccedil;&otilde;es por estado: {{filter}}</span>
-          <div data-pie-chart data-data="rating" data-filter="filter"></div>
-        </div>
-      </div>
-
-      <!-- <div class="row">
-        <div class="col-xs-12">
-          Aqui est&atilde;o os filtros de menu do mapa e do gráfico
-          <ol>
-          	<li>Sexo</li>
-          	<li>Idade</li>
-          </ol>
-        </div>
-      </div> -->
-
-      <div class="row">
-      	<div class="block-flat col-xs-6" data-ng-repeat="expert in proposal.experts">
-          <div class="block-content clearfix">
-            <div>
-              <img alt="{{expert.nome}}" src="{{expert.foto}}" />
-              <h2>{{expert.nome}}</h2>
-              <span>{{expert.cargo}}</span>
-            </div>
-            <p>{{expert.opiniao}}</p>
-	        </div>
-	      </div>
-      </div>
-
-      <div class="row">
-        <div class="col-xs-12">
-        	<h3>Links relacionados</h3>
-          <ul>
-          	<li data-ng-repeat="link in proposal.links">
-              <a ng-href="{{link.link}}" target='_blank'>{{link.link}}</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-
-    </div>
-  </div>
+<div class="page-head">
+  <h2>Proposta: {{proposal.titulo}}</h2>
+  <ol class="breadcrumb">
+    <li>{{proposal.tema}}</li>
+    <li class="active">{{proposal.subtema}}</li>
+  </ol>
 </div>
 
+<div class="cl-mcont">
+  <div class="block-flat">
+    <p>{{proposal.descricao}}</p>
+    <p class="text-right">{{proposal.fonte}}</p>
+    <div><b>Palavras-chave:</b> {{proposal.palavras_chaves}}</div>
+  </div>
+
+  <div class="block-flat">
+    <div class="row">
+      <div class="col-xs-6">
+        <div data-brasil-map data-data="rating" data-filter='filter'></div>
+      </div>
+      <div class="col-xs-6">
+        <span>Avalia&ccedil;&otilde;es por estado: {{filter}}</span>
+        <div data-pie-chart data-data="rating" data-filter="filter"></div>
+      </div>
+    </div>
+  </div>
+
+    <!-- <div class="row">
+      <div class="col-xs-12">
+        Aqui est&atilde;o os filtros de menu do mapa e do gráfico
+        <ol>
+          <li>Sexo</li>
+          <li>Idade</li>
+        </ol>
+      </div>
+    </div> -->
+
+    <div class="row">
+      <div class="col-xs-6" data-ng-repeat="expert in proposal.experts">
+        <div class="block-flat">
+          <div class="block-content clearfix">
+              <img alt="{{expert.nome}}" ng-src="{{expert.foto}}" width="30%" />
+              <div>
+                <h2>{{expert.nome}}</h2>
+                <span>{{expert.cargo}}</span>
+                <p>{{expert.opiniao}}</p>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div class="block-flat">
+    <h3>Links relacionados</h3>
+    <ul>
+      <li data-ng-repeat="link in proposal.links">
+        <a ng-href="{{link.link}}" target='_blank'>{{link.link}}</a>
+      </li>
+    </ul>
+  </div>
+</div>
