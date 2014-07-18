@@ -1,7 +1,16 @@
 'use strict';
 
 angular.module('projetobrasilFrontApp')
-.controller('ProposalsComparativeCtrl', ['$scope', function($scope){
+.controller('ProposalsComparativeCtrl', ['$scope', 'profileGetter', 'proposalsGetter',
+	function($scope, profileGetter, proposalsGetter){
+		profileGetter.getProfile().then(function(politicians) {
+			$scope.politicians = politicians;
+		});
+
+		// proposalsGetter.getAllProposals().then(function(proposals) {
+		// 	$scope.proposals = proposals;
+		// });
+
 	$scope.proposals = {
 		'Educação': {
 			'Aécio': [

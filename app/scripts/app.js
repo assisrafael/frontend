@@ -30,18 +30,17 @@ angular.module('projetobrasilFrontApp', [
 				controller: 'NavbarUserMenuCtrl'
 			},
 			'sidebar@_': {
-				templateUrl: 'views/sidebar.html',
-				controller: 'ProfileCtrl'
+				templateUrl: 'views/sidebar.html'
 			},
 		}
 	})
 	.state('profile', {
 		parent: '_',
-		url: '/profile',
+		url: '/profile/:profileId',
 		views: {
 			'': {
 				templateUrl: 'views/profile.html',
-				controller: 'ProfileCtrl'
+				controller: 'ProfilesCtrl'
 			},
 			'proposals@profile': {
 				templateUrl: 'views/proposals.html',
@@ -49,15 +48,14 @@ angular.module('projetobrasilFrontApp', [
 			}
 		}
 	})
-	.state('profile.view', {
-		url: '/:profileId',
-	})
 	.state('proposal-comparative', {
 		parent: '_',
 		url: '/proposal-comparative',
 		controller: 'ProposalsComparativeCtrl',
 		templateUrl: 'views/proposal-comparative.html'
 	});
+	//FIXME: remover quando ui-router tiver parâmetros opcionais
+	$urlRouterProvider.when('/profile', '/profile/');
 
 	$sceDelegateProvider.resourceUrlWhitelist([
 		// Allow same origin resource loads.
