@@ -1,62 +1,6 @@
 angular.module('projetobrasilFrontApp')
 	.controller('rakingCtrl', function ($scope, $q, $http, moduleService) {
         $scope.comments = [];
-        var comment1 = {
-	  			idParent: 0,
-	  			idComment : 1,
-	  			content: 'Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.',
-	  			score: 0,
-	  			comments: [{
-	  				idParent: 1,
-	  				idComent: 1,
-	  				score: 0,
-	  				content: 'Anwser to aaaa'
-	  			}]
-			},
-        	comment2 = {
-	  			idParent: 0,
-	  			idComment : 2,
-	  			content: 'Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis.',
-	  			score: 0,
-	  			comments: [{
-	  				idParent: 2,
-	  				idComent: 2,
-	  				score: 0,
-	  				content: 'Anwser to bbbb'
-	  			}]
-			},
-        	comment3 = {
-  				idParent:0,
-  				idComment : 3,
-  				content: 'Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo.',
-  				score: 0,
-  				comments: [{
-  					idParent: 3,
-  					idComment:1,
-  					score: 0,
-	  				content: 'Anwser to ccccccc'
-	  			},
-	  			{
-  					idParent: 3,
-  					idComment:2,
-  					score: 0,
-	  				content: 'Anwser to ccccccc [2]'
-	  			}]
-			},
-			comment4 = {
-  				idParent: 0,
-  				idComment: 4,
-  				content: 'Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis. Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.',
-  				score: 0,
-  				comments: [{
-
-	  			}]
-			};
-
-        $scope.comments.push(comment1);
-        $scope.comments.push(comment2);
-        $scope.comments.push(comment3);
-        $scope.comments.push(comment4);
 
         $scope.increaseScore = function (comment) {
             comment.score += 1;
@@ -70,7 +14,7 @@ angular.module('projetobrasilFrontApp')
         	var promise = moduleService.getComments();
         	promise.then(
 				function(result){
-					// $scope.comments = result.comments;
+					$scope.comments = result.comments;
 				},
 				function(failMessage){
 					 alert('Failed: ' + reason);
