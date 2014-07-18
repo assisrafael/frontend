@@ -7,8 +7,10 @@
 
 	<div class="col-sm-12 bloco-botoes-votacao">
   <h6>Avalie a proposta<br>
-    <rating class="rating_stars" ng-init="rate = 3" ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
+    <rating class="rating_stars" ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
     </h6>
+
+    <a ng-href="/#/proposal" class="btn btn-default"><i class="fa fa-plus-circle"></i> Mais detalhes da proposta</a>
 
 		<!-- <div class="col-xs-2 col-sm-12">
       <button type="button" class="btn btn-success btn-block">
