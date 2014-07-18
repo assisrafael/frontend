@@ -1,19 +1,24 @@
 <div class="widget-block	white-box calendar-box bloco-proposta" ng-repeat="proposal in proposals">
-	<div class="col-sm-10 bloco-proposta">
+	<div class="col-sm-12 bloco-proposta">
 		<h2>{{proposal.tema}} <small>{{proposal.subtema}}</small></h2>
 		<p>{{proposal.titulo}}</p>
 	</div>
 
-	<div class="col-sm-2 bloco-botoes-votacao">
-		<div class="col-xs-6 col-sm-12">
-			<button type="button" class="btn btn-success btn-block">
-				<span class="glyphicon glyphicon-thumbs-up"></span><br/>
-			</button>
-		</div>
-		<div class="col-xs-6 col-sm-12">
-			<button type="button" class="btn btn-warning btn-block">
-				<span class="glyphicon glyphicon-thumbs-down"></span>
-			</button>
-		</div>
+
+	<div class="col-sm-12 bloco-botoes-votacao">
+  <h6>Avalie a proposta<br>
+    <rating class="rating_stars" ng-init="rate = 3" ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
+    </h6>
+
+		<!-- <div class="col-xs-2 col-sm-12">
+      <button type="button" class="btn btn-success btn-block">
+        <span class="glyphicon glyphicon-thumbs-up"></span><br/>
+      </button>
+    </div>
+    <div class="col-xs-2 col-sm-12">
+      <button type="button" class="btn btn-warning btn-block">
+        <span class="glyphicon glyphicon-thumbs-down"></span>
+      </button>
+    </div> -->
 	</div>
 </div>
