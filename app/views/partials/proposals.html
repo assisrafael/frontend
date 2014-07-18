@@ -1,0 +1,21 @@
+<div ng-controller="ProposalsCtlr">
+  <div class="widget-block  white-box calendar-box bloco-proposta" ng-repeat="proposal in proposals">
+    <div class="col-sm-10 bloco-proposta">
+     <h2>{{proposal.id}} <small>{{proposal.email}}</small></h2>
+     <p>{{proposal.partido}}</p>
+    </div>
+
+    <div class="col-sm-2 bloco-botoes-votacao">
+      <div class="col-xs-6 col-sm-12">
+        <button type="button" class="btn btn-success btn-block">
+          <span class="glyphicon glyphicon-thumbs-up"></span><br/>
+        </button>
+      </div>
+      <div class="col-xs-6 col-sm-12">
+        <button type="button" class="btn btn-warning btn-block">
+          <span class="glyphicon glyphicon-thumbs-down"></span>
+        </button>           
+      </div>   
+    </div>
+  </div>
+</div>

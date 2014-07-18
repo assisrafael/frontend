@@ -2,13 +2,29 @@
 
 angular.module('projetobrasilFrontApp')
 .factory('proposalsGetter', function ($http) {
+	var serverUri = 'http://api.projetobrasil.org:4242/v1';
+
 	return {
-		getProposals: function(id) {
+		getProposal: function(id) {
 			//return the promise directly.
-			return $http.get('http://api.projetobrasil.org:4242/v1/politician/' + id + '/proposals')
+			return $http.get(serverUri + '/proposal/' + id)
 			.then(function(result) {
-				console.log('Get proposals');
-				console.log(result.data);
+				//resolve the promise as the data
+				return result.data;
+			});
+		},
+		getAllProposals: function() {
+			//return the promise directly.
+			return $http.get(serverUri + '/proposals')
+			.then(function(result) {
+				//resolve the promise as the data
+				return result.data;
+			});
+		},
+		getPoliticianProposals: function(id) {
+			//return the promise directly.
+			return $http.get(serverUri + '/politician/' + id + '/proposals')
+			.then(function(result) {
 				//resolve the promise as the data
 				return result.data;
 			});

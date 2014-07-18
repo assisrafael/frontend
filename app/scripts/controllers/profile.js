@@ -1,8 +1,51 @@
 'use strict';
 
 angular.module('projetobrasilFrontApp')
-.controller('ProfileCtrl', function ($scope, $state, $stateParams, profileGetter, $filter) {
+
+.controller('SideBarProfilesCtrl', function($scope, $state, $filter, profileGetter) {
+  profileGetter.getProfile().then(function(profiles) {
+    profiles = $filter('orderBy')(profiles, 'nome_urna');
+    $scope.$parent.profiles = profiles;
+  });
+
+  $scope.$parent.isActive = function(political) {
+    return $state.current.name === 'profile' && $scope.currentPolitical === political;
+  };
+
+  $scope.$parent.setActive = function(political) {
+    $scope.currentPolitical = political;
+    $scope.$parent.selectedPolitical = political;
+    $state.go('profile', {
+      profileId: political.id
+    });
+  };
+})
+
+.controller('ProfilesCtrl', function ($scope, $state, $stateParams, profileGetter) {
 	var profileId = $stateParams.profileId;
+
+	$scope.setActiveById = function(profileId) {
+		var profiles = $scope.profiles;
+
+		for (var i = 0; i < profiles.length; i++) {
+			var p = profiles[i];
+			if(p.id === profileId) {
+				$scope.setActive(p);
+				return;
+			}
+		}
+	};
+
+	$scope.$watch('profiles', function(profiles) {
+		if(!profiles) return;
+
+		if(!profileId) {
+			$scope.setActive(profiles[0]);
+		}else {
+			$scope.setActiveById(profileId);
+		}
+	});
+
 
   $scope.historico = [
     {'data':'2004', 'descricao':'Eleito deputado estadual'},
@@ -18,27 +61,6 @@ angular.module('projetobrasilFrontApp')
     {'descricao':'Posto de gasolina', 'valor':'100.000'},
     {'descricao':'50 quotas da empreiteira Bonifácio', 'valor':'2.300.000'},
     {'descricao':'Casa de veraneio', 'valor':'1.200.000'},];
-
-	profileGetter.getProfile().then(function(profiles) {
-		profiles = $filter('orderBy')(profiles, 'nome_urna');
-		$scope.profiles = profiles;
-
-		if(!profileId) {
-			$scope.setActive(profiles[0]);
-		}else {
-			for (var i = 0; i < profiles.length; i++) {
-				var p = profiles[i];
-				if(p.id === profileId) {
-					$scope.setActive(p);
-					break;
-				}
-			}
-		}
-	});
-
-  $scope.randInt = function(){
-    return Math.floor(Math.random() * (max - min)) + min;
-  };
 
   $scope.rate = 3;
   $scope.max = 5;
@@ -60,16 +82,4 @@ angular.module('projetobrasilFrontApp')
 
   //End Readmore
 
-
-	$scope.isActive = function(political) {
-		return $scope.currentPolitical === political;
-	};
-
-	$scope.setActive = function(political) {
-		$scope.currentPolitical = political;
-		$scope.$parent.selectedPolitical = political;
-		$state.go('profile.view', {
-			profileId: political.id
-		});
-	};
 });

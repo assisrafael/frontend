@@ -7,7 +7,10 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import 'Hover/scss/hover';
 
 /* HOMEPAGE CSS */
-@import "homepage.css";
+@import "homepage.scss";
+
+/* RANKING COMMENTS */
+@import "ranking-comments.scss";
 
 /*CONFIG AND GENERAL STYLE*/
 @import "sass/config.scss";
@@ -76,4 +79,5 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "sass/responsive.scss";
 
 /*ESTILOS ADICIONADOS*/
-@import "sass/profile-candidato.scss"
+@import "sass/profile-candidato.scss";
+@import "sass/proposal-comparative.scss";
