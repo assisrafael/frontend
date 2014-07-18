@@ -1,11 +1,16 @@
-<div class="cl-mcont">
-	<div class="row">
-		<div class="col-xs-12">
-			<h1 class="name">
-				{{selectedPolitical.nome_urna}} <span class="numero-candidato">{{selectedPolitical.numero}}</span>
-			</h1>
-		</div>
-	</div>
+<div class="page-head">
+      <h2>
+        {{selectedPolitical.nome_urna}} &nbsp;<span class="numero-candidato">{{selectedPolitical.numero}}</span></h2>
+      <ol class="breadcrumb">
+        <li><a href="#">Projeto Brasil</a></li>
+        <li><a href="#">Candidatos</a></li>
+        <li class="active">Presidência da República</li>
+      </ol>
+    </div>
+
+
+
+    <div class="cl-mcont">
 	<div class="row three-column-grid">
 		<div class="col-md-3 col-sm-12 profile-wrapper">
 			<div class="block-flat">
@@ -35,13 +40,9 @@
 							<div class="value">
 								<ul class="redes-sociais">
 									<li class="link-rede-social">
-										<i class="fa fa-facebook-square"></i> <span>fb.com/Yo-ho</span>
-									</li>
-									<li class="link-rede-social">
-										<i class="fa fa-twitter-square"></i> <span>@Yo-ho</span>
-									</li>
-									<li class="link-rede-social">
-										<i class="fa fa-google-plus-square"></i> <span>google.com/+Yo-ho</span>
+										<i class="fa fa-facebook-square"></i>
+										<i class="fa fa-twitter-square"></i>
+										<i class="fa fa-google-plus-square"></i>
 									</li>
 								</ul>
 							</div>
@@ -56,6 +57,29 @@
 			</div>
 		</div>
 		<div class="col-md-6 col-sm-12 proposals">
+
+    <div class="block-flat">
+            <div class="header">
+              <h3>Declaração de bens</h3>
+            </div>
+            <div class="content" ng-style="{'overflow':'hidden', 'height':readMoreHeight}">
+              <table class="no-border">
+                <thead class="no-border">
+                  <tr>
+                    <th style="font-weight: bold; width: 70%">Detalhes</th>
+                    <th class="text-right" style="font-weight: bold">Valor do bem</th>
+                  </tr>
+                </thead>
+                <tbody class="no-border-y">
+                  <tr ng-repeat="bem in bens">
+                    <td style="width:30%;">{{bem.descricao}}</td>
+                    <td class="text-right">R$ {{bem.valor}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="readmore"><a ng-href="" ng-click="readMore = !readMore">{{readMoreText}}</a></div>
+          </div>
 			<div class="personal">
 				<div ui-view="proposals"></div>
 			</div>
@@ -85,6 +109,21 @@
 					</div>
 				</div>
 			</div>
+
+      <div class="block-transparent">
+          <div class="header">
+            <h4>Histórico político</h4>
+          </div>
+          <ul class="timeline">
+            <li ng-repeat="cargo in historico">
+              <i class="fa fa-suitcase"></i>
+              <span class="date">{{cargo.data}}</span>
+              <div class="content">
+                <p>{{cargo.descricao}}</p>
+              </div>
+            </li>
+          </ul>
+        </div>
 		</div>
 	</div>
 </div>

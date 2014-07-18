@@ -5,7 +5,9 @@ angular.module('projetobrasilFrontApp', [
 	'ngResource',
 	'ngSanitize',
 	'ngTouch',
-	'ui.router'
+	'ui.router',
+  'ui.bootstrap'
+
 ])
 .config(function ($stateProvider, $urlRouterProvider, $sceDelegateProvider) {
 	$urlRouterProvider.otherwise('/');

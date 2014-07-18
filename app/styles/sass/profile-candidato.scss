@@ -7,9 +7,9 @@
   padding: 0.4em 0.2em;
 
   .title{
-    font-weight: 600;
-    font-size: 1.1em;
-    color: #30b786;
+    font-weight: 500;
+    font-size: 1em;
+    color: $verde-escuro;
   }
 
 }
@@ -90,13 +90,9 @@
 }
 
 .bloco-botoes-votacao {
-  padding: 20px;
-}
-
-.bloco-botoes-votacao button {
-  width: 50px;
-  height: 50px;
-  border-radius: 50px;
+  padding: 0;
+  margin:0;
+  text-align: center;
 }
 
 .bloco-botoes-votacao div {
@@ -266,4 +262,62 @@
 
 .profile-wrapper .avatar img {
   border-radius: 100px;
+}
+
+.rating > span:hover:before {
+   content: "\2605";
+   position: absolute;
+}
+
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+  font-size: 30px;
+}
+.rating span.star {
+  font-family: FontAwesome;
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+}
+.rating span.star:hover {
+  cursor: pointer;
+}
+.rating span.star:before {
+  content: "\f006";
+  padding-right: 5px;
+  color: #999999;
+}
+.rating span.star:hover:before,
+.rating span.star:hover ~ span.star:before {
+  content: "\f005";
+  color: #e3cf7a;
+}
+
+.rating_stars {
+  position: relative;
+  top: 4px;
+  font-size: 1.6em;
+}
+
+.rating_stars i {
+  margin: 2px;
+}
+
+.rating-on {
+  color: #e3cf7a;
+}
+
+.rating-off {
+  color: #999;
+}
+
+.readmore {
+  text-align: right;
+  padding-top: 20px;
+  cursor: pointer;
+}
+
+.glyphicon-star {
+  color: #e3cf7a;
 }
