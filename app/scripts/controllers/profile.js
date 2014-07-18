@@ -1,7 +1,25 @@
 'use strict';
 
 angular.module('projetobrasilFrontApp')
-.controller('ProfilesCtrl', function ($scope, $state, $stateParams, profileGetter, $filter) {
+.controller('SideBarProfilesCtrl', function($scope, $state, $filter, profileGetter) {
+	profileGetter.getProfile().then(function(profiles) {
+		profiles = $filter('orderBy')(profiles, 'nome_urna');
+		$scope.$parent.profiles = profiles;
+	});
+
+	$scope.$parent.isActive = function(political) {
+		return $state.current.name === 'profile' && $scope.currentPolitical === political;
+	};
+
+	$scope.$parent.setActive = function(political) {
+		$scope.currentPolitical = political;
+		$scope.$parent.selectedPolitical = political;
+		$state.go('profile', {
+			profileId: political.id
+		});
+	};
+})
+.controller('ProfilesCtrl', function ($scope, $state, $stateParams, profileGetter) {
 	var profileId = $stateParams.profileId;
 
 	$scope.setActiveById = function(profileId) {
@@ -16,9 +34,8 @@ angular.module('projetobrasilFrontApp')
 		}
 	};
 
-	profileGetter.getProfile().then(function(profiles) {
-		profiles = $filter('orderBy')(profiles, 'nome_urna');
-		$scope.$parent.profiles = profiles;
+	$scope.$watch('profiles', function(profiles) {
+		if(!profiles) return;
 
 		if(!profileId) {
 			$scope.setActive(profiles[0]);
@@ -26,16 +43,4 @@ angular.module('projetobrasilFrontApp')
 			$scope.setActiveById(profileId);
 		}
 	});
-
-	$scope.$parent.isActive = function(political) {
-		return $scope.currentPolitical === political;
-	};
-
-	$scope.$parent.setActive = function(political) {
-		$scope.currentPolitical = political;
-		$scope.$parent.selectedPolitical = political;
-		$state.go('profile', {
-			profileId: political.id
-		});
-	};
 });
