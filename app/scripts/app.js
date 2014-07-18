@@ -54,6 +54,12 @@ angular.module('projetobrasilFrontApp', [
 		url: '/proposal-comparative',
 		controller: 'ProposalsComparativeCtrl',
 		templateUrl: 'views/proposal-comparative.html'
+	})
+	.state('proposal', {
+		parent: '_',
+		url: '/proposal',
+		controller: 'ProposalCtrl',
+		templateUrl: 'views/proposal.html'
 	});
 	//FIXME: remover quando ui-router tiver parâmetros opcionais
 	$urlRouterProvider.when('/profile', '/profile/');
