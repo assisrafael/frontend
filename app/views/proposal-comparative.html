@@ -5,30 +5,45 @@
 		<li class="active">Comparativo das propostas</li>
 	</ol>
 </div>
+
 <div class="cl-mcont">
+	<div class="block-flat" ng-show="selectedPoliticians.length < 2">
+		<h4>Selecione ao menos dois candidatos:</h4>
+	</div>
+
+	<div class="block-flat" ng-show="selectedPoliticians.length > 3">
+		<h4>Selecione no máximo três candidatos:</h4>
+	</div>
+
+	<ul class="list-unstyled politicians-compared">
+		<li ng-repeat="politician in politicians" class="block-flat col-xs-1" ng-class="{'active': isSelected(politician)}" ng-click="toggleIsSelected(politician)">
+			<img ng-src="{{politician.foto}}" class="profile-avatar" width="100%">
+		</li>
+	</ul>
+
 	<div class="row dash-cols">
-		<div class="col-sm-12 col-md-12" ng-repeat="(category, proposal) in proposals">
-			<div class="block-flat">
-				<div class="header">
-					<div class="pull-right actions">
+		<div ng-show="selectedPoliticians.length >= 2 && selectedPoliticians.length <=3">
+			<div class="col-sm-12 col-md-12" ng-repeat="(theme, proposal) in proposals">
+				<div class="block-flat">
+					<div class="header">
+						<div class="pull-right actions">
+							Legenda das cores por vir...
+						</div>
+						<h3>{{theme}}</h3>
 					</div>
-					<h3>{{category}}</h3>
-				</div>
-				<div class="content">
-					<div class="row">
-						<div class="col-sm-4" ng-repeat="(politician, statements) in proposal">
-							<div class="list-group tickets">
-								<li class="list-group-item" href="#">
-									<span class="label label-primary pull-right">Normal</span> <img class="avatar" src="images/avatar_50.jpg">
-									<h4 class="name">{{politician}}</h4>
-									<p>My vMaps plugin doesn't work</p>
-									<span class="date">17 Feb</span>
-								</li>
-							</div>
-							<div class="alert {{s.rating}} alert-white rounded" ng-repeat="s in statements">
-								<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-								<div class="icon"><i class="fa fa-check"></i></div>
-								{{s.proposal}}
+					<div class="content">
+						<div class="row">
+							<div class="col-sm-4" ng-repeat="(politicianId, p) in proposal">
+								<div class="list-group tickets">
+									<li class="list-group-item" href="">
+										<img class="avatar" ng-src="{{p.politician.foto}}" style="height:50px">
+										<h4 class="name">{{p.politician.nome}}</h4>
+									</li>
+								</div>
+								<div class="alert alert-success alert-white rounded" ng-repeat="s in p.proposals">
+									<div class="icon"><i class="fa fa-check"></i></div>
+									{{s.titulo}}
+								</div>
 							</div>
 						</div>
 					</div>
