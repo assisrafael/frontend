@@ -183,7 +183,7 @@
                     return color(valueById[name]['color']);
                   }
                 }
-                return '#F0F0F0';
+                return '#98abc5';
               })
               .select('title')
               .text(function(d) {
