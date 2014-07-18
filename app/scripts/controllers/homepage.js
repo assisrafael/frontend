@@ -11,5 +11,4 @@ angular.module('projetobrasilFrontApp')
         alert(status);
       });
 
-
   });

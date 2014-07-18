@@ -1,0 +1,45 @@
+.ranking{
+
+    .wrapper-comment{
+        td{
+            border: none;
+        }
+
+        .col-avatar{
+            width: 20%;
+            text-align: center;
+
+            img.avatar{
+                float: none;
+                margin-right: 0;
+                position: absolute;
+                top: 5%;
+                left: 7%;
+            }
+        }
+
+        .col-comment{
+            width: 80%;
+
+            p{
+                text-align: justify;
+            }
+
+            .ranking-controls{
+                float: right;
+            }
+        }
+
+        .answer-avatar.avatar{
+            top: 11%;
+        }
+
+        .decrease-score-comment{
+            color: #da4932;
+        }
+
+        .increase-score-comment{
+            color: #60C060;
+        }
+    }
+}
