@@ -22,6 +22,10 @@ angular.module('projetobrasilFrontApp')
 			buildProposals();
 		};
 
+		$scope.hash = function(s) {
+			return s.toLowerCase().replace(/\s+/g, '');
+		};
+
 		function findSelectedPoliticianById (politicianId) {
 			if(!$scope.selectedPoliticians) return;
 
@@ -38,6 +42,7 @@ angular.module('projetobrasilFrontApp')
 		}
 
 		function buildProposals() {
+			// if($scope.selectedPoliticians.length < 2) return;
 			// if(!$scope.allProposals) return;
 
 			var proposals = {};
@@ -47,6 +52,7 @@ angular.module('projetobrasilFrontApp')
 				if(!politician) return;
 
 				var theme = proposal.tema;
+				if(!theme) return;
 				proposals[theme] = proposals[theme] || {};
 				var proposalTheme = proposals[theme];
 
@@ -64,231 +70,4 @@ angular.module('projetobrasilFrontApp')
 			$scope.allProposals = proposals;
 			buildProposals();
 		});
-
-	// $scope.proposals = {
-	// 	'Educação': {
-	// 		'Aécio': [
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-success',
-	// 			},
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-info',
-	// 			},
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-warning',
-	// 			},
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-danger',
-	// 			}
-	// 		],
-	// 		'Dilma': [
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-info',
-	// 			},
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-danger',
-	// 			},
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-success',
-	// 			},
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-warning',
-	// 			}
-	// 		],
-	// 		'Eduardo': [
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-danger',
-	// 			},
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-warning',
-	// 			},
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-info',
-	// 			},
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-success',
-	// 			}
-	// 		]
-	// 	},
-	// 	'Saúde': {
-	// 		'Aécio': [
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-success',
-	// 			},
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-info',
-	// 			},
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-warning',
-	// 			},
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-danger',
-	// 			}
-	// 		],
-	// 		'Dilma': [
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-info',
-	// 			},
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-danger',
-	// 			},
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-success',
-	// 			},
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-warning',
-	// 			}
-	// 		],
-	// 		'Eduardo': [
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-danger',
-	// 			},
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-warning',
-	// 			},
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-info',
-	// 			},
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-success',
-	// 			}
-	// 		]
-	// 	},
-	// 	'Segurança': {
-	// 		'Aécio': [
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-success',
-	// 			},
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-info',
-	// 			},
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-warning',
-	// 			},
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-danger',
-	// 			}
-	// 		],
-	// 		'Dilma': [
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-info',
-	// 			},
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-danger',
-	// 			},
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-success',
-	// 			},
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-warning',
-	// 			}
-	// 		],
-	// 		'Eduardo': [
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-danger',
-	// 			},
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-warning',
-	// 			},
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-info',
-	// 			},
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-success',
-	// 			}
-	// 		]
-	// 	},
-	// 	'Energia': {
-	// 		'Aécio': [
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-success',
-	// 			},
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-info',
-	// 			},
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-warning',
-	// 			},
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-danger',
-	// 			}
-	// 		],
-	// 		'Dilma': [
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-info',
-	// 			},
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-danger',
-	// 			},
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-success',
-	// 			},
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-warning',
-	// 			}
-	// 		],
-	// 		'Eduardo': [
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-danger',
-	// 			},
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-warning',
-	// 			},
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-info',
-	// 			},
-	// 			{
-	// 				proposal: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam error officiis id aperiam mollitia, animi accusantium in possimus, fugiat incidunt, ut itaque amet, veritatis harum atque eos tenetur unde doloribus!',
-	// 				rating: 'alert-success',
-	// 			}
-	// 		]
-	// 	}
-	// };
-}])
+}]);

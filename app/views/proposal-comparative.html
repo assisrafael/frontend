@@ -7,31 +7,39 @@
 </div>
 
 <div class="cl-mcont">
-	<div class="block-flat" ng-show="selectedPoliticians.length < 2">
-		<h4>Selecione ao menos dois candidatos:</h4>
+	<div class="row">
+		<div class="block-flat" ng-show="selectedPoliticians.length < 2">
+			<h4>Selecione ao menos dois candidatos:</h4>
+		</div>
+
+		<div class="block-flat" ng-show="selectedPoliticians.length > 3">
+			<h4>Selecione no máximo três candidatos:</h4>
+		</div>
 	</div>
 
-	<div class="block-flat" ng-show="selectedPoliticians.length > 3">
-		<h4>Selecione no máximo três candidatos:</h4>
+	<div class="row">
+		<ul class="list-unstyled politicians-compared">
+			<li ng-repeat="politician in politicians" class="block-flat col-xs-1" ng-class="{'active': isSelected(politician)}" ng-click="toggleIsSelected(politician)">
+				<img ng-src="{{politician.foto}}" class="profile-avatar" width="100%">
+			</li>
+		</ul>
 	</div>
 
-	<ul class="list-unstyled politicians-compared">
-		<li ng-repeat="politician in politicians" class="block-flat col-xs-1" ng-class="{'active': isSelected(politician)}" ng-click="toggleIsSelected(politician)">
-			<img ng-src="{{politician.foto}}" class="profile-avatar" width="100%">
-		</li>
-	</ul>
-
-	<div class="row dash-cols">
-		<div ng-show="selectedPoliticians.length >= 2 && selectedPoliticians.length <=3">
-			<div class="col-sm-12 col-md-12" ng-repeat="(theme, proposal) in proposals">
-				<div class="block-flat">
-					<div class="header">
-						<div class="pull-right actions">
-							Legenda das cores por vir...
-						</div>
-						<h3>{{theme}}</h3>
-					</div>
-					<div class="content">
+	<div class="row dash-cols" ng-show="selectedPoliticians.length >= 2 && selectedPoliticians.length <=3">
+		<div class="panel-group accordion" id="accordion">
+			<div class="panel panel-default" ng-repeat="(theme, proposal) in proposals">
+				<div class="panel-heading">
+					<h4 class="panel-title">
+						<a data-toggle="collapse" data-parent="#accordion" data-target="#{{hash(theme)}}" class="collapsed">
+							<i class="fa fa-angle-right"></i>{{theme}}
+							<div class="pull-right actions">
+								Legenda das cores por vir...
+							</div>
+						</a>
+					</h4>
+				</div>
+				<div id="{{hash(theme)}}" class="panel-collapse collapse" style="height: 0px;">
+					<div class="panel-body">
 						<div class="row">
 							<div class="col-sm-4" ng-repeat="(politicianId, p) in proposal">
 								<div class="list-group tickets">
