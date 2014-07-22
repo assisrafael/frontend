@@ -45,9 +45,13 @@ angular.module('projetobrasilFrontApp', [
 				templateUrl: 'views/profile.html',
 				controller: 'ProfilesCtrl'
 			},
-			'proposals@profile': {
-				templateUrl: 'views/proposals.html',
-				controller: 'ProposalsCtrl'
+      'proposals@profile': {
+        templateUrl: 'views/proposals.html',
+        controller: 'ProposalsCtrl'
+      },
+			'history@profile': {
+				templateUrl: 'views/history.html',
+				controller: 'HistoryCtrl'
 			}
 		}
 	})

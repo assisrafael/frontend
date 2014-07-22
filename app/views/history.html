@@ -1,0 +1,12 @@
+<div class="header">
+  <h2>Histórico político</h2>
+</div>
+<ul class="timeline">
+  <li ng-repeat="acontecimento in politician_history| orderBy:'data':true ">
+    <i ng-class="getClassForHistoryFact(acontecimento.categoria)"></i>
+    <span class="date">{{acontecimento.data}}</span>
+    <div class="content">
+      <p>{{acontecimento.descricao}}</p>
+    </div>
+  </li>
+</ul>

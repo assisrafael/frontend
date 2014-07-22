@@ -71,6 +71,16 @@
     }
   }
 
+  /* Profile tabs */
+  .profile-tabs{
+    cursor: pointer;
+  }
+
+  .tab-pane .footer{
+    margin: 20px auto 0;
+  }
+
+
   /* Propostas */
 
   .bloco-proposta {
@@ -186,23 +196,6 @@
 
   .politician-profile{
 
-    // .three-column-grid{
-    //   @include flexbox;
-
-    //   .profile-wrapper{
-    //     @include order(1);
-    //   }
-
-    //   .proposals{
-    //     @include order(3);
-    //   }
-
-    //   .politics{
-    //     @include order(2);
-    //   }
-
-    // }
-
     .profile-wrapper .block-content,
     .politics .block-content{
       overflow-y: hidden;
@@ -220,23 +213,6 @@
 @media (min-width: 768px) and (max-width: 1024px) {
 
   .politician-profile{
-
-    .three-column-grid{
-      @include flex-wrap(wrap);
-
-      .profile-wrapper{
-        @include flex(2);
-      }
-
-      .proposals{
-        @include flex(100%);
-      }
-
-      .politics{
-        @include flex(1);
-      }
-
-    }
 
     .profile-wrapper .block-content,
     .politics .block-content{
