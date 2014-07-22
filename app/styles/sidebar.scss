@@ -1,0 +1,40 @@
+#cl-wrapper .cl-sidebar .side-user {
+  padding: 0;
+}
+
+.cl-sidebar{
+
+  .political-side-menu .fa {
+    float:right;
+    position: relative;
+    top: -30px;
+    left: 20px;
+    font-size: 1.2em;
+    display: none;
+  }
+
+  .political-side-menu:hover .fa {
+    display: block;
+  }
+
+  #cl-wrapper.fixed-menu .menu-space {
+    height: 85%;
+  }
+
+  .political-side-menu a:hover {
+    cursor: pointer;
+  }
+
+  .activePolitical:hover,
+  .activePolitical {
+    background-color: lighten(#272930,10%) !important;
+  }
+
+  .activePolitical .fa {
+    display: block;
+  }
+
+  .profile-wrapper .avatar img {
+    border-radius: 100px;
+  }
+}

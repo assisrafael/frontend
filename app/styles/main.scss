@@ -3,81 +3,80 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "bootstrap-sass-official/assets/stylesheets/bootstrap.scss";
 // endbower
 
+/*CONFIG AND GENERAL STYLE*/
+@import "cleanzone/config.scss";
+@import "cleanzone/general.scss";
+@import "cleanzone/helpers.scss";
+@import "cleanzone/typography.scss";
+
+/*HEADER*/
+@import "cleanzone/navbar.scss";
+@import "cleanzone/dropdown-menu.scss";
+@import "cleanzone/profile-menu.scss";
+@import "cleanzone/page-head.scss";
+@import "cleanzone/page-aside.scss";
+
+/*BODY*/
+@import "cleanzone/main-container.scss";
+@import "cleanzone/sidebar.scss";
+@import "cleanzone/block-panels.scss";
+@import "cleanzone/forms.scss";
+
+/*PAGES*/
+@import "cleanzone/login.scss";
+@import "cleanzone/sign-up.scss";
+@import "cleanzone/404.scss";
+@import "cleanzone/gallery.scss";
+@import "cleanzone/page-email.scss";
+@import "cleanzone/page-profile.scss";
+@import "cleanzone/page-search.scss";
+@import "cleanzone/page-code-editor.scss";
+
+/*ELEMENTS*/
+@import "cleanzone/elements/tables.scss";
+@import "cleanzone/elements/tiles.scss";
+@import "cleanzone/elements/charts.scss";
+@import "cleanzone/elements/color-boxes.scss";
+@import "cleanzone/elements/widgets.scss";
+@import "cleanzone/elements/date-picker.scss";
+@import "cleanzone/elements/wizard.scss";
+@import "cleanzone/elements/tabs.scss";
+@import "cleanzone/elements/accordions.scss";
+@import "cleanzone/elements/nestable-lists.scss";
+@import "cleanzone/elements/switch.scss";
+@import "cleanzone/elements/select2.scss";
+@import "cleanzone/elements/slider.scss";
+@import "cleanzone/elements/chat-widget.scss";
+@import "cleanzone/elements/alerts.scss";
+@import "cleanzone/elements/labels_badges.scss";
+@import "cleanzone/elements/progress.scss";
+@import "cleanzone/elements/pagination.scss";
+@import "cleanzone/elements/lists.scss";
+@import "cleanzone/elements/icons.scss";
+@import "cleanzone/elements/buttons.scss";
+@import "cleanzone/elements/modals.scss";
+@import "cleanzone/elements/circle.scss";
+@import "cleanzone/elements/gritter.scss";
+@import "cleanzone/elements/nano-scroll.scss";
+@import "cleanzone/elements/treeview.scss";
+@import "cleanzone/elements/timeline.scss";
+@import "cleanzone/elements/validation.scss";
+@import "cleanzone/elements/tickets-widget.scss";
+@import "cleanzone/elements/todo-widget.scss";
+@import "cleanzone/elements/full-calendar.scss";
+@import "cleanzone/elements/multiselect.scss";
+
+/*RESPONSIVE*/
+@import "cleanzone/responsive.scss";
+
+/*== ESTILOS ADICIONADOS ======================================= */
+
+@import "politician-profile.scss";
+@import "proposal-comparative.scss";
+@import "homepage.scss";
+@import "ranking-comments.scss";
+@import "sidebar.scss";
+
 /*HOVER PLUGIN - CSS3 EFFECTS*/
 @import 'Hover/scss/hover';
 
-/* HOMEPAGE CSS */
-@import "homepage.scss";
-
-/* RANKING COMMENTS */
-@import "ranking-comments.scss";
-
-/*CONFIG AND GENERAL STYLE*/
-@import "sass/config.scss";
-@import "sass/general.scss";
-@import "sass/helpers.scss";
-@import "sass/typography.scss";
-
-/*HEADER*/
-@import "sass/navbar.scss";
-@import "sass/dropdown-menu.scss";
-@import "sass/profile-menu.scss";
-@import "sass/page-head.scss";
-@import "sass/page-aside.scss";
-
-/*BODY*/
-@import "sass/main-container.scss";
-@import "sass/sidebar.scss";
-@import "sass/block-panels.scss";
-@import "sass/forms.scss";
-
-/*PAGES*/
-@import "sass/login.scss";
-@import "sass/sign-up.scss";
-@import "sass/404.scss";
-@import "sass/gallery.scss";
-@import "sass/page-email.scss";
-@import "sass/page-profile.scss";
-@import "sass/page-search.scss";
-@import "sass/page-code-editor.scss";
-
-/*ELEMENTS*/
-@import "sass/elements/tables.scss";
-@import "sass/elements/tiles.scss";
-@import "sass/elements/charts.scss";
-@import "sass/elements/color-boxes.scss";
-@import "sass/elements/widgets.scss";
-@import "sass/elements/date-picker.scss";
-@import "sass/elements/wizard.scss";
-@import "sass/elements/tabs.scss";
-@import "sass/elements/accordions.scss";
-@import "sass/elements/nestable-lists.scss";
-@import "sass/elements/switch.scss";
-@import "sass/elements/select2.scss";
-@import "sass/elements/slider.scss";
-@import "sass/elements/chat-widget.scss";
-@import "sass/elements/alerts.scss";
-@import "sass/elements/labels_badges.scss";
-@import "sass/elements/progress.scss";
-@import "sass/elements/pagination.scss";
-@import "sass/elements/lists.scss";
-@import "sass/elements/icons.scss";
-@import "sass/elements/buttons.scss";
-@import "sass/elements/modals.scss";
-@import "sass/elements/circle.scss";
-@import "sass/elements/gritter.scss";
-@import "sass/elements/nano-scroll.scss";
-@import "sass/elements/treeview.scss";
-@import "sass/elements/timeline.scss";
-@import "sass/elements/validation.scss";
-@import "sass/elements/tickets-widget.scss";
-@import "sass/elements/todo-widget.scss";
-@import "sass/elements/full-calendar.scss";
-@import "sass/elements/multiselect.scss";
-
-/*RESPONSIVE*/
-@import "sass/responsive.scss";
-
-/*ESTILOS ADICIONADOS*/
-@import "sass/profile-candidato.scss";
-@import "sass/proposal-comparative.scss";
