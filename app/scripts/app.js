@@ -7,8 +7,8 @@ angular.module('projetobrasilFrontApp', [
 	'ngTouch',
 	'ui.router',
   'ui.bootstrap'
-
 ])
+
 .config(function ($stateProvider, $urlRouterProvider, $sceDelegateProvider) {
 	$urlRouterProvider.otherwise('/');
 
@@ -50,8 +50,12 @@ angular.module('projetobrasilFrontApp', [
         controller: 'ProposalsCtrl'
       },
 			'history@profile': {
-				templateUrl: 'views/history.html',
-				controller: 'HistoryCtrl'
+        templateUrl: 'views/history.html',
+        controller: 'HistoryCtrl'
+      },
+      'goods@profile': {
+				templateUrl: 'views/goods.html',
+				controller: 'GoodsCtrl'
 			}
 		}
 	})

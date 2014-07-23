@@ -26,16 +26,6 @@ angular.module('projetobrasilFrontApp')
   		}
   	});
 
-    $scope.bens = [
-      {'descricao':'Casa', 'valor':'200.000'},
-      {'descricao':'Carro', 'valor':'80.050'},
-      {'descricao':'Sitio', 'valor':'900.300'},
-      {'descricao':'1000 cabeças de gado', 'valor':'700.000'},
-      {'descricao':'Fazenda', 'valor':'4.200.000'},
-      {'descricao':'Posto de gasolina', 'valor':'100.000'},
-      {'descricao':'50 quotas da empreiteira Bonifácio', 'valor':'2.300.000'},
-      {'descricao':'Casa de veraneio', 'valor':'1.200.000'},];
-
     $scope.rate = 3;
     $scope.max = 5;
     $scope.isReadonly = false;
