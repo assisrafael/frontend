@@ -26,14 +26,5 @@ angular.module('projetobrasilFrontApp')
   		}
   	});
 
-    $scope.rate = 3;
-    $scope.max = 5;
-    $scope.isReadonly = false;
-
-    $scope.hoveringOver = function(value) {
-      $scope.overStar = value;
-      $scope.percent = 100 * (value / $scope.max);
-    };
-
   });
 

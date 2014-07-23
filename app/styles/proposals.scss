@@ -1,0 +1,53 @@
+.proposals-wrapper{
+
+  .proposal{
+    width: 50%;
+    margin-bottom: 10px;
+    width: 47%;
+
+    .description{
+      padding: 5px 0px;
+    }
+  }
+
+  .theme{
+    font-size: 1.4em;
+    font-weight: 400;
+
+    small:before{
+      content: '\203A';
+    }
+  }
+
+  .description{
+    margin-bottom: 0;
+  }
+
+  .rating_stars {
+    position: relative;
+    top: 4px;
+  }
+
+  .rating_stars i {
+    margin: 2px;
+  }
+
+  .rating-on {
+    color: #e3cf7a;
+  }
+
+  .rating-off {
+    color: #999;
+  }
+
+  .readmore {
+    text-align: right;
+    padding-top: 20px;
+    cursor: pointer;
+  }
+
+  .glyphicon-star {
+    color: #e3cf7a;
+  }
+
+}

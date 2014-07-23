@@ -6,7 +6,8 @@ angular.module('projetobrasilFrontApp', [
 	'ngSanitize',
 	'ngTouch',
 	'ui.router',
-  'ui.bootstrap'
+  'ui.bootstrap',
+  'wu.masonry'
 ])
 
 .config(function ($stateProvider, $urlRouterProvider, $sceDelegateProvider) {
@@ -66,10 +67,10 @@ angular.module('projetobrasilFrontApp', [
 		templateUrl: 'views/proposal-comparative.html'
 	})
 	.state('proposal', {
-		parent: '_',
+		parent: 'profile',
 		url: '/proposal',
     views: {
-      '': {
+      'proposals': {
         templateUrl: 'views/proposal.html',
         controller: 'ProposalCtrl'
       },
