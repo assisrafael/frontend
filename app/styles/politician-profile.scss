@@ -119,32 +119,32 @@
 /* Resolucao para tablets e telefones */
 @media (max-width: 1024px){
 
-  .politician-profile{
+  // .politician-profile{
 
-    .profile-wrapper .block-content,
-    .politics .block-content{
-      overflow-y: hidden;
-    }
+  //   .profile-wrapper .block-content,
+  //   .politics .block-content{
+  //     overflow-y: hidden;
+  //   }
 
-    .show-more{
-      display: block;
-    }
+  //   .show-more{
+  //     display: block;
+  //   }
 
-  }
+  // }
 
 }
 
 /* Resolucao so para tablets */
 @media (min-width: 768px) and (max-width: 1024px) {
 
-  .politician-profile{
+  // .politician-profile{
 
-    .profile-wrapper .block-content,
-    .politics .block-content{
-      height: 225px;
-    }
+  //   .profile-wrapper .block-content,
+  //   .politics .block-content{
+  //     height: 225px;
+  //   }
 
-  }
+  // }
 
 }
 

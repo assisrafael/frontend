@@ -1,18 +1,36 @@
 .proposals-wrapper{
 
   .proposal{
-    width: 50%;
+    width: 49%;
     margin-bottom: 10px;
-    width: 47%;
+    background-color: #F6F6F6;
+    padding: 20px 20px 15px;
+    border-radius: 3px;
 
-    .description{
-      padding: 5px 0px;
+    @media(max-width: 570px){
+      width: 48%;
     }
+
+    @media(max-width: 480px){
+      width: 100%;
+    }
+
+    &:before{
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      border-width: 0 16px 16px 0;
+      border-style: solid;
+      border-color: #eee #fff;
+    }
+
   }
 
   .theme{
     font-size: 1.4em;
     font-weight: 400;
+    text-shadow: 0 1px 1px #fff;
 
     small:before{
       content: '\203A';
@@ -20,12 +38,16 @@
   }
 
   .description{
+    padding: 5px 0px;
     margin-bottom: 0;
+    text-align: justify;
   }
 
-  .rating_stars {
-    position: relative;
-    top: 4px;
+  .detalhes{
+    float: right;
+    color: #838383;
+    border-bottom: 1px #C4C2C2 dotted;
+    font-weight: 400;
   }
 
   .rating_stars i {
@@ -33,7 +55,7 @@
   }
 
   .rating-on {
-    color: #e3cf7a;
+    color: #FFCC28;
   }
 
   .rating-off {
@@ -47,7 +69,7 @@
   }
 
   .glyphicon-star {
-    color: #e3cf7a;
+    color: #FFCC28;
   }
 
 }

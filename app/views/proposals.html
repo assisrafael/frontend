@@ -1,6 +1,6 @@
 <div class="proposals-wrapper" masonry="{'gutter': 10}">
 
-  <div class="proposal block-flat masonry-brick" ng-repeat="proposal in proposals">
+  <div class="proposal masonry-brick" ng-repeat="proposal in proposals">
     <div class="proposal-content">
       <div class="theme" style="color: {{proposal.cor}}">
         {{proposal.tema}}
@@ -10,13 +10,9 @@
       </div>
       <p class="description">{{proposal.titulo}}</p>
       <rating class="rating_stars" ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
-    </div>
-    <div class="proposal-show">
-
+      <a ui-sref="proposal" class="detalhes"><i class="fa fa-plus"></i> Detalhes</a>
     </div>
   </div>
-
-
 </div>
 
 
