@@ -373,7 +373,29 @@ body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom
     border-color: #292A30;
 }
 
-@media (max-width: 767px) {
+.btn-login-rede-social {
+  .btn:first-child {
+    width: 40px;
+  }
+  .btn:last-child {
+    width: 210px;
+  }
+}
+
+
+.modal-login {
+  padding-bottom: 0 !important;
+  div.register-btn {
+    text-align: center;
+
+    button {
+      padding: auto 20px;
+    }
+  }
+}
+
+
+@media (max-wiidth: 767px) {
     .navbar-inverse .navbar-nav .open .dropdown-menu .divider {
         height: 2px;
         background-color: #1A1C20;
