@@ -1,31 +1,44 @@
-<a ui-sref="profile" class="btn btn-default"><i class="fa fa-plus-circle"></i> Mais detalhes da proposta</a>
-
-<div class="page-head">
-  <h2>Proposta: {{proposal.titulo}}</h2>
-  <ol class="breadcrumb">
-    <li>{{proposal.tema}}</li>
-    <li class="active">{{proposal.subtema}}</li>
-  </ol>
-</div>
-
-<div class="cl-mcont">
-  <div class="block-flat">
-    <p>{{proposal.descricao}}</p>
-    <p class="text-right">{{proposal.fonte}}</p>
-    <div><b>Palavras-chave:</b> {{proposal.palavras_chaves}}</div>
+<div class="proposal-detail">
+  <div class="voltar">
+    <a ui-sref="profile">
+      <i class="fa fa-chevron-left"></i> Voltar para lista de propostas
+    </a>
   </div>
 
-  <div class="block-flat">
-    <div class="row">
-      <div class="col-xs-6">
-        <div data-brasil-map data-data="rating" data-filter='filter'></div>
-      </div>
-      <div class="col-xs-6">
-        <span>Avalia&ccedil;&otilde;es por estado: {{filter}}</span>
-        <div data-pie-chart data-data="rating" data-filter="filter"></div>
-      </div>
+  <div class="page-head" style="border-color: {{cor}};">
+      <h3>{{proposal.titulo}}</h3>
+      <ol class="breadcrumb">
+        <li>{{proposal.tema}}</li>
+        <li class="active">{{proposal.subtema}}</li>
+      </ol>
+      <rating class="rating_stars" ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
+      <span>Avaliação geral: 3.3 / 5</span>
+  </div>
+
+
+
+  <div class="row">
+    <div class="col-xs-12">
+      <h4>Panorama de avaliação por estado</h4>
+      <p>Clique em cada estado para ver mais detalhes</p>
+    </div>
+    <div class="col-sm-6">
+      <div data-brasil-map data-data="rating" data-filter='filter'></div>
+    </div>
+    <div class="col-sm-6">
+      <span>Avalia&ccedil;&otilde;es por estado: {{filter}}</span>
+      <div data-pie-chart data-data="rating" data-filter="filter"></div>
     </div>
   </div>
+  <div>
+    <!-- <h2>Comentários</h2>
+    <div ui-view="comments"></div> -->
+  </div>
+</div>
+
+
+<!-- <a ui-sref="profile" class="btn btn-default"><i class="fa fa-plus-circle"></i> Mais detalhes da proposta</a>
+ -->
 
     <!-- <div class="row">
       <div class="col-xs-12">
@@ -37,32 +50,3 @@
       </div>
     </div> -->
 
-    <div class="row">
-      <div class="col-xs-6" data-ng-repeat="expert in proposal.experts">
-        <div class="block-flat">
-          <div class="block-content clearfix">
-              <img alt="{{expert.nome}}" ng-src="{{expert.foto}}" width="30%" />
-              <div>
-                <h2>{{expert.nome}}</h2>
-                <span>{{expert.cargo}}</span>
-                <p>{{expert.opiniao}}</p>
-              </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  <div class="block-flat">
-    <h3>Links relacionados</h3>
-    <ul>
-      <li data-ng-repeat="link in proposal.links">
-        <a ng-href="{{link.link}}" target='_blank'>{{link.link}}</a>
-      </li>
-    </ul>
-  </div>
-
-  <div class="col-md-6 col-md-offset-3">
-    <h2>Comentários</h2>
-    <div ui-view="comments"></div>
-  </div>
-</div>

@@ -76,7 +76,9 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "homepage.scss";
 @import "ranking-comments.scss";
 @import "sidebar.scss";
-@import "proposals.scss";
+@import "proposals-list.scss";
+@import "proposal-detail.scss";
+@import "rating-stars.scss";
 
 /*HOVER PLUGIN - CSS3 EFFECTS*/
 @import 'Hover/scss/hover';

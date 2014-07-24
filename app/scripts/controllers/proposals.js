@@ -15,7 +15,7 @@ angular.module('projetobrasilFrontApp')
 
   });
 
-  $scope.rate = 3;
+  $scope.rate = 0;
   $scope.max = 5;
   $scope.isReadonly = false;
 

@@ -31,6 +31,10 @@
   .page-head-left{
     width: 70%;
     float: left;
+
+    @media(max-width: 550px){
+      width: 100%;
+    }
   }
 
   .page-head-right{
@@ -42,6 +46,14 @@
       margin-top: 10px;
       float: right;
     }
+
+    @media(max-width: 550px){
+      width: 100%;
+      img{
+        float: left;
+      }
+    }
+
   }
 
   /* Informacoes pessoais */
@@ -95,60 +107,4 @@
     }
 
   }
-}
-
-
-/* Resolucao para telefones */
-@media (max-width: 768px) {
-
-  .politician-profile{
-
-    // .three-column-grid{
-    //   @include flex-direction(column);
-    // }
-
-    .profile-wrapper .block-content,
-    .politics .block-content{
-      height: 420px;
-    }
-
-  }
-
-}
-
-/* Resolucao para tablets e telefones */
-@media (max-width: 1024px){
-
-  // .politician-profile{
-
-  //   .profile-wrapper .block-content,
-  //   .politics .block-content{
-  //     overflow-y: hidden;
-  //   }
-
-  //   .show-more{
-  //     display: block;
-  //   }
-
-  // }
-
-}
-
-/* Resolucao so para tablets */
-@media (min-width: 768px) and (max-width: 1024px) {
-
-  // .politician-profile{
-
-  //   .profile-wrapper .block-content,
-  //   .politics .block-content{
-  //     height: 225px;
-  //   }
-
-  // }
-
-}
-
-/* Resolucao para tablets */
-@media (min-width: 1024px) {
-
 }

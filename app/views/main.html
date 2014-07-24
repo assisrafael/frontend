@@ -63,7 +63,7 @@
         <p>clicando nas fotos abaixo</p>
         <div class="row">
           <div class="hp-candidato col-lg-3 col-md-4 col-sm-6 col-xs-12 grow" ng-repeat="politico in politicos | orderBy:'nome_urna' ">
-            <a ui-sref="profile({profileId:politico.id})">
+            <a ui-sref="profile({nomeUrl:politico.nome_url})">
               <div class="avatar" ng-style="{'background-image':'url('+politico.foto+')'}"></div>
               <h3 class="nome">{{politico.nome_urna}} - <span class="numero">{{politico.numero}}</span></h3>
               <div class="partido">{{politico.partido}}</div>

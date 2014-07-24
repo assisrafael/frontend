@@ -2,14 +2,14 @@
 
 angular.module('projetobrasilFrontApp')
   .controller('ProfilesCtrl', function ($scope, $state, $stateParams, profileGetter) {
-  	var profileId = $stateParams.profileId;
+  	var profileId = $stateParams.nomeUrl;
 
-  	$scope.setActiveById = function(profileId) {
+  	$scope.setActiveById = function(nomeUrna) {
   		var profiles = $scope.profiles;
 
   		for (var i = 0; i < profiles.length; i++) {
   			var p = profiles[i];
-  			if(p.id === profileId) {
+  			if(p.nome_url === profileId) {
   				$scope.setActive(p);
   				return;
   			}
