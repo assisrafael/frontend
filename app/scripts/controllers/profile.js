@@ -2,14 +2,14 @@
 
 angular.module('projetobrasilFrontApp')
   .controller('ProfilesCtrl', function ($scope, $state, $stateParams, profileGetter) {
-  	var profileId = $stateParams.nomeUrl;
+  	var profileName = $stateParams.nameUrl;
 
-  	$scope.setActiveById = function(nomeUrna) {
+  	$scope.setActiveByName = function(nameUrl) {
   		var profiles = $scope.profiles;
 
   		for (var i = 0; i < profiles.length; i++) {
   			var p = profiles[i];
-  			if(p.nome_url === profileId) {
+  			if(p.nome_url === profileName) {
   				$scope.setActive(p);
   				return;
   			}
@@ -19,10 +19,10 @@ angular.module('projetobrasilFrontApp')
   	$scope.$watch('profiles', function(profiles) {
   		if(!profiles) return;
 
-  		if(!profileId) {
+  		if(!profileName) {
   			$scope.setActive(profiles[0]);
   		}else {
-  			$scope.setActiveById(profileId);
+  			$scope.setActiveByName(profileName);
   		}
   	});
 

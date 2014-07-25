@@ -13,7 +13,7 @@ angular.module('projetobrasilFrontApp')
       $scope.currentPolitical = political;
       $scope.$parent.selectedPolitical = political;
       $state.go('profile', {
-        nomeUrl: political.nome_url
+        nameUrl: political.nome_url
       });
     };
   });
