@@ -32,7 +32,11 @@
     font-weight: 400;
     text-shadow: 0 1px 1px #fff;
 
-    small:before{
+    &::before{
+      content: '\25c9';
+    }
+
+    small::before{
       content: '\203A';
     }
   }

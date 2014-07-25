@@ -1,7 +1,7 @@
 <div class="proposals-wrapper" masonry="{'gutter': 10}">
   <div class="proposal masonry-brick" ng-repeat="proposal in proposals">
     <div class="proposal-content">
-      <div class="theme" style="color: {{proposal.cor}}">
+      <div class="theme" ng-style="{'color': proposal.cor}">
         {{proposal.tema}}
         <small>
           {{proposal.subtema}}
