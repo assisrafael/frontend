@@ -7,11 +7,13 @@ angular.module('projetobrasilFrontApp', [
 	'ngTouch',
 	'ui.router',
   'ui.bootstrap',
-  'wu.masonry'
+  'wu.masonry',
+  'disqusHere'
 ])
 
-.config(function ($stateProvider, $urlRouterProvider, $sceDelegateProvider) {
+.config(function ($stateProvider, $urlRouterProvider, $sceDelegateProvider, $locationProvider) {
 	$urlRouterProvider.otherwise('/');
+  $locationProvider.hashPrefix('!');
 
 	$stateProvider
 	.state('main', {

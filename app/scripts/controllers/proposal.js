@@ -1,8 +1,10 @@
 'use strict';
 
-angular.module('projetobrasilFrontApp').controller('ProposalCtrl', ['$scope', '$state', '$stateParams', 'proposalsGetter', 'Rating', 'categoryColorGetter', function ($scope, $state, $stateParams, proposalsGetter, Rating, categoryColorGetter) {
+angular.module('projetobrasilFrontApp').controller('ProposalCtrl', ['$scope', '$state', '$location', '$stateParams', 'proposalsGetter', 'Rating', 'categoryColorGetter', function ($scope, $state, $location, $stateParams, proposalsGetter, Rating, categoryColorGetter) {
 
     var proposalId = $stateParams.proposalId;
+    $scope.id = $stateParams.proposalId;
+    $scope.url = $location.absUrl();
 
     if(proposalId){
 
