@@ -374,11 +374,14 @@ body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom
 }
 
 .btn-login-rede-social {
+
+    float: right;
+
   .btn:first-child {
     width: 40px;
   }
   .btn:last-child {
-    width: 210px;
+    width: 80px;
   }
 }
 

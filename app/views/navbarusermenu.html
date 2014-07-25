@@ -10,70 +10,75 @@
   </li>
 </ul>
 <ul class="nav navbar-nav navbar-right not-nav">
-  <button class="btn btn-default" ng-click="open('sm')">Cadastre-se</button>
+  <button class="btn btn-default" ng-click="open('register')">Cadastre-se</button>
 </ul>
 
 <ul class="nav navbar-nav navbar-right not-nav">
-  <a ng-click="open('sm')">Entrar</a>
+  <a ng-click="open('login')">Entrar</a>
 </ul>
 
 <div class="md-modal colored-header custom-width md-effect-9" id="md-login-form" style="perspective: 1300px;">
  <script type="text/ng-template" id="myModalContentLogin.html">
 
   <div class="block-flat modal-login">
+    <div ng-show="successRegister">
+      <div class="alert alert-success">
+        <h4>Registro realizado com sucesso!</h4>
+      </div>
+      <button class="btn btn-success" ng-click="cancel()">Fechar</button>
+    </div>
+
+
+    <div ng-hide="successRegister" id="modalForm">
+      <div class="header">
+        <h3 class="text-center" style="color:black">{{modalTitle}}</h3>
+      </div>
+      <h4>Entrar com</h4>
+      <div class="btn-group btn-login-rede-social">
+        <button type="button" class="btn btn btn-default btn-facebook bg"><i class="fa fa-facebook"></i></button>
+        <button type="button" class="btn btn btn-facebook bg">Facebook</button>
+      </div>
+      <div class="btn-group btn-login-rede-social">
+        <button type="button" class="btn btn btn-default btn-google-plus bg"><i class="fa fa-google-plus"></i></button>
+        <button type="button" class="btn btn btn-google-plus bg ">Google+</button>
+      </div>
+    </div>
+  </div>
+
   <div>
-    <h3>Registro realizado com sucesso!</h3>
-  </div>
-  <div id="modalForm" class="hide">
-    <div class="header">
-      <h3 class="text-center" style="color:black">Cadastre-se</h3>
-    </div>
-    <div>
-      <form style="margin-bottom: 0px !important;" class="form-horizontal" name="registerForm">
-        <div class="content">
-          <div class="form-group">
-            <div class="col-sm-12">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input ng-disabled="isDisabled" type="text" placeholder="Nome" id="username" class="form-control" autocomplete="off" ng-model="fullname" name="thefullname">
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="col-sm-12">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
-                <input ng-disabled="isDisabled" type="text" placeholder="E-mail" id="username" class="form-control" autocomplete="off" ng-model="username">
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="col-sm-12">
-              <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                <input ng-disabled="isDisabled" type="password" placeholder="Senha" id="password" class="form-control" autocomplete="off" style="" ng-model="password">
-              </div>
+    <h4>{{subTitleEmail}}</h4>
+    <form style="margin-bottom: 0px !important; padding: 0 20px" class="form-horizontal" name="registerForm">
+      <div class="content">
+        <div ng-show="showName" class="form-group">
+          <div class="col-sm-12">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-user"></i></span>
+              <input ng-disabled="isDisabled" type="text" placeholder="Nome" id="username" class="form-control" autocomplete="off" ng-model="fullname" name="thefullname">
             </div>
           </div>
         </div>
-            <button ng-disabled="isDisabled" ng-click="register({username: username, fullname: fullname, password: password});" class="btn btn-primary">{{registerButtonText}}</button>
-
-      </form>
-    </div>
-
-   <div class="btn-group btn-login-rede-social">
-            <button type="button" class="btn btn btn-default btn-facebook bg"><i class="fa fa-facebook"></i></button>
-            <button type="button" class="btn btn btn-facebook bg">Entrar com Facebook</button>
-          </div>
-          <div class="btn-group btn-login-rede-social">
-            <button type="button" class="btn btn btn-default btn-google-plus bg"><i class="fa fa-google-plus"></i></button>
-            <button type="button" class="btn btn btn-google-plus bg ">Entrar com Google+</button>
+        <div class="form-group">
+          <div class="col-sm-12">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
+              <input ng-disabled="isDisabled" type="text" placeholder="E-mail" id="username" class="form-control" autocomplete="off" ng-model="username">
+            </div>
           </div>
         </div>
-  </div>
-
-  <div class="modal-footer">
-    <button class="btn btn-primary">Registrar</button>
+        <div class="form-group">
+          <div class="col-sm-12">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+              <input ng-disabled="isDisabled" type="password" placeholder="Senha" id="password" class="form-control" autocomplete="off" style="" ng-model="password">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button ng-show="showName" ng-disabled="isDisabled" ng-click="register({username: username, fullname: fullname, password: password});" class="btn btn-primary">{{buttonText}}</button>
+        <button ng-show="!showName" ng-disabled="isDisabled" ng-click="register({username: username, fullname: fullname, password: password});" class="btn btn-primary">{{buttonText}}</button>
+      </div>
+    </form>
   </div>
 </script>
 <!--
@@ -151,4 +156,4 @@
     <!-- <div ng-show="selected">Selection from a modal: {{ selected }}</div> --> -->
 
 
-</div>
+  </div>
