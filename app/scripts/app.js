@@ -70,7 +70,7 @@ angular.module('projetobrasilFrontApp', [
 	})
 	.state('proposal', {
 		parent: 'profile',
-		url: '/:proposalId',
+		url: '/prop/:proposalId',
     views: {
       'proposals': {
         templateUrl: 'views/proposal.html',

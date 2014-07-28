@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('projetobrasilFrontApp')
-.controller('ProposalsComparativeCtrl', ['$scope', 'profileGetter', 'proposalsGetter',
-	function($scope, profileGetter, proposalsGetter){
+.controller('ProposalsComparativeCtrl', ['$scope', 'profileGetter', 'proposalsGetter', 'categoryColorGetter',
+	function($scope, profileGetter, proposalsGetter, categoryColorGetter){
 		profileGetter.getProfile().then(function(politicians) {
 			$scope.politicians = politicians;
 			$scope.selectedPoliticians = [];
@@ -12,14 +12,28 @@ angular.module('projetobrasilFrontApp')
 			return politician.isSelected;
 		};
 
+    $scope.disableSelector = function(){
+      return $scope.selectedPoliticians.length >= 3;
+    }
+
 		$scope.toggleIsSelected = function(politician) {
-			politician.isSelected = !politician.isSelected;
+      if($scope.selectedPoliticians.length < 3 || politician.isSelected){
+  			politician.isSelected = !politician.isSelected;
 
-			$scope.selectedPoliticians = $scope.politicians.filter(function(p) {
-				return p.isSelected;
-			});
+        $scope.selectedPoliticians = $scope.politicians.filter(function(p) {
+          return p.isSelected;
+        });
 
-			buildProposals();
+  			buildProposals();
+      }else{
+
+        toastr.options = {
+          "closeButton": true,
+          "showMethod": 'slideDown',
+          "hideMethod": 'slideUp'
+        };
+        toastr.warning('Você pode comparar no máximo 3 candidatos!');
+      }
 		};
 
 		$scope.hash = function(s) {
@@ -68,6 +82,12 @@ angular.module('projetobrasilFrontApp')
 
 		proposalsGetter.getAllProposals().then(function(proposals) {
 			$scope.allProposals = proposals;
+
+      for (var i = 0; i < proposals.length; i++) {
+        $scope.allProposals[i].cor = categoryColorGetter.getColorTheme($scope.allProposals[i].tema);
+        // $scope.proposals[i].cor = categoryColorGetter.getColorTheme($scope.proposals[i].tema);
+      };
+
 			buildProposals();
 		});
 }]);

@@ -4,7 +4,7 @@ angular.module('projetobrasilFrontApp')
   .service('categoryColorGetter', function(){
     this.getColorTheme = function(theme){
       var colors = {
-        'Política Economica' : '#8CD500',
+        'Política Econômica' : '#8CD500',
         'Políticas Sociais' : '#38990C',
         'Saúde' : '#17A2DC',
         'Educação' : '#062084',

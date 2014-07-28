@@ -1,18 +1,51 @@
-ul.politicians-compared {
-	li {
-		padding: 5px;
-		margin-right: 5px;
-		margin-bottom: 15px;
-		opacity: 0.6;
-	}
+@import 'cleanzone/config.scss';
 
-	li.active,
-	li:hover {
-		cursor: pointer;
-		opacity: 1;
-	}
+.politician-comparative {
 
-	li.active {
-		border: 1px #4D90FD solid;
-	}
+  .politicians-list{
+    text-align: center;
+    margin-top: 12px;
+
+    .active{
+      display: none;
+    }
+
+    .disabled{
+      opacity: 0.6;
+    }
+  }
+
+  .politician-selector{
+    width: 80px;
+    display: inline-block;
+    padding: 5px;
+    margin: 0 10px 10px 0;
+    position: relative;
+
+    img{
+      border-radius: 50%;
+    }
+
+  }
+
+  .remove-politician{
+    position: absolute;
+    font-size: 2em;
+    right: -11px;
+    background-color: #30b786;
+    padding: 0px 3px 1px 3px;
+    border-radius: 50%;
+    color: #fff;
+    border: 3px solid #fff;
+  }
+
+  .selector-message{
+    text-align: center;
+    font-size: 1.2em;
+  }
+
+}
+
+#toast-container{
+  margin-top: 55px;
 }

@@ -2,10 +2,6 @@
 
   .proposal{
     width: 49%;
-    margin-bottom: 10px;
-    background-color: #F6F6F6;
-    padding: 20px 20px 15px;
-    border-radius: 3px;
 
     @media(max-width: 570px){
       width: 48%;
@@ -15,7 +11,7 @@
       width: 100%;
     }
 
-    &:before{
+    &::before{
       content: "";
       position: absolute;
       top: 0;
@@ -24,7 +20,25 @@
       border-style: solid;
       border-color: #eee #fff;
     }
+  }
 
+}
+
+.proposal{
+  margin-bottom: 10px;
+  background-color: #F6F6F6;
+  padding: 20px 20px 15px;
+  border-radius: 3px;
+  position: relative;
+
+  &::before{
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-width: 0 16px 16px 0;
+    border-style: solid;
+    border-color: #eee #fff;
   }
 
   .theme{
@@ -53,5 +67,5 @@
     border-bottom: 1px #C4C2C2 dotted;
     font-weight: 400;
   }
-
 }
+
