@@ -1,0 +1,26 @@
+<div class="header">
+  <h2>Tabela de bens e posses</h2>
+</div>
+<table class="no-border blue">
+  <thead class="no-border">
+    <tr>
+      <th style="font-weight: bold; width: 70%">Detalhes</th>
+      <th class="text-right" style="font-weight: bold">Valor do bem</th>
+    </tr>
+  </thead>
+  <tbody class="no-border-y">
+    <tr ng-repeat="bem in politician_goods">
+      <td style="width:30%;">{{bem.descricao}}</td>
+      <td class="text-right">{{bem.valor | currency:"R$":",":"."}}</td>
+    </tr>
+  </tbody>
+  <tfoot class="no-border-y strong-foot">
+    <tr>
+      <td style="width:30%;">Total</td>
+      <td class="text-right">{{totalValue | currency:"R$":",":"."}}</td>
+    </tr>
+  </tfoot>
+</table>
+<div class="footer">
+  <p>Fonte: <strong><a href="http://www.tse.jus.br/eleicoes/eleicoes-2014/sistema-de-divulgacao-de-candidaturas" target="_blank">divulgaCand 2014</a></strong></p>
+</div>

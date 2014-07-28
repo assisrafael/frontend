@@ -6,9 +6,11 @@ angular.module('projetobrasilFrontApp', [
 	'ngSanitize',
 	'ngTouch',
 	'ui.router',
-  'ui.bootstrap'
-
+  'ui.bootstrap',
+  'wu.masonry',
+  'disqusHere'
 ])
+
 .run(['$rootScope', '$location', '$window', function($rootScope, $location, $window){
  $rootScope
  .$on('$stateChangeSuccess', function(event){
@@ -17,8 +19,11 @@ angular.module('projetobrasilFrontApp', [
     $window.ga('send', 'pageview', { page: $location.path() });
   });
 }])
-.config(function ($stateProvider, $urlRouterProvider, $sceDelegateProvider) {
+
+.config(function ($stateProvider, $urlRouterProvider, $sceDelegateProvider, $locationProvider) {
+
 	$urlRouterProvider.otherwise('/');
+  $locationProvider.hashPrefix('!');
 
 	$stateProvider
 	.state('main', {
@@ -47,15 +52,23 @@ angular.module('projetobrasilFrontApp', [
 	})
 	.state('profile', {
 		parent: '_',
-		url: '/profile/:profileId',
+		url: '/:nameUrl',
 		views: {
 			'': {
 				templateUrl: 'views/profile.html',
 				controller: 'ProfilesCtrl'
 			},
-			'proposals@profile': {
-				templateUrl: 'views/proposals.html',
-				controller: 'ProposalsCtrl'
+      'proposals@profile': {
+        templateUrl: 'views/proposals.html',
+        controller: 'ProposalsCtrl'
+      },
+			'history@profile': {
+        templateUrl: 'views/history.html',
+        controller: 'HistoryCtrl'
+      },
+      'goods@profile': {
+				templateUrl: 'views/goods.html',
+				controller: 'GoodsCtrl'
 			}
 		}
 	})
@@ -66,10 +79,10 @@ angular.module('projetobrasilFrontApp', [
 		templateUrl: 'views/proposal-comparative.html'
 	})
 	.state('proposal', {
-		parent: '_',
-		url: '/proposal',
+		parent: 'profile',
+		url: '/:proposalId',
     views: {
-      '': {
+      'proposals': {
         templateUrl: 'views/proposal.html',
         controller: 'ProposalCtrl'
       },

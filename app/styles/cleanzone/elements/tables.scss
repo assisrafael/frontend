@@ -132,7 +132,7 @@ table .no-border tr th:first-child{border-left:1px solid #dadada;}
  .no-padding table tr td:last-child{border-right:0;}
  .no-padding table tr:last-child td{border-bottom:0;}
 
-table tbody .toggle-details{cursor:pointer;} 
+table tbody .toggle-details{cursor:pointer;}
 table tbody .details{
   background:#FFF;
 }
@@ -150,4 +150,9 @@ div.dataTables_length label select{
 
 .table td .btn i{
   width:inherit;
+}
+
+.strong-foot {
+  font-weight: 600;
+  font-size: 1.2em;
 }

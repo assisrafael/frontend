@@ -1,0 +1,57 @@
+.proposals-wrapper{
+
+  .proposal{
+    width: 49%;
+    margin-bottom: 10px;
+    background-color: #F6F6F6;
+    padding: 20px 20px 15px;
+    border-radius: 3px;
+
+    @media(max-width: 570px){
+      width: 48%;
+    }
+
+    @media(max-width: 480px){
+      width: 100%;
+    }
+
+    &:before{
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      border-width: 0 16px 16px 0;
+      border-style: solid;
+      border-color: #eee #fff;
+    }
+
+  }
+
+  .theme{
+    font-size: 1.4em;
+    font-weight: 400;
+    text-shadow: 0 1px 1px #fff;
+
+    &::before{
+      content: '\25c9';
+    }
+
+    small::before{
+      content: '\203A';
+    }
+  }
+
+  .description{
+    padding: 5px 0px;
+    margin-bottom: 0;
+    text-align: justify;
+  }
+
+  .detalhes{
+    float: right;
+    color: #838383;
+    border-bottom: 1px #C4C2C2 dotted;
+    font-weight: 400;
+  }
+
+}

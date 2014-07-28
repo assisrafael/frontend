@@ -1,3 +1,5 @@
+'use strict';
+
 angular.module('projetobrasilFrontApp')
 	.controller('rakingCtrl', function ($scope, $q, $http, moduleService) {
         $scope.comments = [];

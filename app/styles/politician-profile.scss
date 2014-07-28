@@ -31,6 +31,10 @@
   .page-head-left{
     width: 70%;
     float: left;
+
+    @media(max-width: 550px){
+      width: 100%;
+    }
   }
 
   .page-head-right{
@@ -42,6 +46,14 @@
       margin-top: 10px;
       float: right;
     }
+
+    @media(max-width: 550px){
+      width: 100%;
+      img{
+        float: left;
+      }
+    }
+
   }
 
   /* Informacoes pessoais */
@@ -71,78 +83,13 @@
     }
   }
 
-  /* Propostas */
-
-  .bloco-proposta {
-    padding: 20px;
-  }
-
-  .bloco-botoes-votacao {
-    padding: 0;
-    margin:0;
-    text-align: center;
-  }
-
-  .bloco-botoes-votacao div {
-    padding: 5px;
-  }
-
-  .rating > span:hover:before {
-     content: "\2605";
-     position: absolute;
-  }
-
-  .rating {
-    unicode-bidi: bidi-override;
-    direction: rtl;
-    font-size: 30px;
-  }
-  .rating span.star {
-    font-family: FontAwesome;
-    font-weight: normal;
-    font-style: normal;
-    display: inline-block;
-  }
-  .rating span.star:hover {
-    cursor: pointer;
-  }
-  .rating span.star:before {
-    content: "\f006";
-    padding-right: 5px;
-    color: #999999;
-  }
-  .rating span.star:hover:before,
-  .rating span.star:hover ~ span.star:before {
-    content: "\f005";
-    color: #e3cf7a;
-  }
-
-  .rating_stars {
-    position: relative;
-    top: 4px;
-    font-size: 1.6em;
-  }
-
-  .rating_stars i {
-    margin: 2px;
-  }
-
-  .rating-on {
-    color: #e3cf7a;
-  }
-
-  .rating-off {
-    color: #999;
-  }
-
-  .readmore {
-    text-align: right;
-    padding-top: 20px;
+  /* Profile tabs */
+  .profile-tabs{
     cursor: pointer;
   }
 
-  .glyphicon-star {
-    color: #e3cf7a;
+  .tab-pane .footer{
+    margin: 20px auto 0;
   }
 
 }
@@ -160,94 +107,4 @@
     }
 
   }
-}
-
-
-/* Resolucao para telefones */
-@media (max-width: 768px) {
-
-  .politician-profile{
-
-    // .three-column-grid{
-    //   @include flex-direction(column);
-    // }
-
-    .profile-wrapper .block-content,
-    .politics .block-content{
-      height: 420px;
-    }
-
-  }
-
-}
-
-/* Resolucao para tablets e telefones */
-@media (max-width: 1024px){
-
-  .politician-profile{
-
-    // .three-column-grid{
-    //   @include flexbox;
-
-    //   .profile-wrapper{
-    //     @include order(1);
-    //   }
-
-    //   .proposals{
-    //     @include order(3);
-    //   }
-
-    //   .politics{
-    //     @include order(2);
-    //   }
-
-    // }
-
-    .profile-wrapper .block-content,
-    .politics .block-content{
-      overflow-y: hidden;
-    }
-
-    .show-more{
-      display: block;
-    }
-
-  }
-
-}
-
-/* Resolucao so para tablets */
-@media (min-width: 768px) and (max-width: 1024px) {
-
-  .politician-profile{
-
-    .three-column-grid{
-      @include flex-wrap(wrap);
-
-      .profile-wrapper{
-        @include flex(2);
-      }
-
-      .proposals{
-        @include flex(100%);
-      }
-
-      .politics{
-        @include flex(1);
-      }
-
-    }
-
-    .profile-wrapper .block-content,
-    .politics .block-content{
-      height: 225px;
-    }
-
-  }
-
-}
-
-/* Resolucao para tablets */
-@media (min-width: 1024px) {
-
 }

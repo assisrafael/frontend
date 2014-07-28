@@ -1,11 +1,14 @@
 'use strict';
 
 angular.module('projetobrasilFrontApp')
-.factory('UserRegister', ['$http', function($http){
+.factory('UserRegister', ['$http', '$log', '$cookies', function($http, $log, $cookies){
   return {
     register: function(user, success, error){
       $http.post('http://api.projetobrasil.org:4242/v1/user/register', user)
-      .success(function(res) {
+      .success(function(res, status, headers) {
+
+        $log.info(headers('Set-Cookie'));
+        $log.info($cookies.session);
         //changeUser(res);
         success();
       }).error(error);
@@ -16,14 +19,16 @@ angular.module('projetobrasilFrontApp')
   return {
     login: function(user, success, error){
        $http.post('http://api.projetobrasil.org:4242/v1/user/login', user)
-      .success(function(res) {
+      .success(function(res, status, headers) {
+        $log.info(headers('Set-Cookie'));
+
         //changeUser(res);
         success(res);
       }).error(error);
     },
     logout: function(){
-       $http.get('http://api.projetobrasil.org:4242/v1/user/logout').
-      success(function(){
+       $http.get('http://api.projetobrasil.org:4242/v1/user/logout')
+       .success(function(){
         return true;
       })
       .error(function(){
