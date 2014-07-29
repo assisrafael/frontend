@@ -8,7 +8,8 @@ angular.module('projetobrasilFrontApp', [
 	'ui.router',
   'ui.bootstrap',
   'wu.masonry',
-  'disqusHere'
+  'disqusHere',
+  'http-auth-interceptor'
 ])
 
 .run(['$rootScope', '$location', '$window', function($rootScope, $location, $window){
@@ -106,4 +107,7 @@ angular.module('projetobrasilFrontApp', [
 	// $sceDelegateProvider.resourceUrlBlacklist([
 	//	 'http://myapp.example.com/clickThru**'
 	// ]);
-});
+})
+.config(['$httpProvider', function ($httpProvider) {
+  $httpProvider.defaults.withCredentials = true;
+}]);;

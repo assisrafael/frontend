@@ -1,8 +1,16 @@
 'use strict';
 
 angular.module('projetobrasilFrontApp')
+.controller('editUserDataFormCtrl',
+  function ($scope, $modalInstance, $log, modalType) {
+
+
+  $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
+  };
+})
 .controller('loginFormCtrl',
-  function ($scope, $modalInstance, UserRegister, UserLogin, $log, modalType) {
+  function ($scope, $modalInstance, UserRegister, UserLogin, $log, modalType, loginMessage) {
 
   // $scope.items = items;
   // $scope.selected = {
@@ -10,6 +18,13 @@ angular.module('projetobrasilFrontApp')
   // };
 
   $scope.modalType = modalType;
+  $scope.isLoginMessage = false;
+  $scope.isLoginError = false;
+
+  if(loginMessage && loginMessage.length > 1){
+    $scope.loginMessage = loginMessage;
+    $scope.isLoginMessage = true;
+  }
 
   $scope.isDisabled = false;
   $scope.successRegister = false;
@@ -40,13 +55,14 @@ angular.module('projetobrasilFrontApp')
   // };
 
   $log.info($scope.modalType);
+  $log.info($scope.loginMessage);
+
 
   $scope.register = function (registeredUser) {
     UserRegister.register(registeredUser,
       function(res) {
-        $log.info('Sucesso no registro!');
         $scope.successRegister = true;
-        $modalInstance.close(true);
+        $modalInstance.close(registeredUser);
       },
       function(err) {
           //$scope.setLoadingOff();
@@ -62,6 +78,8 @@ angular.module('projetobrasilFrontApp')
         $modalInstance.close(loginUser);
       },
       function(err){
+        $scope.passwordOrLoginErrorMsg = 'Login ou senha inválidos.';
+        $scope.isLoginError = true;
         $log.error('Erro no login');
       }
       );
@@ -87,15 +105,20 @@ angular.module('projetobrasilFrontApp')
 .controller('NavbarUserMenuCtrl',
   function ($scope, $modal, $log, UserRegister, UserLogin) {
 
-    $scope.loggedUserData = UserLogin.isUserLogged();
-    $log.error($scope.loggedUserData);
-    if($scope.loggedUserData != false){
-      $scope.user = $scope.loggedUserData;
+
+    $scope.$on('event:auth-loginRequired', function() {
+          $scope.open('login', 'Você precisa logar para continuar')
+        });
+
+    UserLogin.isUserLogged(function(userData){
+      $scope.loggedUserData = userData;
       $scope.userIsLogged = true;
-    } else {
-      $scope.user = {};
+      $scope.changeUser(userData);
+    },
+    function(){
       $scope.userIsLogged = false;
-    }
+    });
+    //$scope.loggedUserData = false;
 
     $scope.changeUser = function(userData){
       $scope.user = userData;
@@ -103,15 +126,19 @@ angular.module('projetobrasilFrontApp')
     };
 
     $scope.logoutUser = function() {
-      if(UserLogin.logout()){
+      UserLogin.logout(function(){
         $scope.user = {};
         $scope.userIsLogged = false;
+      },
+      function(){
+        $log.error('Erro ao efetuar LOGOUT');
       }
+      );
     };
 
   // $scope.items = ['item1', 'item2', 'item3'];
 
-  $scope.open = function (modalType) {
+  $scope.open = function (modalType, loginMessage) {
     var modalInstance = $modal.open({
       templateUrl: 'views/login-register-form.html',
       controller: 'loginFormCtrl',
@@ -119,6 +146,9 @@ angular.module('projetobrasilFrontApp')
       resolve: {
         modalType: function () {
           return modalType;
+        },
+        loginMessage: function () {
+          return loginMessage;
         },
       }
     });
@@ -128,6 +158,26 @@ angular.module('projetobrasilFrontApp')
       $log.info('Login realizado!!' + userData);
     }, function () {
       $log.info('Modal dismissed at: ' + new Date());
+    });
+  };
+
+  $scope.editUserData = function () {
+    var modalInstance = $modal.open({
+      templateUrl: 'views/edit-user-data-form.html',
+      controller: 'editUserDataCtrl',
+      size: 'sm',
+      // resolve: {
+      //   modalType: function () {
+      //     return modalType;
+      //   },
+      // }
+    });
+
+    modalInstance.result.then(function (userData) {
+      //$scope.changeUser(userData);
+      //$log.info('Login realizado!!' + userData);
+    }, function () {
+      //$log.info('Modal dismissed at: ' + new Date());
     });
   };
 });

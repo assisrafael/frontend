@@ -20,25 +20,26 @@
 	<!-- endbower -->
 	<!-- endbuild -->
 
-<<<<<<< HEAD
-	<!-- build:css(.tmp) styles/main.css -->
-	<link rel="stylesheet" href="styles/main.css">
-  <link rel="stylesheet" type="text/css" href="scripts/js-clnzn/jquery.nanoscroller/nanoscroller.css" />
-  <link rel="stylesheet" href="fonts/font-awesome-4/css/font-awesome.min.css">
-  <link rel="stylesheet" href="styles/plugins/superslides.css">
-	<!-- endbuild -->
-
-
-=======
 	<link rel="stylesheet" href="styles/plugins/superslides.css">
->>>>>>> 5e615819e4ee40225295439ea8aceb9097344cae
 
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
 	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 	<![endif]-->
+	<link rel="stylesheet" type="text/css" href="scripts/js-clnzn/jquery.gritter/css/jquery.gritter.css" />
 
+	<link rel="stylesheet" type="text/css" href="scripts/js-clnzn/jquery.nanoscroller/nanoscroller.css" />
+	<link rel="stylesheet" type="text/css" href="scripts/js-clnzn/jquery.easypiechart/jquery.easy-pie-chart.css" />
+	<link rel="stylesheet" type="text/css" href="scripts/js-clnzn/bootstrap.switch/bootstrap-switch.css" />
+	<link rel="stylesheet" type="text/css" href="scripts/js-clnzn/bootstrap.datetimepicker/css/bootstrap-datetimepicker.min.css" />
+	<link rel="stylesheet" type="text/css" href="scripts/js-clnzn/jquery.select2/select2.css" />
+	<link rel="stylesheet" type="text/css" href="scripts/js-clnzn/bootstrap.slider/css/slider.css" />
+	<link rel="stylesheet" type="text/css" href="scripts/js-clnzn/intro.js/introjs.css" />
 	<!-- Custom styles for this template -->
+
+	<!-- build:css({.tmp,app}) styles/main.css -->
+	<link href="styles/main.css" rel="stylesheet" />
+	<!-- endbuild -->
 
 </head>
 <body ng-app="projetobrasilFrontApp">
@@ -56,8 +57,8 @@
 		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-		ga('create', 'UA-52366317-1', 'projetobrasil.org');
-		//ga('send', 'pageview');
+		ga('create', 'UA-XXXXX-X');
+		ga('send', 'pageview');
 	</script>
 
 	<!-- build:js(.) scripts/oldieshim.js -->
@@ -72,7 +73,7 @@
 
 	<!-- build:js(.) scripts/vendor.js -->
 	<!-- bower:js -->
-	<script src="bower_components/jquery/jquery.js"></script>
+	<script src="bower_components/jquery/dist/jquery.js"></script>
 	<script src="bower_components/angular/angular.js"></script>
 	<script src="bower_components/angular-cookies/angular-cookies.js"></script>
 	<script src="bower_components/angular-resource/angular-resource.js"></script>
@@ -105,13 +106,11 @@
 	<script src="bower_components/imagesloaded/imagesloaded.js"></script>
 	<script src="bower_components/angular-masonry/angular-masonry.js"></script>
 	<script src="bower_components/disqus-here/dist/disqus-here.js"></script>
+	<script src="bower_components/angular-http-auth/src/http-auth-interceptor.js"></script>
 	<!-- endbower -->
 	<!-- endbuild -->
 
 	<!-- build:js({.tmp,app}) scripts/scripts.js -->
-<<<<<<< HEAD
-  <script src="scripts/app.js"></script>
-=======
   <!-- CONTROLLERS -->
 	<script src="scripts/app.js"></script>
 	<script src="scripts/controllers/comparison.js"></script>
@@ -126,6 +125,7 @@
   <script src="scripts/controllers/proposals.js"></script>
   <script src="scripts/controllers/ranking.js"></script>
   <script src="scripts/controllers/sidebar.js"></script>
+  <script src="scripts/controllers/edit-user-data.js"></script>
 
   <!-- SERVICES -->
   <script src="scripts/services/politician-goods.js"></script>
@@ -135,11 +135,11 @@
 	<script src="scripts/services/proposal.js"></script>
   <script src="scripts/services/rating.js"></script>
   <script src="scripts/services/theme-color.js"></script>
+  <script src="scripts/services/user-register.js"></script>
 
   <!-- DIRECTIVES -->
   <script src="scripts/directives/pieChart.js"></script>
   <script src="scripts/directives/brasilMap.js"></script>
->>>>>>> 5e615819e4ee40225295439ea8aceb9097344cae
 
   <!-- FILTERS -->
   <script src="scripts/filters/currency.js"></script>
@@ -150,24 +150,6 @@
   <script src="scripts/plugins/map/resources/topojson.js"></script>
 	<script src="scripts/plugins/jquery.superslides.min.js"></script>
 	<script src="scripts/js-clnzn/jquery.gritter/js/jquery.gritter.js"></script>
-  <script src="scripts/controllers/comparison.js"></script>
-  <script src="scripts/controllers/homepage.js"></script>
-  <script src="scripts/controllers/main.js"></script>
-  <script src="scripts/controllers/navbarusermenu.js"></script>
-  <script src="scripts/controllers/profile.js"></script>
-  <script src="scripts/controllers/proposals-comparative.js"></script>
-  <script src="scripts/controllers/proposal.js"></script>
-  <script src="scripts/controllers/proposals.js"></script>
-  <script src="scripts/controllers/ranking.js"></script>
-  <script src="scripts/services/user-register.js"></script>
-  <script src="scripts/controllers/user-register.js"></script>
-
-  <script src="scripts/services/profile.js"></script>
-  <script src="scripts/services/proposals.js"></script>
-  <script src="scripts/services/proposal.js"></script>
-  <script src="scripts/services/rating.js"></script>
-  <script src="scripts/directives/pieChart.js"></script>
-  <script src="scripts/directives/brasilMap.js"></script>
 	<script src="scripts/js-clnzn/jquery.nanoscroller/jquery.nanoscroller.js"></script>
 	<script src="scripts/js-clnzn/behaviour/general.js"></script>
 	<script src="scripts/js-clnzn/jquery.ui/jquery-ui.js"></script>
@@ -177,7 +159,7 @@
 	<script src="scripts/js-clnzn/bootstrap.switch/bootstrap-switch.min.js"></script>
 	<script src="scripts/js-clnzn/bootstrap.datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
 	<script src="scripts/js-clnzn/jquery.select2/select2.min.js"></script>
-  <script src="scripts/js-clnzn/skycons/skycons.js"></script>
+	<script src="scripts/js-clnzn/skycons/skycons.js"></script>
 	<script src="scripts/js-clnzn/bootstrap.slider/js/bootstrap-slider.js"></script>
 	<!-- endbuild -->
 
