@@ -6,8 +6,8 @@
         {{selectedPolitical.nome_urna}} &nbsp;<span class="numero-candidato">{{selectedPolitical.numero}}</span>
       </h2>
       <ol class="breadcrumb">
-        <li><a href="#">Projeto Brasil</a></li>
-        <li><a href="#">Candidatos</a></li>
+        <li><a ui-sref="main">Projeto Brasil</a></li>
+        <li><a ui-sref="main">Candidatos</a></li>
         <li class="active">Presidência da República</li>
       </ol>
     </div>
@@ -35,7 +35,11 @@
               </div>
               <div class="info col-md-12">
                 <div class="title">Site:</div>
-                <div class="value">{{selectedPolitical.site}}</div>
+                <div class="value">
+                  <a ng-href="{{selectedPolitical.site}}" target="_blank">
+                    {{parseUrl(selectedPolitical.site)}}
+                  </a>
+                </div>
               </div>
               <div class="info col-md-12">
                 <div class="title">Email:</div>

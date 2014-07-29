@@ -1,10 +1,9 @@
 <div class="proposal-detail">
   <div class="voltar">
-    <a ui-sref="profile">
+    <a ui-sref="profile({nameUrl:selectedPolitical.nome_url})">
       <i class="fa fa-chevron-left"></i> Voltar para lista de propostas
     </a>
   </div>
-
   <div class="page-head" ng-style="{'border-color' : proposal.cor}">
       <h3>{{proposal.titulo}}</h3>
       <ol class="breadcrumb">
@@ -31,7 +30,7 @@
   <div>
     <!-- <h2>Comentários</h2>
     <div ui-view="comments"></div> -->
-    <disqus-here shortname="projetobrasil" url="{{url}}" identifier="{{id}}" title="{{id}}">
+    <disqus-here shortname="projetobrasil" url="{{url}}" identifier="{{id}}" title="{{proposal.titulo}}">
     </disqus-here>
   </div>
 </div>

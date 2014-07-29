@@ -3,32 +3,28 @@
 angular.module('projetobrasilFrontApp')
 .controller('ProposalCtrl', ['$scope', '$state', '$location', '$stateParams', 'proposalsGetter', 'Rating', 'categoryColorGetter', function ($scope, $state, $location, $stateParams, proposalsGetter, Rating, categoryColorGetter) {
 
-    var proposalId = $stateParams.proposalId;
-    $scope.id = $stateParams.proposalId;
+    $scope.rate = 3;
+    $scope.max = 5;
+    $scope.isReadonly = true;
+
+    $scope.id = $scope.$parent.proposalId;
     $scope.url = $location.absUrl();
 
-    if(proposalId){
+    $scope.$watch('selectedPolitical', function(politician){
+      if(!politician) return;
 
-      proposalsGetter.getProposal(proposalId).then(function(data){
-        $scope.proposal = data;
+      proposalsGetter.getProposal($scope.$parent.proposalId).then(function(data){
 
-        $scope.proposal.cor = categoryColorGetter.getColorTheme($scope.proposal.tema);
+        if($scope.$parent.selectedPolitical.id == data.politicians_id){
+          $scope.proposal = data;
+          $scope.proposal.cor = categoryColorGetter.getColorTheme($scope.proposal.tema);
+        }else{
+          $state.go('profile', {
+            nameUrl: $stateParams.nameUrl
+          })
+        }
+
       });
-
-      $scope.rate = 3;
-      $scope.max = 5;
-      $scope.isReadonly = true;
-
-      Rating.get({ratingId: proposalId}, function(data) {
-        $scope.rating = data;
-      });
-
-    }else{
-
-      $state.go('profile', {
-        nameUrl: $stateParams.nameUrl
-      })
-
-    }
+    });
 
 	}]);
