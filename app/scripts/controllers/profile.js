@@ -16,6 +16,12 @@ angular.module('projetobrasilFrontApp')
 
     });
 
+    $scope.parseUrl = function(link){
+      var url = document.createElement('a');
+      url.href = link;
+      return (url.hostname + url.pathname).replace('www.', '');
+    }
+
     $scope.$parent.setActiveByName = function(nameUrl) {
       var profiles = $scope.$parent.profiles;
 

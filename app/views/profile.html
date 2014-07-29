@@ -35,7 +35,11 @@
               </div>
               <div class="info col-md-12">
                 <div class="title">Site:</div>
-                <div class="value">{{selectedPolitical.site}}</div>
+                <div class="value">
+                  <a ng-href="{{selectedPolitical.site}}" target="_blank">
+                    {{parseUrl(selectedPolitical.site)}}
+                  </a>
+                </div>
               </div>
               <div class="info col-md-12">
                 <div class="title">Email:</div>
