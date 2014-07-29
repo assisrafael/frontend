@@ -53,7 +53,7 @@ angular.module('projetobrasilFrontApp', [
 	})
 	.state('profile', {
 		parent: '_',
-		url: '/:nameUrl',
+		url: '/cand/:nameUrl',
 		views: {
 			'': {
 				templateUrl: 'views/profile.html',
