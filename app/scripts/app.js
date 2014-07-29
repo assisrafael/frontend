@@ -69,16 +69,24 @@ angular.module('projetobrasilFrontApp', [
 		templateUrl: 'views/proposal-comparative.html'
 	})
 	.state('proposal', {
-		parent: 'profile',
-		url: '/prop/:proposalId',
+		parent: '_',
+		url: '/cand/:nameUrl/prop/:proposalId',
     views: {
-      'proposals': {
+      '': {
+        templateUrl: 'views/profile.html',
+        controller: 'ProfilesCtrl'
+      },
+      'proposals@proposal': {
         templateUrl: 'views/proposal.html',
         controller: 'ProposalCtrl'
       },
-      'comments@proposal': {
-        templateUrl: 'views/ranking-comments.html',
-        controller: 'rakingCtrl'
+      'history@proposal': {
+        templateUrl: 'views/history.html',
+        controller: 'HistoryCtrl'
+      },
+      'goods@proposal': {
+        templateUrl: 'views/goods.html',
+        controller: 'GoodsCtrl'
       }
     }
 	});

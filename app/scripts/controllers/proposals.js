@@ -2,6 +2,7 @@
 
 angular.module('projetobrasilFrontApp')
 .controller('ProposalsCtrl', function ($scope, $stateParams, proposalsGetter, categoryColorGetter) {
+
 	$scope.$watch('selectedPolitical', function(politician) {
 		if(!politician) return;
 
