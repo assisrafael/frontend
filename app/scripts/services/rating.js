@@ -3,7 +3,7 @@
 angular.module('projetobrasilFrontApp')
 .factory('Rating', ['$resource',
   function($resource){
-    return $resource('http://api.projetobrasil.org:4242/v1/rating/:ratingId', {}, {});
+    return $resource('http://api.projetobrasil.org:4242/v1/rating/:ratingId', {ratingId:'@id'});
 // angular.module('projetobrasilFrontApp').factory('Rating', ['$http',
 //   function($http){
 //     var serverUri = 'http://api.projetobrasil.org:4242/v1/rating/';

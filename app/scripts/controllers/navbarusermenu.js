@@ -10,7 +10,7 @@ angular.module('projetobrasilFrontApp')
   };
 })
 .controller('loginFormCtrl',
-  function ($scope, $modalInstance, UserRegister, UserLogin, $log, modalType, loginMessage) {
+  function ($scope, $rootScope, $modalInstance, UserRegister, UserLogin, $log, modalType, loginMessage) {
 
   // $scope.items = items;
   // $scope.selected = {
@@ -61,21 +61,45 @@ angular.module('projetobrasilFrontApp')
   $scope.register = function (registeredUser) {
     UserRegister.register(registeredUser,
       function(res) {
+        toastr.options = {
+          "closeButton": true,
+          "showMethod": 'slideDown',
+          "hideMethod": 'slideUp'
+        };
+        toastr.info('Registro realizado com sucesso!');
         $scope.successRegister = true;
         $modalInstance.close(registeredUser);
+        $rootScope.$broadcast('login');
       },
       function(err) {
           //$scope.setLoadingOff();
-          $log.error('Deu erro no registros: ' + err);
+
+        toastr.options = {
+          "closeButton": true,
+          "showMethod": 'slideDown',
+          "hideMethod": 'slideUp'
+        };
+        toastr.error('Erro:' + err.error);
         });
+
   };
 
   $scope.login = function (loginUser){
     UserLogin.login(loginUser,
       function(res) {
+
+        toastr.options = {
+          "closeButton": true,
+          "showMethod": 'slideDown',
+          "hideMethod": 'slideUp'
+        };
+        toastr.info('Login realizado com sucesso!');
         $log.info('Sucesso no login: Usuario ' + res.user.username );
         $scope.sucessRegister = true;
         $modalInstance.close(loginUser);
+
+        $rootScope.$broadcast('login');
+
       },
       function(err){
         $scope.passwordOrLoginErrorMsg = 'Login ou senha inválidos.';
@@ -91,7 +115,8 @@ angular.module('projetobrasilFrontApp')
       $scope.register(
         {username: userData.username,
           fullname: userData.fullname,
-          password: userData.password
+          password: userData.password,
+          passwordAgain: userData.passwordAgain
         });
     } else if($scope.modalType == 'login'){
       $scope.login({username: userData.username, password: userData.password});
@@ -101,14 +126,31 @@ angular.module('projetobrasilFrontApp')
   $scope.cancel = function () {
     $modalInstance.dismiss('cancel');
   };
+
+  $scope.changeToLogin = function(){
+    $scope.modalTitle = "Fazer login";
+    $scope.buttonText = "Entrar";
+    $scope.successText = "Sucesso no login";
+    $scope.subTitleEmail = "Entrar com e-mail";
+    $scope.showName = false;
+  };
 })
 .controller('NavbarUserMenuCtrl',
-  function ($scope, $modal, $log, UserRegister, UserLogin) {
+  function ($scope, $rootScope, $modal, $log, UserRegister, UserLogin) {
 
+    $scope.modalOpened = false;
 
     $scope.$on('event:auth-loginRequired', function() {
-          $scope.open('login', 'Você precisa logar para continuar')
-        });
+      if( !$scope.modalOpened ){
+        $scope.open('register', 'Você precisa se registrar para continuar');
+      }
+    });
+
+    $scope.$on('event:login', function() {
+      if( !$scope.modalOpened ){
+        $log.info('ACHEI UM LOGIN AQUI!');
+      }
+    });
 
     UserLogin.isUserLogged(function(userData){
       $scope.loggedUserData = userData;
@@ -129,16 +171,25 @@ angular.module('projetobrasilFrontApp')
       UserLogin.logout(function(){
         $scope.user = {};
         $scope.userIsLogged = false;
+
+        toastr.options = {
+          "closeButton": true,
+          "showMethod": 'slideDown',
+          "hideMethod": 'slideUp'
+        };
+        toastr.info('Desconectado com sucesso');
+        $rootScope.$broadcast('logout');
+
       },
       function(){
         $log.error('Erro ao efetuar LOGOUT');
-      }
-      );
+      });
     };
 
   // $scope.items = ['item1', 'item2', 'item3'];
 
   $scope.open = function (modalType, loginMessage) {
+    $scope.modalOpened = true;
     var modalInstance = $modal.open({
       templateUrl: 'views/login-register-form.html',
       controller: 'loginFormCtrl',
@@ -155,8 +206,10 @@ angular.module('projetobrasilFrontApp')
 
     modalInstance.result.then(function (userData) {
       $scope.changeUser(userData);
+      $scope.modalOpened = false;
       $log.info('Login realizado!!' + userData);
     }, function () {
+      $scope.modalOpened = false;
       $log.info('Modal dismissed at: ' + new Date());
     });
   };
