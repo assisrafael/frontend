@@ -25,6 +25,10 @@ angular.module('projetobrasilFrontApp')
         }
 
       });
+
+      Rating.get({ratingId: $scope.$parent.proposalId}, function(data) {
+        $scope.rating = data;
+      });
     });
 
 	}]);
