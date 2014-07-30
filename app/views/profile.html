@@ -50,9 +50,15 @@
                 <div class="value">
                   <ul class="redes-sociais">
                     <li class="link-rede-social">
-                      <i class="fa fa-facebook-square"></i>
-                      <i class="fa fa-twitter-square"></i>
-                      <i class="fa fa-google-plus-square"></i>
+                      <a ng-href="{{selectedPolitical.facebook}}" ng-show="selectedPolitical.facebook">
+                        <i class="fa fa-facebook-square"></i>
+                      </a>
+                      <a ng-href="{{selectedPolitical.twitter}}" ng-show="selectedPolitical.twitter">
+                        <i class="fa fa-twitter-square"></i>
+                      </a>
+                      <a ng-href="{{selectedPolitical.youtube}}" ng-show="selectedPolitical.youtube">
+                        <i class="fa fa-youtube-play"></i>
+                      </a>
                     </li>
                   </ul>
                 </div>
