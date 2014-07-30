@@ -10,9 +10,14 @@
   </li>
 </ul>
 <ul ng-show="!userIsLogged"  class="nav navbar-nav navbar-right not-nav">
-  <button class="btn btn-default" ng-click="open('register')">Cadastre-se</button>
+  <button class="btn btn-success" style="margin-top: 7px" ng-click="open('register')">Cadastrar</button>
 </ul>
 
-<ul ng-show="!userIsLogged" class="nav navbar-nav navbar-right not-nav">
-  <a ng-click="open('login')">Entrar</a>
+<ul ng-show="!userIsLogged" class="nav navbar-nav navbar-right not-nav" style="
+    padding-top: 14px;
+    padding-right: 10px;
+    font-size: 1.1em;
+    color: white !important;
+">
+  <a ng-click="open('login')" style="cursor:pointer;"><i class="fa fa-lock"></i>  Entrar</a>
 </ul>

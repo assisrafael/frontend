@@ -10,9 +10,12 @@
         <li>{{proposal.tema}}</li>
         <li class="active">{{proposal.subtema}}</li>
       </ol>
-      <rating class="rating_stars" ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
-      <span>Avaliação geral: 3.3 / 5</span>
-  </div>
+<!--          <div  ng-controller="ProposalVotingCtrl">
+        Avalie: <rating class="rating_stars" ng-model="rate.nota" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null"></rating>
+        <span ng-show=" rate.nota > 0 ">| Sua avaliação: {{rate.nota}}</span>
+        <div class="nota-geral">Avaliação média: {{proposal.media}} <br></div>
+      </div>
+ -->  </div>
 
   <div class="row">
     <div class="col-xs-12">
