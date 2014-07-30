@@ -1,15 +1,17 @@
+@import "compass/css3/columns";
+
 .proposals-wrapper{
+  @include column-count(2);
+  @include column-gap(10px);
+
+  @media(max-width: 480px){
+    @include column-count(1);
+  }
 
   .proposal{
-    width: 49%;
+    display: inline-block;
+    width: 100%;
 
-    @media(max-width: 570px){
-      width: 48%;
-    }
-
-    @media(max-width: 480px){
-      width: 100%;
-    }
 
     &::before{
       content: "";

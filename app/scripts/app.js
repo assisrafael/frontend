@@ -7,7 +7,6 @@ angular.module('projetobrasilFrontApp', [
 	'ngTouch',
 	'ui.router',
   'ui.bootstrap',
-  'wu.masonry',
   'disqusHere',
   'http-auth-interceptor'
 ])

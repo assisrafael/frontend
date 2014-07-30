@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('projetobrasilFrontApp')
-.controller('ProposalCtrl', ['$scope', '$state', '$location', '$stateParams', 'proposalsGetter', 'Rating', 'categoryColorGetter', function ($scope, $state, $location, $stateParams, proposalsGetter, Rating, categoryColorGetter) {
+.controller('ProposalCtrl', ['$scope', '$state', '$location', '$stateParams', 'proposalsGetter', 'graphRating', 'categoryColorGetter', function ($scope, $state, $location, $stateParams, proposalsGetter, graphRating, categoryColorGetter) {
 
     $scope.rate = 3;
     $scope.max = 5;
@@ -26,7 +26,7 @@ angular.module('projetobrasilFrontApp')
 
       });
 
-      Rating.get({ratingId: $scope.$parent.proposalId}, function(data) {
+      graphRating.get({ratingId: $scope.$parent.proposalId}, function(data) {
         $scope.rating = data;
       });
     });

@@ -15,7 +15,6 @@
     "Hover": "*",
     "angular-bootstrap": "~0.11.0",
     "components-font-awesome": "~4.1.0",
-    "angular-masonry": "~0.8.1",
     "disqus-here": "~0.0.3",
     "angular-http-auth": "~1.2.1",
     "toastr": "~2.0.3"
