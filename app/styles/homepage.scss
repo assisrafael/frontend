@@ -7,7 +7,7 @@
 @import "cleanzone/config.scss";
 
 .homepage{
-
+  background: url('../images/homepage/meio.jpg') center top;
   // Geral
 
   section{
@@ -24,29 +24,70 @@
     background-color: $verde-claro;
   }
 
-  // Slideshow
+  // Topo
 
-  .slide-wrapper{
-    height: 450px;
-    padding: 0;
-  }
+  .topo-container{
+    padding-bottom: 10px;
 
-  .slide-text {
-    margin-top: 145px;
-    margin-left: 10%;
-    a{
-      border-bottom: 1px dashed;
+    .topo-texto{
+      width: 60%;
+      float: left;
+      margin-left: 3%;
+      position: relative;
+      z-index: 2;
+
+      @media(max-width: 992px){
+        width: 620px;
+        margin: auto;
+        float: none;
+      }
+
     }
-  }
+    .topo-video{
+      width: 40%;
+      float: left;
+      margin-left: -8%;
+      position: relative;
+      z-index: 1;
+      display: inline-block;
 
-  .slides-navigation {
-    font-size: 3em;
+      box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+      -webkit-transform: translateY(-5px);
+      transform: translateY(-5px);
 
-    a {
-      margin: 0 35px;
-      color: rgba(255,255,255,0.7);
+      &::before{
+        pointer-events: none;
+        position: absolute;
+        z-index: -1;
+        content: '';
+        top: 100%;
+        left: 5%;
+        height: 10px;
+        width: 90%;
+        opacity: 0;
+        background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 80%);
+        -webkit-transition-duration: 0.3s;
+        transition-duration: 0.3s;
+        -webkit-transition-property: transform, opacity;
+        transition-property: transform, opacity;
+        opacity: 1;
+        -webkit-transform: translateY(5px);
+        transform: translateY(5px);
+      }
+
+      @media(max-width: 1200px){
+        margin-left: -3%;
+      }
+
+      @media(max-width: 992px){
+        margin: auto;
+        float: none;
+        display: block;
+        margin-top: 80px;
+        width: 480px;
+      }
+
     }
-
   }
 
   .homepage-logo {
@@ -85,9 +126,8 @@
   // Conteudo do meio
 
   .meio {
-    background: url('../images/homepage/meio.jpg') center top;
     padding-top: 20px;
-    @include box-shadow(rgba(0,0,0,0.4) 0 10px 15px -7px inset, rgba(0,0,0,0.4) 0 -9px 15px -7px inset);
+    @include box-shadow(rgba(0,0,0,0.4) 0 -9px 15px -7px inset);
   }
 
   .descricao-meio {
@@ -120,7 +160,6 @@
     margin-top: 30px;
 
     .avatar{
-      // @include background(image-url("../images/homepage/avatar-candidato.jpg"));
       @include background-size(cover);
       background-repeat: no-repeat;
       @include border-radius(50%);
@@ -262,8 +301,6 @@
       margin-left: 15px;
   }
 
-
-
   .chamada-rodape {
       line-height: 1;
       margin: 20px 0;
@@ -286,7 +323,6 @@
     font-family: 'aller_displayregular';
     font-weight: normal;
     text-align: left;
-    width: 20em;
     text-transform: uppercase;
   }
 
@@ -327,7 +363,7 @@
       padding-top: 10px;
   }
 
-  .slogan.meio {
+  .slogan.topo {
       padding-top: 10px;
       padding-bottom: 10px;
   }
@@ -373,78 +409,6 @@
   .navbar-brand {
       padding-top: 0;
       padding-bottom: 0;
-  }
-
-
-  /* Everything but the jumbotron gets side spacing for mobile first views */
-  .header,
-  .marketing,
-  .footer {
-      padding-left: 15px;
-      padding-right: 15px;
-  }
-
-  .btn-navbar {
-      background-color: #09404C;
-      border: none;
-      color: #fff;
-  }
-
-  /* Custom page header */
-  .header {
-      background-color: #09404C;
-      padding-top: 0;
-      padding-bottom:0;
-  }
-  .header a {
-      color: white !important;
-  }
-
-  /* Make the masthead heading the same height as the navigation */
-  .header h3 {
-      margin-top: 0;
-      margin-bottom: 0;
-      line-height: 40px;
-      padding-bottom: 19px;
-  }
-
-  /* Custom page footer */
-  .footer {
-      color: #777;
-      border-top: 1px solid #e5e5e5;
-      position: fixed;
-      width: 100%;
-      height: 30px;
-      bottom: 0;
-      left: 0;
-      padding-top: 5px;
-      padding-bottom: 5px;
-      background-color: white;
-  }
-
-
-  .container-narrow > hr {
-      margin: 30px 0;
-  }
-
-  /* Main marketing message and sign up button */
-  .jumbotron {
-      text-align: center;
-      border-bottom: 1px solid #e5e5e5;
-  }
-
-  .jumbotron .btn {
-      font-size: 21px;
-      padding: 14px 24px;
-  }
-
-  /* Supporting marketing content */
-  .marketing {
-      margin: 40px 0;
-  }
-
-  .marketing p + h4 {
-      margin-top: 28px;
   }
 
 }
