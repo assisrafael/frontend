@@ -7,7 +7,7 @@ angular.module('projetobrasilFrontApp')
   return {
     getAllHistoryFacts: function(id) {
       //return the promise directly.
-      return $http.get(serverUri + '/politician/' + id + '/curriculum')
+      return $http.get(serverUri + '/politician/' + id + '/curriculum', { cache: true})
       .then(function(result) {
         //resolve the promise as the data
         return result.data;

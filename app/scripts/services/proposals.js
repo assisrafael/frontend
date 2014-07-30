@@ -7,7 +7,7 @@ angular.module('projetobrasilFrontApp')
 	return {
 		getProposal: function(id) {
 			//return the promise directly.
-			return $http.get(serverUri + '/proposal/' + id)
+			return $http.get(serverUri + '/proposal/' + id, { cache: true})
 			.then(function(result) {
 				//resolve the promise as the data
 				return result.data;
@@ -15,7 +15,7 @@ angular.module('projetobrasilFrontApp')
 		},
 		getAllProposals: function() {
 			//return the promise directly.
-			return $http.get(serverUri + '/proposals')
+			return $http.get(serverUri + '/proposals', { cache: true})
 			.then(function(result) {
 				//resolve the promise as the data
 				return result.data;
@@ -23,7 +23,7 @@ angular.module('projetobrasilFrontApp')
 		},
 		getPoliticianProposals: function(id) {
 			//return the promise directly.
-			return $http.get(serverUri + '/politician/' + id + '/proposals')
+			return $http.get(serverUri + '/politician/' + id + '/proposals', { cache: true})
 			.then(function(result) {
 				//resolve the promise as the data
 				return result.data;
