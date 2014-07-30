@@ -4,20 +4,22 @@ angular.module('projetobrasilFrontApp')
   .service('categoryColorGetter', function(){
     this.getColorTheme = function(theme){
       var colors = {
-        'Política Econômica' : '#8CD500',
-        'Políticas Sociais' : '#38990C',
-        'Saúde' : '#17A2DC',
-        'Educação' : '#062084',
-        'Segurança Pública' : '#652D90',
-        'Infraestrutura' : '#5E3209',
-        'Desenvolvimento Econômico' : '#ED1D24',
-        'Gestão Pública' : '#D91B8B',
-        'Direitos Humanos e Proteção de Minorias' : '#F6A41C',
-        'Política Externa e Defesa Nacional' : '#C883FF',
-        'Meio-ambiente' : '#2E281D',
-        'Cultura' : '#FFCD06',
-        'Esporte' : '#959595',
-        'Turismo' : '#FFABEC'
+         'Cultura e Turismo':'#8CD500',
+         'Democracia e Reforma Política':'#C883FF',
+         'Desenvolvimento Econômico':'#17A2DC',
+         'Direitos Humanos e Inclusão social':'#D91B8B',
+         'Educação':'#652D90',
+         'Esporte e lazer':'#5E3209',
+         'Gestão Pública':'#ED1D24',
+         'Infraestrutura':'#062084',
+         'Liberdades civis':'#1AE4B7',
+         'Segurança Pública':'#F6A41C',
+         'Meio-ambiente':'#38990C',
+         'Política Economica':'#2E281D',
+         'Política Externa e Defesa Nacional':'#FFCD06',
+         'Políticas Sociais':'#959595',
+         'Saúde':'#FFABEC',
+         'Outros':'#1AE4B7'
       };
 
       if(colors[theme]){
