@@ -149,6 +149,7 @@ angular.module('projetobrasilFrontApp')
         if(signinWin.closed) {
             clearInterval(timer);
             $scope.checkLoginNavbar();
+            $scope.cancel();
         }
       }, 1000);
     // // });
@@ -176,7 +177,6 @@ angular.module('projetobrasilFrontApp')
         $scope.loggedUserData = userData;
         $scope.userIsLogged = true;
         $scope.changeUser(userData);
-        $modalInstanceclose(loginUser);
         $rootScope.$broadcast('login');
       },
       function(){
