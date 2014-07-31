@@ -1,65 +1,24 @@
 <div class="homepage" ng-controller="HomepageCtrl">
-  <section class="slide-wrapper">
-    <div id="slides">
-      <ul class="slides-container">
-        <li>
-          <img src="images/homepage/topo.jpg" alt="Projeto Brasil"/>
-          <div class="slide-text">
-            <div class="homepage-logo"></div>
-            <h1 class="title">
-              <span><span>Contribua para construir uma política brasileira mais transparente, competente e democrática</span></span>
-            </h1>
-            <div class="decoracao-slogan"></div>
-          </div>
-        </li>
-        <li>
-          <img src="images/homepage/topo_2.jpg" alt="Projeto Brasil"/>
-          <div class="slide-text">
-            <div class="homepage-logo"></div>
-            <h1 class="title">
-              <span><span>Conheça, compare e avalie candidatos e propostas</span></span>
-            </h1>
-            <div class="decoracao-slogan"></div>
-          </div>
-        </li>
-        <li>
-          <img src="images/homepage/topo_3.jpg" alt="Projeto Brasil"/>
-          <div class="slide-text">
-            <div class="homepage-logo"></div>
-            <h1 class="title">
-              <span><span>
-                Conheça mais sobre o projeto<br>assistindo o
-                <a href="#" data-toggle="modal" data-target="#modalVideo">
-                  <i class="fa fa-youtube-play"></i>
-                   vídeo
-                </a>
-              </span></span>
-            </h1>
-            <div class="decoracao-slogan"></div>
-          </div>
-        </li>
-      </ul>
-      <nav class="slides-navigation">
-        <a href="#" class="next">
-          <i class="fa fa-angle-right"></i>
-        </a>
-        <a href="#" class="prev">
-          <i class="fa fa-angle-left"></i>
-        </a>
-      </nav>
+  <section class="topo-container container">
+    <div class="topo-texto">
+      <div class="slide-text">
+        <div class="homepage-logo"></div>
+        <h1 class="title">
+          <span><span>TORNAR A POLÍTICA BRASILEIRA MAIS TRANSPARENTE, COMPETENTE E DEMOCRÁTICA.</span></span>
+        </h1>
+        <div class="decoracao-slogan"></div>
+      </div>
+    </div>
+    <div class="topo-video">
+      <div class="video-wrapper">
+        <iframe src="//www.youtube.com/embed/R9QcFSbZKYU?rel=0" frameborder="0" allowfullscreen></iframe>
+      </div>
     </div>
   </section>
-
   <section class="meio">
     <div class="container">
       <div class="descricao-meio">
-        <a ui-sref="proposal-comparative">
-          <button class="btn btn-lg btn-flat verde-claro">
-            Compare
-          </button>
-        </a>
-        <p>ou</p>
-        <h2>CONHEÇA OS CANDIDATOS A PRESIDENCIA</h2>
+        <h2>CONHEÇA OS CANDIDATOS À PRESIDÊNCIA</h2>
         <p>clicando nas fotos abaixo</p>
         <div class="row">
           <div class="hp-candidato col-lg-3 col-md-4 col-sm-6 col-xs-12 grow" ng-repeat="politico in politicos | orderBy:'nome_urna' ">
@@ -69,7 +28,15 @@
               <div class="partido">{{politico.partido}}</div>
             </a>
           </div>
-
+          <div class="hp-candidato col-lg-3 col-md-4 col-sm-6 col-xs-12 grow">
+            <a ui-sref="proposal-comparative">
+              <div class="compare-btn">
+                <i class="fa fa-th"></i>
+                <h3 class="nome">Compare</h3>
+              </div>
+              <div class="compare-text nome">as propostas dos candidatos</div>
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -94,7 +61,7 @@
             <span>COMPARTILHA DO </span>NOSSO SONHO?
           </div>
           <p class="divulgue">
-             Então visite nosso <a href="https://github.com/ProjetoBrasil/"><i class="fa fa-github"></i> Github</a>, curta a página e ajude a divulgar o <span class="highlight">Projeto Brasil</span>
+             Então visite nosso <a href="https://github.com/ProjetoBrasil/"><i class="fa fa-github"></i> github</a>, curta a <a href="https://www.facebook.com/OProjetoBrasil"><i class="fa fa-facebook-square"></i> fanpage</a> e ajude a divulgar o <span class="highlight">Projeto Brasil</span>
           </p>
 
           <div class="fb-like-box" style="width: 100%" data-href="http://facebook.com/oprojetobrasil" data-height="550" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
@@ -121,22 +88,5 @@
       js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.0";
       fjs.parentNode.insertBefore(js, fjs);
     }(document, 'script', 'facebook-jssdk'));
-
-    $(function(){
-      $('#slides').superslides({
-        inherit_height_from: '.slide-wrapper',
-        animation: 'fade'
-      });
-
-
-      $('#modalVideo')
-        .on('shown.bs.modal', function (e) {
-          $(this).find('iframe').attr('src', '//www.youtube.com/embed/ZNCS2NUS5zo?html5=1');
-        })
-        .on('hide.bs.modal', function(e){
-          $(this).find('iframe').attr('src', '');
-        });
-
-    });
   </script>
 </div>

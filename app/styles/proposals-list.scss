@@ -1,11 +1,32 @@
 @import "compass/css3/columns";
 
 .proposals-wrapper{
-  @include column-count(2);
-  @include column-gap(10px);
+  position: relative;
 
-  @media(max-width: 480px){
-    @include column-count(1);
+  .btn-filter{
+    margin-bottom: 10px !important;
+  }
+
+  .category-filter{
+    width: 40%;
+  }
+
+  .collapsable-filters{
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.95);
+    z-index: 1;
+    padding: 15px 5px 20px;
+    color: #707070;
+    box-shadow: 0 8px 6px -6px rgba(163, 163, 163, 0.74);
+  }
+
+  .proposals-columns{
+    @include column-count(2);
+    @include column-gap(10px);
+
+    @media(max-width: 480px){
+      @include column-count(1);
+    }
   }
 
   .proposal{

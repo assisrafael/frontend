@@ -1,5 +1,14 @@
 <div class="proposals-wrapper">
-  <div class="proposal" ng-repeat="proposal in proposals">
+  <button type="button" class="btn btn-default btn-flat btn-filter" ng-click="isCollapsed = !isCollapsed">
+    <i class="fa fa-filter"></i> Filtrar por categoria
+  </button>
+  <div class="collapsable-filters" ng-hide="isCollapsed">
+    <label ng-repeat="category in categories" class="category-filter">
+      <input type="checkbox" ng-model='value' ng-change="filterChange(category)"> {{category}}
+    </label>
+  </div>
+  <div class="proposals-columns">
+    <div class="proposal" ng-repeat="proposal in proposals | propCategoryFilter:myFilter">
     <div class="proposal-content">
       <div class="theme" ng-style="{'color': proposal.cor}">
         {{proposal.tema}}
@@ -14,9 +23,9 @@
         <span ng-show=" userVotes[proposal.id] > 0 ">| Sua avaliação: {{userVotes[proposal.id]}}</span>
         <div class="nota-geral">Avaliação média: {{proposal.media}} <br></div>
       </div>
+        <a ui-sref="proposal({nameUrl:selectedPolitical.nome_url, proposalId:proposal.id})" class="detalhes"><i class="fa fa-plus"></i> Detalhes</a>
 
-      <a ui-sref="proposal({nameUrl:selectedPolitical.nome_url, proposalId:proposal.id})" class="detalhes"><i class="fa fa-plus"></i> Detalhes</a>
-
+      </div>
     </div>
   </div>
 </div>
