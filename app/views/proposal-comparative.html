@@ -6,7 +6,7 @@
       <li class="active">Comparativo das propostas</li>
     </ol>
     <div class="politicians-list">
-      <p class="selector-message">Clique sobre os candidatos para adicioná-los a comparação</p>
+      <p class="selector-message">Clique sobre dois ou três candidatos para adicioná-los a comparação</p>
 
       <div ng-repeat="politician in politicians | orderBy:'nome_urna'" class="politician-selector grow" ng-class="{'active': isSelected(politician), 'disabled':disableSelector()}" ng-click="toggleIsSelected(politician)" tooltip="{{politician.nome_urna}}" tooltip-placement="bottom" >
         <img ng-src="{{politician.foto}}" class="profile-avatar" width="100%">
