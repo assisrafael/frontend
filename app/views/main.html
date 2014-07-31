@@ -18,12 +18,6 @@
   <section class="meio">
     <div class="container">
       <div class="descricao-meio">
-        <a ui-sref="proposal-comparative">
-          <button class="btn btn-lg btn-flat verde-claro">
-            Compare
-          </button>
-        </a>
-        <p>ou</p>
         <h2>CONHEÇA OS CANDIDATOS À PRESIDÊNCIA</h2>
         <p>clicando nas fotos abaixo</p>
         <div class="row">
@@ -34,7 +28,15 @@
               <div class="partido">{{politico.partido}}</div>
             </a>
           </div>
-
+          <div class="hp-candidato col-lg-3 col-md-4 col-sm-6 col-xs-12 grow">
+            <a ui-sref="proposal-comparative">
+              <div class="compare-btn">
+                <i class="fa fa-th"></i>
+                <h3 class="nome">Compare</h3>
+              </div>
+              <div class="compare-text nome">as propostas dos candidatos</div>
+            </a>
+          </div>
         </div>
       </div>
     </div>

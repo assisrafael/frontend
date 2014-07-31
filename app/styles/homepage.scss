@@ -184,6 +184,27 @@
     }
   }
 
+  .compare-btn{
+    background-color: $verde-claro;
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    margin: auto;
+    color: white;
+
+    .nome{
+      margin-bottom: 20%;
+    }
+
+    i{
+      font-size: 5em;
+      margin: 22% auto -8%;
+    }
+  }
+
+  .compare-text.nome{
+    font-size: 1.5em;
+  }
 
   // Rodape
 
