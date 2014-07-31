@@ -22,12 +22,12 @@
           <h3 class="text-center" style="color:black; margin: 20px;">{{modalTitle}}</h3>
           <span ng-show="showName" style="cursor:pointer;" ng-click="changeToLogin()">Já é registrado? Clique aqui para fazer login.</span>
         </div>
-        <!-- <h4>Entrar com</h4>
-        <div class="btn-group btn-login-rede-social">
-          <button type="button" class="btn btn btn-default btn-facebook bg"><i class="fa fa-facebook"></i></button>
-          <button type="button" class="btn btn btn-facebook bg">Facebook</button>
+        <!-- <h4>Entrar com</h4> -->
+        <div class="btn-group btn-login-rede-social" ng-click="facebookLogin()">
+          <button type="button" class="btn btn btn-default btn-facebook bg"><i class="fa fa-facebook ng-click="facebookLogin()""></i></button>
+          <button type="button" class="btn btn btn-facebook bg" ng-click="facebookLogin()">Entrar com Facebook</button>
         </div>
-        <div class="btn-group btn-login-rede-social">
+<!--         <div class="btn-group btn-login-rede-social">
           <button type="button" class="btn btn btn-default btn-google-plus bg"><i class="fa fa-google-plus"></i></button>
           <button type="button" class="btn btn btn-google-plus bg ">Google+</button>
         </div> -->
@@ -36,13 +36,14 @@
 
     <div> -->
       <!-- <h4>{{subTitleEmail}}</h4> -->
-      <form style="margin-bottom: 0px !important; padding: 0 20px" class="form-horizontal" name="registerForm">
+      <form style="margin-bottom: 0px !important; padding: 0 20px" class="form-horizontal" name="registerForm"
+        ng-submit="formAction({username: username, fullname: fullname, password: password, passwordAgain: passwordAgain})">
         <div class="content">
           <div ng-show="showName" class="form-group">
             <div class="col-sm-12">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                <input ng-disabled="isDisabled" type="text" placeholder="Nome" id="username" class="form-control" autocomplete="off" ng-model="fullname" name="thefullname">
+                <input ng-disabled="isDisabled" type="text" placeholder="Nome" id="username" class="form-control" autocomplete="off" ng-model="fullname" name="thefullname" ng-required="showName">
               </div>
             </div>
           </div>
@@ -50,7 +51,7 @@
             <div class="col-sm-12">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-envelope-o"></i></span>
-                <input ng-disabled="isDisabled" type="email" placeholder="E-mail" id="username" class="form-control" autocomplete="off" ng-model="username">
+                <input ng-disabled="isDisabled" type="email" placeholder="E-mail" id="username" class="form-control" autocomplete="off" ng-model="username" required>
               </div>
             </div>
           </div>
@@ -58,7 +59,7 @@
             <div class="col-sm-12">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                <input ng-disabled="isDisabled" type="password" placeholder="Senha" id="password" class="form-control" autocomplete="off" style="" ng-model="password">
+                <input ng-disabled="isDisabled" type="password" placeholder="Senha" id="password" class="form-control" autocomplete="off" style="" ng-model="password" required ng-minlength=5 >
               </div>
             </div>
           </div>
@@ -66,7 +67,7 @@
             <div class="col-sm-12">
               <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                <input ng-disabled="isDisabled" type="password" placeholder="Repita sua senha" id="passwordAgain" class="form-control" autocomplete="off" style="" ng-model="passwordAgain">
+                <input ng-disabled="isDisabled" type="password" placeholder="Repita sua senha" id="passwordAgain" class="form-control" autocomplete="off" style="" ng-model="passwordAgain" required="showName" pwCheck>
               </div>
             </div>
           </div>
@@ -74,7 +75,7 @@
         <div class="modal-footer" style="position: absolute;
 width: 100%;
 left: 0px;">
-          <button ng-disabled="isDisabled" ng-click="formAction({username: username, fullname: fullname, password: password, passwordAgain: passwordAgain})" class="btn btn-primary">{{buttonText}}</button>
+          <button ng-disabled="isDisabled" type="submit" class="btn btn-primary">{{buttonText}}</button>
         </div>
       </form>
     </div>

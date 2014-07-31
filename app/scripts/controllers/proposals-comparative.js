@@ -1,12 +1,23 @@
 'use strict';
 
 angular.module('projetobrasilFrontApp')
-.controller('ProposalsComparativeCtrl', ['$scope', 'profileGetter', 'proposalsGetter', 'categoryColorGetter',
-	function($scope, profileGetter, proposalsGetter, categoryColorGetter){
+.controller('ProposalsComparativeCtrl', ['$scope', 'profileGetter', 'proposalsGetter', 'categoryColorGetter', 'UserRatings',
+	function($scope, profileGetter, proposalsGetter, categoryColorGetter, UserRatings){
 		profileGetter.getProfile().then(function(politicians) {
 			$scope.politicians = politicians;
 			$scope.selectedPoliticians = [];
 		});
+
+        proposalsGetter.getAllProposals().then(function(proposals) {
+      $scope.allProposals = proposals;
+
+      for (var i = 0; i < proposals.length; i++) {
+        $scope.allProposals[i].cor = categoryColorGetter.getColorTheme($scope.allProposals[i].tema);
+        // $scope.proposals[i].cor = categoryColorGetter.getColorTheme($scope.proposals[i].tema);
+      };
+
+      buildProposals();
+    });
 
 		$scope.isSelected = function(politician) {
 			return politician.isSelected;
@@ -57,7 +68,7 @@ angular.module('projetobrasilFrontApp')
 
 		function buildProposals() {
 			// if($scope.selectedPoliticians.length < 2) return;
-			// if(!$scope.allProposals) return;
+			if(typeof($scope.allProposals) === 'undefined') return;
 
 			var proposals = {};
 			$scope.allProposals.forEach(function(proposal) {
@@ -80,14 +91,14 @@ angular.module('projetobrasilFrontApp')
 			$scope.proposals = proposals;
 		}
 
-		proposalsGetter.getAllProposals().then(function(proposals) {
-			$scope.allProposals = proposals;
 
-      for (var i = 0; i < proposals.length; i++) {
-        $scope.allProposals[i].cor = categoryColorGetter.getColorTheme($scope.allProposals[i].tema);
-        // $scope.proposals[i].cor = categoryColorGetter.getColorTheme($scope.proposals[i].tema);
-      };
 
-			buildProposals();
-		});
+        $scope.userVotes = {};
+
+  $scope.$on('login', function(){
+    $scope.userVotes = UserRatings.get();
+  });
+  $scope.$on('logout', function(){
+    $scope.userVotes = {};
+  });
 }]);

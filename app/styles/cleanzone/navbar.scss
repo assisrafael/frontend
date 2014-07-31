@@ -310,6 +310,26 @@ body.modal-open, .modal-open .navbar-fixed-top, .modal-open .navbar-fixed-bottom
   border-color:#292A30;
 }
 
+/* Configuração da loading Bar */
+
+#loading-bar .bar {
+  background-color: $amarelo;
+  height: 3px;
+  top: 47px;
+  opacity: 0.85;
+}
+
+.btn-login-rede-social {
+  width: 100%;
+  margin-left: 24px !important;
+  margin-top: 28px;
+
+  .btn:last-child {
+    width: 215px;
+  }
+
+}
+
 @media (max-width: 767px) {
   .navbar-inverse .navbar-nav .open .dropdown-menu .divider{
     height:2px;

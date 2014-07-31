@@ -8,7 +8,7 @@ angular.module('projetobrasilFrontApp')
         $scope.politicos = data;
       }).
       error(function(data, status, headers, config) {
-        alert(status);
+        //alert(status);
       });
 
   });

@@ -1,13 +1,13 @@
 'use strict';
 
 angular.module('projetobrasilFrontApp')
-.controller('ProposalCtrl', ['$scope', '$state', '$location', '$stateParams', 'proposalsGetter', 'graphRating', 'categoryColorGetter', function ($scope, $state, $location, $stateParams, proposalsGetter, graphRating, categoryColorGetter) {
+.controller('ProposalCtrl', ['$scope', '$state', '$location', '$stateParams', 'proposalsGetter', 'graphRating', 'categoryColorGetter', 'UserRatings', function ($scope, $state, $location, $stateParams, proposalsGetter, graphRating, categoryColorGetter, UserRatings) {
 
-    $scope.rate = 3;
-    $scope.max = 5;
     $scope.isReadonly = true;
 
     $scope.id = $scope.$parent.proposalId;
+
+    $scope.proposal = $scope.$parent.proposal;
     $scope.url = $location.absUrl();
 
     $scope.$watch('selectedPolitical', function(politician){
@@ -30,5 +30,15 @@ angular.module('projetobrasilFrontApp')
         $scope.rating = data;
       });
     });
+
+
+        $scope.userVotes = {};
+
+  $scope.$on('login', function(){
+    $scope.userVotes = UserRatings.get();
+  });
+  $scope.$on('logout', function(){
+    $scope.userVotes = {};
+  });
 
 	}]);

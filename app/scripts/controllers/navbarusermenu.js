@@ -10,7 +10,7 @@ angular.module('projetobrasilFrontApp')
   };
 })
 .controller('loginFormCtrl',
-  function ($scope, $rootScope, $modalInstance, UserRegister, UserLogin, $log, modalType, loginMessage) {
+  function ($scope, $rootScope, $modalInstance, UserRegister, UserLogin, $log, modalType, loginMessage, checklogin) {
 
   // $scope.items = items;
   // $scope.selected = {
@@ -20,6 +20,7 @@ angular.module('projetobrasilFrontApp')
   $scope.modalType = modalType;
   $scope.isLoginMessage = false;
   $scope.isLoginError = false;
+  $scope.checkLoginNavbar = checklogin;
 
   if(loginMessage && loginMessage.length > 1){
     $scope.loginMessage = loginMessage;
@@ -79,7 +80,7 @@ angular.module('projetobrasilFrontApp')
           "showMethod": 'slideDown',
           "hideMethod": 'slideUp'
         };
-        toastr.error('Erro:' + err.error);
+        toastr.error('Erro: ' + err.error);
         });
 
   };
@@ -132,7 +133,25 @@ angular.module('projetobrasilFrontApp')
     $scope.buttonText = "Entrar";
     $scope.successText = "Sucesso no login";
     $scope.subTitleEmail = "Entrar com e-mail";
+    $scope.modalType = 'login';
     $scope.showName = false;
+  };
+
+    $scope.facebookLogin = function(){
+    $log.info('Vou logar com o Facebook');
+    // $http.get('').success(function(res){
+      var left = (screen.width/2)-(780/2);
+      var top = (screen.height/2)-(410/2);
+      var signinWin = window.open("http://api.projetobrasil.org:4242/v1/auth/facebook", "SignIn", "width=780,height=410,toolbar=0,scrollbars=0,status=0,resizable=0,location=0,menuBar=0,left=" + left + ",top=" + top);
+    //   setTimeout(CheckLoginStatus, 2000);
+      signinWin.focus();
+      var timer = setInterval(function() {
+        if(signinWin.closed) {
+            clearInterval(timer);
+            $scope.checkLoginNavbar();
+        }
+      }, 1000);
+    // // });
   };
 })
 .controller('NavbarUserMenuCtrl',
@@ -146,20 +165,26 @@ angular.module('projetobrasilFrontApp')
       }
     });
 
-    $scope.$on('event:login', function() {
+    $scope.$on('login', function() {
       if( !$scope.modalOpened ){
         $log.info('ACHEI UM LOGIN AQUI!');
       }
     });
 
-    UserLogin.isUserLogged(function(userData){
-      $scope.loggedUserData = userData;
-      $scope.userIsLogged = true;
-      $scope.changeUser(userData);
-    },
-    function(){
-      $scope.userIsLogged = false;
-    });
+    $scope.checkLoginNavbar = function(){
+      UserLogin.isUserLogged(function(userData){
+        $scope.loggedUserData = userData;
+        $scope.userIsLogged = true;
+        $scope.changeUser(userData);
+        $modalInstanceclose(loginUser);
+        $rootScope.$broadcast('login');
+      },
+      function(){
+        $scope.userIsLogged = false;
+      });
+    }
+
+    $scope.checkLoginNavbar();
     //$scope.loggedUserData = false;
 
     $scope.changeUser = function(userData){
@@ -188,6 +213,8 @@ angular.module('projetobrasilFrontApp')
 
   // $scope.items = ['item1', 'item2', 'item3'];
 
+
+
   $scope.open = function (modalType, loginMessage) {
     $scope.modalOpened = true;
     var modalInstance = $modal.open({
@@ -201,6 +228,9 @@ angular.module('projetobrasilFrontApp')
         loginMessage: function () {
           return loginMessage;
         },
+        checklogin: function(){
+          return $scope.checkLoginNavbar;
+        }
       }
     });
 
@@ -233,4 +263,18 @@ angular.module('projetobrasilFrontApp')
       //$log.info('Modal dismissed at: ' + new Date());
     });
   };
-});
+})
+.directive('pwCheck', [function () {
+  return {
+    require: 'ngModel',
+    link: function (scope, elem, attrs, ctrl) {
+      var firstPassword = '#' + attrs.pwCheck;
+      elem.add(firstPassword).on('keyup', function () {
+        scope.$apply(function () {
+          var v = elem.val()===$(firstPassword).val();
+          ctrl.$setValidity('pwmatch', v);
+        });
+      });
+    }
+  }
+}]);

@@ -16,4 +16,7 @@ angular.module('projetobrasilFrontApp')
       });
     }
 
+    $scope.$state = $state;
+
+
   });

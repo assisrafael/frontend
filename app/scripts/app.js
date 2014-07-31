@@ -8,7 +8,8 @@ angular.module('projetobrasilFrontApp', [
 	'ui.router',
   'ui.bootstrap',
   'disqusHere',
-  'http-auth-interceptor'
+  'http-auth-interceptor',
+  'angular-loading-bar'
 ])
 
 .run(['$rootScope', '$location', '$window', function($rootScope, $location, $window){

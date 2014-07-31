@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('projetobrasilFrontApp')
-.controller('ProposalsCtrl', function ($scope, $stateParams, proposalsGetter, categoryColorGetter, $log) {
+.controller('ProposalsCtrl', function ($scope, $stateParams, proposalsGetter, categoryColorGetter, $log, $http) {
 
 	$scope.$watch('selectedPolitical', function(politician) {
 		if(!politician) return;
@@ -16,30 +16,34 @@ angular.module('projetobrasilFrontApp')
 
   });
 
+
 })
 .controller('ProposalVotingCtrl', function($scope, $log, Rating, $http){
 
-  $scope.rate = Rating.get({ratingId: $scope.proposal.id});
+  //Solucao de contorno para quando o escopo nao tem o ID, apenas o escopo do pai
+  $scope.rate = $scope.$parent.userVotes[typeof($scope.proposal)==='undefined' ? $scope.id : $scope.proposal.id ];
 
   $scope.max = 5;
   $scope.isReadonly = false;
   $scope.userVote = 2;
+
   $scope.hoveringOver = function(value) {
     $scope.overStar = value;
     $scope.percent = 100 * (value / $scope.max);
   };
 
-  $scope.saveRate = function(newVal) {
-    $log.info('oi');
-  }
-
-  $scope.$watch('rate.nota', function(newVal, oldVal, scope){
-    $log.info('Mudou!' + scope.proposal.id + " De " + oldVal + ' para ' + newVal);
-   // $scope.saveRate(scope.proposal.id, newVal);
-    if(!(typeof newVal === 'undefined') && newVal > 0){
-      $http.post('http://api.projetobrasil.org:4242/v1/rating/' + scope.proposal.id, {nota: newVal});
+  $scope.saveRate = function(id, newVal) {
+    if( newVal > 0){
+      $http.post('http://api.projetobrasil.org:4242/v1/rating/' + id, {nota: newVal});
+      $log.info('salveis' + id + '----- '+ newVal);
     }
-    // Rating.post({ratingId: scope.proposal.id, nota: newVal});
-    //scope.userVote = newVal;
-  });
+  };
+
+  // $scope.$on('rate', function(newVal, oldVal, scope){
+  //   $log.info('Mudou!' + scope.proposal.id + " De " + oldVal + ' para ' + newVal);
+  //  // $scope.saveRate(scope.proposal.id, newVal);
+
+  //   // Rating.post({ratingId: scope.proposal.id, nota: newVal});
+  //   //scope.userVote = newVal;
+  // });
 });
