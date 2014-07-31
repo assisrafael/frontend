@@ -1,11 +1,18 @@
 @import "compass/css3/columns";
 
 .proposals-wrapper{
-  @include column-count(2);
-  @include column-gap(10px);
 
-  @media(max-width: 480px){
-    @include column-count(1);
+  .category-filter{
+    width: 33%;
+  }
+
+  .proposals-columns{
+    @include column-count(2);
+    @include column-gap(10px);
+
+    @media(max-width: 480px){
+      @include column-count(1);
+    }
   }
 
   .proposal{
