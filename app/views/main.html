@@ -61,10 +61,11 @@
             <span>COMPARTILHA DO </span>NOSSO SONHO?
           </div>
           <p class="divulgue">
-             Então visite nosso <a href="https://github.com/ProjetoBrasil/"><i class="fa fa-github"></i> github</a>, curta a <a href="https://www.facebook.com/OProjetoBrasil"><i class="fa fa-facebook-square"></i> fanpage</a> e ajude a divulgar o <span class="highlight">Projeto Brasil</span>
+             Então visite nosso <a href="https://github.com/ProjetoBrasil/" target="_blank"><i class="fa fa-github"></i> github</a>, curta a <a href="https://www.facebook.com/OProjetoBrasil" target="_blank"><i class="fa fa-facebook-square"></i> fanpage</a> e ajude a divulgar o <span class="highlight">Projeto Brasil</span>
           </p>
 
-          <div class="fb-like-box" style="width: 100%" data-href="http://facebook.com/oprojetobrasil" data-height="550" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="false" data-show-border="false"></div>
+          <div id="fb-root"></div>
+          <fb:like-box href="http://facebook.com/oprojetobrasil" height="550" colorscheme="light" show_faces="true" header="false" stream="false" show_border="false"></fb:like-box>
         </div>
       </div>
     </div>
@@ -79,14 +80,4 @@
       </div>
     </div>
   </div>
-
-  <script>
-    (function(d, s, id) {
-      var js, fjs = d.getElementsByTagName(s)[0];
-      if (d.getElementById(id)) return;
-      js = d.createElement(s); js.id = id;
-      js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.0";
-      fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-  </script>
 </div>
