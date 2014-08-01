@@ -39,28 +39,28 @@
 
     <div class="dash-cols" ng-show="selectedPoliticians.length >= 2 && selectedPoliticians.length <=3">
       <div class="panel-group accordion" id="accordion">
-        <div class="panel panel-default" ng-repeat="(theme, proposal) in proposals">
+        <div class="panel panel-default" ng-repeat="(themeTitle, themeProposal) in proposals">
           <div class="panel-heading">
             <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" data-target="#{{hash(theme)}}" class="collapsed">
-                <i class="fa fa-angle-right"></i>{{theme}}
+              <a data-toggle="collapse" data-parent="#accordion" data-target="#{{hash(themeTitle)}}" class="collapsed">
+                <i class="fa fa-angle-right"></i>{{themeTitle}}
                 <div class="pull-right actions hide">
                   Legenda das cores por vir...
                 </div>
               </a>
             </h4>
           </div>
-          <div id="{{hash(theme)}}" class="panel-collapse collapse" style="height: 0px;">
+          <div id="{{hash(themeTitle)}}" class="panel-collapse collapse" style="height: 0px;">
             <div class="panel-body">
               <div class="row">
-                <div class="col-sm-4" ng-repeat="(politicianId, p) in proposal">
+                <div class="col-sm-4" ng-repeat="politician in selectedPoliticians">
                   <div class="list-group tickets">
                     <li class="list-group-item" href="">
-                      <img class="avatar" ng-src="{{p.politician.foto}}" style="height:50px">
-                      <h4 class="name">{{p.politician.nome}}</h4>
+                      <img class="avatar" ng-src="{{politician.foto}}" style="height:50px">
+                      <h4 class="name">{{politician.nome}}</h4>
                     </li>
                   </div>
-                  <div class="proposal clearfix" ng-repeat="proposal in p.proposals">
+                  <div class="proposal clearfix" ng-repeat="proposal in themeProposal[politician.id].proposals">
                     <div class="proposal-content">
                       <div class="theme" ng-style="{'color': proposal.cor}">
                         {{proposal.tema}}
@@ -70,17 +70,17 @@
                       </div>
                       <p class="description">{{proposal.titulo}}</p>
                       <div class="well" style="padding: 10px" ng-controller="ProposalVotingCtrl">
-        Avalie: <rating class="rating_stars" ng-model="userVotes[proposal.id]" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" ng-click="saveRate(proposal.id, userVotes[proposal.id])"></rating>
-        <span ng-show=" userVotes[proposal.id] > 0 ">| Sua avaliação: {{userVotes[proposal.id]}}</span>
-        <div class="nota-geral">Avaliação média: {{proposal.media}} <br></div>
-      </div>
-                      <a ui-sref="proposal({nameUrl:p.politician.nome_url, proposalId:proposal.id})" class="detalhes"><i class="fa fa-plus"></i> Detalhes</a>
+                        Avalie: <rating class="rating_stars" ng-model="userVotes[proposal.id]" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" ng-click="saveRate(proposal.id, userVotes[proposal.id])"></rating>
+                        <span ng-show=" userVotes[proposal.id] > 0 ">| Sua avaliação: {{userVotes[proposal.id]}}</span>
+                        <div class="nota-geral">Avaliação média: {{proposal.media}} <br></div>
+                      </div>
+                      <a ui-sref="proposal({nameUrl:politician.nome_url, proposalId:proposal.id})" class="detalhes"><i class="fa fa-plus"></i> Detalhes</a>
                     </div>
                   </div>
-                  <!-- <div class="alert alert-success alert-white rounded" ng-repeat="s in p.proposals">
-                    <div class="icon"><i class="fa fa-check"></i></div>
-                    {{s.titulo}}
-                  </div> -->
+                  <div class="no-proposal" ng-hide="!!themeProposal[politician.id].proposals.length">
+                    <i class="fa fa-file-text"></i>
+                    <p>O candidato não submeteu nenhuma proposta para esse tema</p>
+                  </div>
                 </div>
               </div>
             </div>

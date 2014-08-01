@@ -19,7 +19,8 @@
     "angular-http-auth": "~1.2.1",
     "toastr": "~2.0.3",
     "angular-loading-bar": "~0.5.0",
-    "angular-nanoscroller": "~0.2.1"
+    "angular-nanoscroller": "~0.2.1",
+    "underscore": "~1.6.0"
   },
   "devDependencies": {
     "angular-mocks": "1.2.15",

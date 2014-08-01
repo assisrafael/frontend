@@ -19,6 +19,8 @@ angular.module('projetobrasilFrontApp', [
       return;
     $window.ga('send', 'pageview', { page: $location.path() });
   });
+
+ $rootScope._ = window._;
 }])
 
 .config(function ($stateProvider, $urlRouterProvider, $sceDelegateProvider, $locationProvider) {
