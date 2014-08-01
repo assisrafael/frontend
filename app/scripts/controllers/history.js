@@ -21,6 +21,9 @@ angular.module('projetobrasilFrontApp')
           case 'Acadêmico':
             classValue = 'fa fa-graduation-cap purple';
             break;
+          case 'Pessoal':
+            classValue = 'fa fa-child red';
+            break;
         }
         return classValue;
       }
