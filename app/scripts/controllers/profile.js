@@ -9,7 +9,7 @@ angular.module('projetobrasilFrontApp')
 
   profileGetter.getProfile().then(function(profiles) {
     if(!profiles) return;
-
+    $scope.userVotes = UserRatings.get();
     profiles = $filter('orderBy')(profiles, 'nome_urna');
     $scope.$parent.profiles = profiles;
     $scope.$parent.setActiveByName(profileName);
