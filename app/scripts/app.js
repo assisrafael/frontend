@@ -9,7 +9,8 @@ angular.module('projetobrasilFrontApp', [
   'ui.bootstrap',
   'disqusHere',
   'http-auth-interceptor',
-  'angular-loading-bar'
+  'angular-loading-bar',
+  'duScroll'
 ])
 
 .run(['$rootScope', '$location', '$window', function($rootScope, $location, $window){

@@ -18,23 +18,11 @@
 
   <div class="cl-mcont">
 
-    <!--  <div class="row">
-    <div class="block-flat" ng-show="selectedPoliticians.length < 2">
-    <h4>Selecione ao menos dois candidatos:</h4>
-    </div>
-
-    <div class="block-flat" ng-show="selectedPoliticians.length > 3">
-    <h4>Selecione no máximo três candidatos:</h4>
-    </div>
-    </div> -->
-
     <div class="politicians-list">
-
       <div ng-repeat="politician in politicians | orderBy:'nome_urna'" class="politician-selector" ng-hide="!isSelected(politician)" ng-click="toggleIsSelected(politician)">
         <i class="fa fa-times remove-politician"></i>
         <img ng-src="{{politician.foto}}" class="profile-avatar" width="100%">
       </div>
-
     </div>
 
     <div class="dash-cols" ng-show="selectedPoliticians.length >= 2 && selectedPoliticians.length <=3">
@@ -42,18 +30,15 @@
         <div class="panel panel-default" ng-repeat="(themeTitle, themeProposal) in proposals">
           <div class="panel-heading">
             <h4 class="panel-title">
-              <a data-toggle="collapse" data-parent="#accordion" data-target="#{{hash(themeTitle)}}" class="collapsed">
+              <a data-toggle="collapse" data-parent="#accordion" data-target="#{{hash(themeTitle)}}" class="collapsed" ng-click="scrollTo(hash(themeTitle))">
                 <i class="fa fa-angle-right"></i>{{themeTitle}}
-                <div class="pull-right actions hide">
-                  Legenda das cores por vir...
-                </div>
               </a>
             </h4>
           </div>
           <div id="{{hash(themeTitle)}}" class="panel-collapse collapse" style="height: 0px;">
             <div class="panel-body">
               <div class="row">
-                <div class="col-sm-4" ng-repeat="politician in selectedPoliticians">
+                <div class="col-sm-4" ng-repeat="politician in selectedPoliticians | orderBy:'nome_urna'">
                   <div class="list-group tickets">
                     <li class="list-group-item" href="">
                       <img class="avatar" ng-src="{{politician.foto}}" style="height:50px">

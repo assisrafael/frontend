@@ -1,8 +1,8 @@
 'use strict';
 
 angular.module('projetobrasilFrontApp')
-.controller('ProposalsComparativeCtrl', ['$scope', 'profileGetter', 'proposalsGetter', 'categoryColorGetter', 'UserRatings',
-	function($scope, profileGetter, proposalsGetter, categoryColorGetter, UserRatings){
+.controller('ProposalsComparativeCtrl', ['$scope', '$document', '$timeout', '$anchorScroll', 'profileGetter', 'proposalsGetter', 'categoryColorGetter', 'UserRatings',
+	function($scope, $document, $timeout ,$anchorScroll, profileGetter, proposalsGetter, categoryColorGetter, UserRatings){
 		profileGetter.getProfile().then(function(politicians) {
 			$scope.politicians = politicians;
 			$scope.selectedPoliticians = [];
@@ -50,6 +50,13 @@ angular.module('projetobrasilFrontApp')
 		$scope.hash = function(s) {
 			return s.toLowerCase().replace(/\s+/g, '');
 		};
+
+    $scope.scrollTo = function(hash){
+      $timeout(function(){
+        var elm = angular.element($('[data-target="#'+hash+'"]')[0]);
+        $document.scrollTo(elm, 55, 1000);
+      }, 400);
+    }
 
 		function findSelectedPoliticianById (politicianId) {
 			if(!$scope.selectedPoliticians) return;
