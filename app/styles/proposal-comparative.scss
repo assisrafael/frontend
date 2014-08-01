@@ -45,6 +45,23 @@
     font-size: 1.2em;
   }
 
+  .no-proposal{
+    text-align: center;
+
+    i{
+      font-size: 4.3em;
+      color: #DFDFDF;
+    }
+
+    p {
+      font-size: 1.1em;
+      margin-top: 10px;
+      color: #7C7B7B;
+      padding: 0 10px;
+    }
+
+  }
+
 }
 
 #toast-container{

@@ -9,7 +9,8 @@ angular.module('projetobrasilFrontApp', [
   'ui.bootstrap',
   'disqusHere',
   'http-auth-interceptor',
-  'angular-loading-bar'
+  'angular-loading-bar',
+  'duScroll'
 ])
 
 .run(['$rootScope', '$location', '$window', function($rootScope, $location, $window){
@@ -19,6 +20,8 @@ angular.module('projetobrasilFrontApp', [
       return;
     $window.ga('send', 'pageview', { page: $location.path() });
   });
+
+ $rootScope._ = window._;
 }])
 
 .config(function ($stateProvider, $urlRouterProvider, $sceDelegateProvider, $locationProvider) {
