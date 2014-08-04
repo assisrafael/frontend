@@ -14,6 +14,7 @@ angular.module('projetobrasilFrontApp')
       if(!politician) return;
 
       proposalsGetter.getProposal($scope.$parent.proposalId).then(function(data){
+        $scope.userVotes = UserRatings.get();
 
         if($scope.$parent.selectedPolitical.id == data.politicians_id){
           $scope.proposal = data;
