@@ -1,7 +1,9 @@
 {
   "name": "projetobrasilfront",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "grunt-contrib-imagemin": "git://github.com/gruntjs/grunt-contrib-imagemin"
+  },
   "devDependencies": {
     "grunt": "~0.4.1",
     "grunt-autoprefixer": "^0.7.3",
