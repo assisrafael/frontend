@@ -54,7 +54,7 @@ angular.module('projetobrasilFrontApp')
 
   $scope.max = 5;
   $scope.isReadonly = false;
-  $scope.userVote = 2;
+  // $scope.userVote = 2;
 
   $scope.hoveringOver = function(value) {
     $scope.overStar = value;
