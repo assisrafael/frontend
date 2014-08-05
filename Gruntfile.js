@@ -210,7 +210,7 @@ module.exports = function (grunt) {
         src: [
           '<%= yeoman.dist %>/scripts/{,*/}*.js',
           '<%= yeoman.dist %>/styles/{,*/}*.css',
-          '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+          // '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
           '<%= yeoman.dist %>/styles/fonts/*'
         ]
       }
@@ -269,6 +269,12 @@ module.exports = function (grunt) {
     // concat: {
     //   dist: {}
     // },
+
+    uglify: {
+      options: {
+        mangle: false
+      }
+    },
 
     imagemin: {
       dist: {
@@ -344,8 +350,9 @@ module.exports = function (grunt) {
             '.htaccess',
             '*.html',
             'views/{,*/}*.html',
-            'images/{,*/}*.{webp}',
-            'fonts/*'
+            'images/**',
+            'fonts/**',
+            'scripts/plugins/**/*.json'
           ]
         }, {
           expand: true,
@@ -357,6 +364,12 @@ module.exports = function (grunt) {
           cwd: '.',
           src: 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap/*',
           dest: '<%= yeoman.dist %>'
+        },
+        {
+          expand: true,
+          cwd: 'bower_components/components-font-awesome/fonts',
+          src: ['*.*'],
+          dest: '<%= yeoman.dist %>/fonts'
         }]
       },
       styles: {

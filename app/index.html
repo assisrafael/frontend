@@ -12,6 +12,13 @@
 	<link href='http://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
 
+  <!-- Facebook Meta-tags -->
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="projetobrasil.org">
+  <meta property="og:title" content="Projeto Brasil">
+  <meta property="og:description" content="Seus próximos 4 anos serão impactados por uma decisão que demora menos de 4 segundos: o voto para presidente! Por isso conheça, compare e avalie propostas e candidatos no Projeto Brasil!!! A hora é essa!">
+  <meta property="og:image" content="https://scontent-b-mia.xx.fbcdn.net/hphotos-xpf1/t31.0-8/10338534_244530542403273_8645519804201211162_o.jpg">
+
 
 	<!-- build:css(.) styles/vendor.css -->
 	<!-- bower:css -->
@@ -27,14 +34,6 @@
 	<!--[if lt IE 9]>
 	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 	<![endif]-->
-
-	<link rel="stylesheet" type="text/css" href="scripts/js-clnzn/jquery.easypiechart/jquery.easy-pie-chart.css" />
-	<link rel="stylesheet" type="text/css" href="scripts/js-clnzn/bootstrap.switch/bootstrap-switch.css" />
-	<link rel="stylesheet" type="text/css" href="scripts/js-clnzn/bootstrap.datetimepicker/css/bootstrap-datetimepicker.min.css" />
-	<link rel="stylesheet" type="text/css" href="scripts/js-clnzn/jquery.select2/select2.css" />
-	<link rel="stylesheet" type="text/css" href="scripts/js-clnzn/bootstrap.slider/css/slider.css" />
-	<link rel="stylesheet" type="text/css" href="scripts/js-clnzn/intro.js/introjs.css" />
-	<!-- Custom styles for this template -->
 
 	<!-- build:css({.tmp,app}) styles/main.css -->
 	<link href="styles/main.css" rel="stylesheet" />
@@ -118,6 +117,8 @@
 	<script src="bower_components/angular-nanoscroller/scrollable.js"></script>
 	<script src="bower_components/underscore/underscore.js"></script>
 	<script src="bower_components/angular-scroll/angular-scroll.min.js"></script>
+	<script src="bower_components/d3/d3.js"></script>
+	<script src="bower_components/topojson/topojson.js"></script>
 	<!-- endbower -->
 	<!-- endbuild -->
 
@@ -158,18 +159,6 @@
 
   <!-- PLUGINS -->
 	<script src="scripts/plugins/map/map.js"></script>
-  <script src="scripts/plugins/map/resources/d3.min.js"></script>
-  <script src="scripts/plugins/map/resources/topojson.js"></script>
-	<script src="scripts/js-clnzn/behaviour/general.js"></script>
-	<script src="scripts/js-clnzn/jquery.ui/jquery-ui.js"></script>
-	<script src="scripts/js-clnzn/jquery.sparkline/jquery.sparkline.min.js"></script>
-	<script src="scripts/js-clnzn/jquery.easypiechart/jquery.easy-pie-chart.js"></script>
-	<script src="scripts/js-clnzn/jquery.nestable/jquery.nestable.js"></script>
-	<script src="scripts/js-clnzn/bootstrap.switch/bootstrap-switch.min.js"></script>
-	<script src="scripts/js-clnzn/bootstrap.datetimepicker/js/bootstrap-datetimepicker.min.js"></script>
-	<script src="scripts/js-clnzn/jquery.select2/select2.min.js"></script>
-	<script src="scripts/js-clnzn/skycons/skycons.js"></script>
-	<script src="scripts/js-clnzn/bootstrap.slider/js/bootstrap-slider.js"></script>
 	<!-- endbuild -->
 
   <script>
@@ -184,8 +173,6 @@
     UserVoice.push(['addTrigger', { mode: 'satisfaction', trigger_position: 'bottom-right' }]);
     UserVoice.push(['autoprompt', {}]);
   </script>
-
-
 
 </body>
 </html>
