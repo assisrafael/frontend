@@ -10,6 +10,7 @@ angular.module('projetobrasilFrontApp')
 
         proposalsGetter.getAllProposals().then(function(proposals) {
       $scope.allProposals = proposals;
+      $scope.userVotes = UserRatings.get();
 
       for (var i = 0; i < proposals.length; i++) {
         $scope.allProposals[i].cor = categoryColorGetter.getColorTheme($scope.allProposals[i].tema);
