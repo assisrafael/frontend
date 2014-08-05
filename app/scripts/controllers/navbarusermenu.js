@@ -55,8 +55,8 @@ angular.module('projetobrasilFrontApp')
   //   $scope.registerButtonText = "Registrar agora";
   // };
 
-  $log.info($scope.modalType);
-  $log.info($scope.loginMessage);
+  // $log.info($scope.modalType);
+  // $log.info($scope.loginMessage);
 
 
   $scope.register = function (registeredUser) {
@@ -95,7 +95,7 @@ angular.module('projetobrasilFrontApp')
           "hideMethod": 'slideUp'
         };
         toastr.info('Login realizado com sucesso!');
-        $log.info('Sucesso no login: Usuario ' + res.user.username );
+        // $log.info('Sucesso no login: Usuario ' + res.user.username );
         $scope.sucessRegister = true;
         $modalInstance.close(loginUser);
 
@@ -138,7 +138,7 @@ angular.module('projetobrasilFrontApp')
   };
 
     $scope.facebookLogin = function(){
-    $log.info('Vou logar com o Facebook');
+    // $log.info('Vou logar com o Facebook');
     // $http.get('').success(function(res){
       var left = (screen.width/2)-(780/2);
       var top = (screen.height/2)-(410/2);
@@ -168,7 +168,7 @@ angular.module('projetobrasilFrontApp')
 
     $scope.$on('login', function() {
       if( !$scope.modalOpened ){
-        $log.info('ACHEI UM LOGIN AQUI!');
+        // $log.info('ACHEI UM LOGIN AQUI!');
       }
     });
 
@@ -237,10 +237,10 @@ angular.module('projetobrasilFrontApp')
     modalInstance.result.then(function (userData) {
       $scope.changeUser(userData);
       $scope.modalOpened = false;
-      $log.info('Login realizado!!' + userData);
+      // $log.info('Login realizado!!' + userData);
     }, function () {
       $scope.modalOpened = false;
-      $log.info('Modal dismissed at: ' + new Date());
+      // $log.info('Modal dismissed at: ' + new Date());
     });
   };
 
@@ -258,9 +258,9 @@ angular.module('projetobrasilFrontApp')
 
     modalInstance.result.then(function (userData) {
       //$scope.changeUser(userData);
-      //$log.info('Login realizado!!' + userData);
+      // $log.info('Login realizado!!' + userData);
     }, function () {
-      //$log.info('Modal dismissed at: ' + new Date());
+      // $log.info('Modal dismissed at: ' + new Date());
     });
   };
 })

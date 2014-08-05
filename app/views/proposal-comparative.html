@@ -6,7 +6,7 @@
       <li class="active">Comparativo das propostas</li>
     </ol>
     <div class="politicians-list">
-      <p class="selector-message">Clique sobre dois ou três candidatos para adicioná-los a comparação</p>
+      <!-- <p class="selector-message">Clique sobre dois ou três candidatos para adicioná-los a comparação</p> -->
 
       <div ng-repeat="politician in politicians | orderBy:'nome_urna'" class="politician-selector grow" ng-class="{'active': isSelected(politician), 'disabled':disableSelector()}" ng-click="toggleIsSelected(politician)" tooltip="{{politician.nome_urna}}" tooltip-placement="bottom" >
         <img ng-src="{{politician.foto}}" class="profile-avatar" width="100%">
@@ -24,7 +24,7 @@
         <img ng-src="{{politician.foto}}" class="profile-avatar" width="100%">
       </div>
     </div>
-
+    <div class="selector-message alert alert-info" ng-show="!(selectedPoliticians.length >= 2 && selectedPoliticians.length <=3)">Clique sobre dois ou três candidatos para adicioná-los a comparação</div>
     <div class="dash-cols" ng-show="selectedPoliticians.length >= 2 && selectedPoliticians.length <=3">
       <div class="panel-group accordion" id="accordion">
         <div class="panel panel-default" ng-repeat="(themeTitle, themeProposal) in proposals">
@@ -57,14 +57,14 @@
                       <div class="well" style="padding: 10px" ng-controller="ProposalVotingCtrl">
                         Avalie: <rating class="rating_stars" ng-model="userVotes[proposal.id]" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" ng-click="saveRate(proposal.id, userVotes[proposal.id])"></rating>
                         <span ng-show=" userVotes[proposal.id] > 0 ">| Sua avaliação: {{userVotes[proposal.id]}}</span>
-                        <div class="nota-geral">Avaliação média: {{proposal.media}} <br></div>
+                        <div class="nota-geral">Avaliação média: {{proposal.media | ratingFormat:2:"-":5}} <br></div>
                       </div>
                       <a ui-sref="proposal({nameUrl:politician.nome_url, proposalId:proposal.id})" class="detalhes"><i class="fa fa-plus"></i> Detalhes</a>
                     </div>
                   </div>
                   <div class="no-proposal" ng-hide="!!themeProposal[politician.id].proposals.length">
                     <i class="fa fa-file-text"></i>
-                    <p>O candidato não submeteu nenhuma proposta para esse tema</p>
+                    <p>O candidato não submeteu nenhuma proposta para este tema</p>
                   </div>
                 </div>
               </div>

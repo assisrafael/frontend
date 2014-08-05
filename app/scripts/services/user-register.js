@@ -26,8 +26,8 @@ angular.module('projetobrasilFrontApp')
     },
     isUserLogged: function(success){
      $http.get('http://api.projetobrasil.org:4242/v1/profile')
-      .success( function(userData) { $log.info('Sucesso!!!!'); success(userData); } )
-      .error( function(){  $log.error('Erro no checkloggedusers!!!!');  return false; } );
+      .success( function(userData) { success(userData); } )
+      .error( function(){ return false; } );
     }
   };
 }])

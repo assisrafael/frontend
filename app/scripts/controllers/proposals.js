@@ -54,7 +54,7 @@ angular.module('projetobrasilFrontApp')
 
   $scope.max = 5;
   $scope.isReadonly = false;
-  $scope.userVote = 2;
+  // $scope.userVote = 2;
 
   $scope.hoveringOver = function(value) {
     $scope.overStar = value;
@@ -64,7 +64,7 @@ angular.module('projetobrasilFrontApp')
   $scope.saveRate = function(id, newVal) {
     if( newVal > 0){
       $http.post('http://api.projetobrasil.org:4242/v1/rating/' + id, {nota: newVal});
-      $log.info('salveis' + id + '----- '+ newVal);
+      // $log.info('salveis' + id + '----- '+ newVal);
     }
   };
 

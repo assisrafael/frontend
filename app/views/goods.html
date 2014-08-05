@@ -11,13 +11,13 @@
   <tbody class="no-border-y">
     <tr ng-repeat="bem in politician_goods">
       <td style="width:30%;">{{bem.descricao}}</td>
-      <td class="text-right">{{bem.valor | currency:"R$":",":"."}}</td>
+      <td class="text-right">{{bem.valor | currencyFormat:"R$":",":"."}}</td>
     </tr>
   </tbody>
   <tfoot class="no-border-y strong-foot">
     <tr>
       <td style="width:30%;">Total</td>
-      <td class="text-right">{{totalValue | currency:"R$":",":"."}}</td>
+      <td class="text-right">{{totalValue | currencyFormat:"R$":",":"."}}</td>
     </tr>
   </tfoot>
 </table>
