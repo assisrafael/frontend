@@ -162,7 +162,7 @@ angular.module('projetobrasilFrontApp')
 
     $scope.$on('event:auth-loginRequired', function() {
       if( !$scope.modalOpened ){
-        $scope.open('register', 'Você precisa se registrar para continuar');
+        $scope.open('register', 'Você precisa se registrar para avaliar e comentar as propostas dos candidatos!');
       }
     });
 
