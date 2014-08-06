@@ -25,7 +25,7 @@
         </a>
         <p>Conheça, compare e comente as propostas por tema</p>
         <p class="ou">ou</p>
-        <h2>CONHEÇA OS CANDIDATOS À PRESIDÊNCIA</h2>
+        <h2>CONHEÇA OS CANDIDATOS À PRESIDÊNCIA<small style="vertical-align: top;">*</small></h2>
         <p>Clique nas fotos para ver as propostas, histórico e outras informações</p>
         <div class="row">
           <div class="hp-candidato col-lg-3 col-md-4 col-sm-6 col-xs-12 grow" ng-repeat="politico in politicos | orderBy:'nome_urna' ">
@@ -35,6 +35,7 @@
               <div class="partido">{{politico.partido}}</div>
             </a>
           </div>
+          <p class="col-sm-12 sort-message">* Ordenados alfabeticamente pelo nome para urna</p>
         </div>
       </div>
     </div>
