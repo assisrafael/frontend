@@ -45,7 +45,6 @@ angular.module('projetobrasilFrontApp')
 
   });
 
-
 })
 .controller('ProposalVotingCtrl', function($scope, $log, Rating, $http){
 

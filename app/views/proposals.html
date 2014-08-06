@@ -1,8 +1,8 @@
 <div class="proposals-wrapper">
-  <button type="button" class="btn btn-default btn-flat btn-filter" ng-click="isCollapsed = !isCollapsed">
+  <button id="btnFiltro" type="button" class="btn btn-default btn-flat btn-filter" ng-click="isCollapsed = !isCollapsed">
     <i class="fa fa-filter"></i> Filtrar por categoria
   </button>
-  <div class="collapsable-filters" ng-hide="isCollapsed">
+  <div class="collapsable-filters" ng-hide="isCollapsed" category-selector>
     <label ng-repeat="category in categories" class="category-filter">
       <input type="checkbox" ng-model='value' ng-change="filterChange(category)"> {{category}}
     </label>
