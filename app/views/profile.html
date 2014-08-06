@@ -83,6 +83,18 @@
                 <div class="title">Composição da coligação:</div>
                 <div class="value">{{selectedPolitical.composicao_coligacao}}</div>
               </div>
+              <div class="info">
+              <div class="title">Compartilhe: </div>
+                <div class="value">
+                  <ul class="redes-sociais">
+                    <li>
+                      <a twitter  data-lang="en" data-count='horizontal' data-url='{{url}}' data-via='oprojetobrasil' data-size="medium" data-text='Visite a página do {{selectedPolitical.nome_urna}} no Projeto Brasil' ></a>
+                      <a facebook class="facebookShare" data-url='{{url}}' data-shares='shares'>{{ shares }}</a>
+                      <div gplus class="g-plus" data-size="tall" data-annotation="bubble" data-href='{{url}}' data-action='share'></div>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
           <div class="block-control">

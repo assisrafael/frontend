@@ -45,4 +45,6 @@ angular.module('projetobrasilFrontApp')
   $scope.$on('logout', function(){
     $scope.userVotes = {};
   });
+
+  $scope.url = $location.absUrl();
 });

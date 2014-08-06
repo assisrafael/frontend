@@ -10,7 +10,8 @@ angular.module('projetobrasilFrontApp', [
   'disqusHere',
   'http-auth-interceptor',
   'angular-loading-bar',
-  'duScroll'
+  'duScroll',
+  'djds4rce.angular-socialshare'
 ])
 
 .run(['$rootScope', '$location', '$window', function($rootScope, $location, $window){
