@@ -1,3 +1,6 @@
+@import "cleanzone/config.scss";
+
+
 .proposal-detail{
 
   .page-head{
@@ -24,6 +27,21 @@
     }
   }
 
+  .pie-row{
+    .graph-labels{
+      list-style: none;
+      font-size: 1.1em;
+      font-weight: 600;
+      margin-top: 20%;
+    }
+
+    .label-stars {
+      width: 75px;
+      display: inline-block;
+      text-align: right;
+    }
+  }
+
   .voltar{
 
     a{
@@ -33,6 +51,26 @@
     }
 
     margin-bottom: 10px;
+  }
+
+  .map-wrapper{
+    position: relative;
+
+    .comming-soon-msg{
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.8);
+      top: 0;
+      z-index: 2;
+
+      p{
+        color: $verde-claro;
+        text-align: center;
+        font-size: 4.5em;
+        margin-top: 17%;
+        font-weight: 500;      }
+    }
   }
 
 

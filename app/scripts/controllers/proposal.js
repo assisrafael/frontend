@@ -10,6 +10,14 @@ angular.module('projetobrasilFrontApp')
     $scope.proposal = $scope.$parent.proposal;
     $scope.url = $location.absUrl();
 
+    $scope.coresPizza = {
+          '1' : '#7EC5AC',
+          '2' : '#4DA485',
+          '3' : '#308D6C',
+          '4' : '#1A7957',
+          '5' : '#086041'
+        };
+
     $scope.$watch('selectedPolitical', function(politician){
       if(!politician) return;
 
@@ -28,6 +36,17 @@ angular.module('projetobrasilFrontApp')
       });
 
       graphRating.get({ratingId: $scope.$parent.proposalId}, function(data) {
+        var total = 0;
+
+        for (var i = data.notas.length - 1; i >= 0; i--) {
+          total += data.notas[i].valor;
+        };
+
+        for (var i = data.notas.length - 1; i >= 0; i--) {
+          data.notas[i].porcentagem = (data.notas[i].valor*100 / total).toFixed(2);
+          data.notas[i].label = parseInt(data.notas[i].label);
+        };
+
         $scope.rating = data;
       });
     });

@@ -11,7 +11,8 @@ angular.module('projetobrasilFrontApp', [
   'http-auth-interceptor',
   'angular-loading-bar',
   'duScroll',
-  'djds4rce.angular-socialshare'
+  'djds4rce.angular-socialshare',
+  'ui-rangeSlider'
 ])
 
 .run(['$rootScope', '$location', '$window', function($rootScope, $location, $window){

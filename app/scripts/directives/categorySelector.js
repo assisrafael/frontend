@@ -1,7 +1,7 @@
 angular.module('projetobrasilFrontApp').directive('categorySelector', function ($document){
 
   return {
-    restrict: 'EA',
+    restrict: 'A',
     link: function(scope, element, attributes){
 
       var click = function(event){

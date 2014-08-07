@@ -23,8 +23,14 @@ angular.module('projetobrasilFrontApp').directive('pieChart', [function() {
             .append('g')
               .attr('transform', 'translate(' + width / 2 + ',' + height / 2 + ')');
 
-        var color = d3.scale.ordinal()
-          .range(['#98abc5', '#8a89a6', '#7b6888', '#6b486b', '#a05d56']);
+
+        var color = {
+          '1' : '#7EC5AC',
+          '2' : '#4DA485',
+          '3' : '#308D6C',
+          '4' : '#1A7957',
+          '5' : '#086041'
+        };
 
         var arc = d3.svg.arc()
           .outerRadius(radius - 10)
@@ -32,14 +38,16 @@ angular.module('projetobrasilFrontApp').directive('pieChart', [function() {
 
         var pie = d3.layout.pie()
           .sort(null)
-          .value(function(d) { return d.valor; });
+          .value(function(d) {
+            return d.valor;
+          });
 
         // watch for data changes and re-render
         scope.$watch('data', function(newVals) {
           if(newVals && newVals.$resolved){
             return scope.render(newVals);
           }
-        }, true);            
+        }, true);
 
         scope.$watch('filter', function(newValue) {
           if(typeof newValue !=='undefined') {
@@ -63,7 +71,7 @@ angular.module('projetobrasilFrontApp').directive('pieChart', [function() {
         scope.render = function(data){
           // remove all previous items before render
           svg.selectAll('*').remove();
-          
+
           data = (scope.filter)  ? applyFilter(data.estados) : data.notas;
 
           if(!data) { return; }
@@ -79,14 +87,22 @@ angular.module('projetobrasilFrontApp').directive('pieChart', [function() {
 
           g.append('path')
               .attr('d', arc)
-              .style('fill', function(d) { return color(d.data.label); });
+              .style('fill', function(d) { return color[d.data.label]; });
 
           g.append('text')
               .attr('transform', function(d) { return 'translate(' + arc.centroid(d) + ')'; })
               .attr('dy', '.35em')
               .style('text-anchor', 'middle')
-              .text(function(d) { return d.data.label; });
-          
+              .attr('dominant-baseline', 'central')
+              .attr('font-family', 'FontAwesome')
+              .attr('fill', '#FFCC28')
+              .text(function(d) {
+                var porcentagem = (d.data.porcentagem*100) + "%",
+                    estrela = "\uf005";
+
+                return d.data.label + " " + estrela;
+              });
+
         };
       }
     };

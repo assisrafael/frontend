@@ -18,22 +18,42 @@
       <p class="proposal-font"><strong>Fonte:</strong> {{proposal.fonte}}</p>
   </div>
 
+  <div class="row pie-row">
+    <div class="col-sm-4">
+      <h4>Distribuição de avaliações</h4>
+      <div data-pie-chart data-data="rating" data-filter="filter"></div>
+    </div>
+    <div class="col-sm-8">
+      <ul class="graph-labels">
+        <li ng-repeat="rate in rating.notas|orderBy:'label':true" ng-style="{'color':'{{coresPizza[rate.label]}}' }">
+          <span class="label-stars">
+            <i class="fa fa-star" ng-repeat="n in _.range(rate.label)"></i>
+          </span>
+           - {{rate.porcentagem}}%
+        </li>
+      </ul>
+    </div>
+  </div>
   <div class="row">
     <div class="col-xs-12">
       <h4>Panorama de avaliação por estado</h4>
       <p>Clique em cada estado para ver mais detalhes</p>
     </div>
-    <div class="col-sm-6">
-      <div data-brasil-map data-data="rating" data-filter='filter'></div>
-    </div>
-    <div class="col-sm-6">
-      <span>Avalia&ccedil;&otilde;es por estado: {{filter}}</span>
-      <div data-pie-chart data-data="rating" data-filter="filter"></div>
+    <div class="col-sm-12 map-wrapper clearfix">
+      <div class="col-sm-6">
+        <div data-brasil-map data-data="rating" data-filter='filter'></div>
+      </div>
+      <div class="col-sm-6">
+        <span>Avaliações por estado: {{filter}}</span>
+        <div data-pie-chart data-data="rating" data-filter="filter"></div>
+        <div range-slider min="0" max="100" model-min="0" model-max="100"></div>
+      </div>
+      <div class="comming-soon-msg" same-parent-height>
+        <p>Em breve...</p>
+      </div>
     </div>
   </div>
   <div>
-    <!-- <h2>Comentários</h2>
-    <div ui-view="comments"></div> -->
     <disqus-here shortname="projetobrasil" url="{{url}}" identifier="{{id}}" title="{{proposal.titulo}}">
     </disqus-here>
   </div>
