@@ -15,7 +15,12 @@
         <span ng-show=" userVotes[proposal.id] > 0 ">| Sua avaliação: {{userVotes[proposal.id]}}</span>
         <div class="nota-geral">Avaliação média: <span>{{proposal.media | ratingFormat:2:"-":5}}</span> <br></div>
       </div>
-      <p class="proposal-font"><strong>Fonte:</strong> {{proposal.fonte}}</p>
+      <p class="proposal-font">
+      <strong>Fonte:</strong> {{proposal.fonte}}
+      - <a ng-href="proposal.link_proposta">
+          <i class="fa fa-download"></i> Baixar
+        </a>
+      </p>
   </div>
 
   <div class="row pie-row">
