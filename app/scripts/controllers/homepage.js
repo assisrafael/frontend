@@ -1,14 +1,11 @@
 'use strict'
 
 angular.module('projetobrasilFrontApp')
-  .controller('HomepageCtrl', function($rootScope, $scope, $http, $log) {
+  .controller('HomepageCtrl', function($rootScope, $scope, $http, $log, profileGetter) {
 
-    $http.get($rootScope.apiBaseUrl+'politicians').
-      success(function(data, status, headers, config) {
-        $scope.politicos = data;
-      }).
-      error(function(data, status, headers, config) {
-        $log.error(status);
+    profileGetter.getProfile().then(function(profiles) {
+        if(!profiles) return;
+        $scope.politicos = profiles;
       });
 
   });
