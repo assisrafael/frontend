@@ -1,13 +1,12 @@
 'use strict';
 
 angular.module('projetobrasilFrontApp')
-  .factory('goodsGetter', function ($http) {
-    var serverUri = 'http://api.projetobrasil.org:4242/v1';
+  .factory('goodsGetter', function ($rootScope, $http) {
 
     return {
       getAllGoods: function(id) {
         //return the promise directly.
-        return $http.get(serverUri + '/politician/' + id + '/goods', { cache: true})
+        return $http.get($rootScope.apiBaseUrl + 'politician/' + id + '/goods', { cache: true})
         .then(function(result) {
           //resolve the promise as the data
           return result.data;

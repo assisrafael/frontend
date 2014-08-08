@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('projetobrasilFrontApp')
-.factory('Rating', ['$resource',
-  function($resource){
-    return $resource('http://api.projetobrasil.org:4242/v1/rating/:ratingId', {}, {});
+.factory('Rating', ['$rootScope', '$resource',
+  function($rootScope, $resource){
+    return $resource($rootScope.apiBaseUrl + 'rating/:ratingId', {}, {});
   }])
-.factory('UserRatings', ['$resource',
-  function($resource){
-    return $resource('http://api.projetobrasil.org:4242/v1/profile/ratings');
+.factory('UserRatings', ['$rootScope', '$resource',
+  function($rootScope, $resource){
+    return $resource($rootScope.apiBaseUrl + 'profile/ratings');
   }]);
