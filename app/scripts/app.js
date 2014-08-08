@@ -24,6 +24,7 @@ angular.module('projetobrasilFrontApp', [
   });
 
  $rootScope._ = window._;
+ $rootScope.apiBaseUrl = 'http://api.projetobrasil.org:4242/v1/';
 }])
 
 .config(function ($stateProvider, $urlRouterProvider, $sceDelegateProvider, $locationProvider) {

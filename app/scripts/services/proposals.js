@@ -1,13 +1,12 @@
 'use strict';
 
 angular.module('projetobrasilFrontApp')
-.factory('proposalsGetter', function ($http) {
-	var serverUri = 'http://api.projetobrasil.org:4242/v1';
+.factory('proposalsGetter', function ($rootScope, $http) {
 
 	return {
 		getProposal: function(id) {
 			//return the promise directly.
-			return $http.get(serverUri + '/proposal/' + id, { cache: true})
+			return $http.get($rootScope.apiBaseUrl + 'proposal/' + id, { cache: true})
 			.then(function(result) {
 				//resolve the promise as the data
 				return result.data;
@@ -15,7 +14,7 @@ angular.module('projetobrasilFrontApp')
 		},
 		getAllProposals: function() {
 			//return the promise directly.
-			return $http.get(serverUri + '/proposals', { cache: true})
+			return $http.get($rootScope.apiBaseUrl + 'proposals', { cache: true})
 			.then(function(result) {
 				//resolve the promise as the data
 				return result.data;
@@ -23,7 +22,7 @@ angular.module('projetobrasilFrontApp')
 		},
 		getPoliticianProposals: function(id) {
 			//return the promise directly.
-			return $http.get(serverUri + '/politician/' + id + '/proposals', { cache: true})
+			return $http.get($rootScope.apiBaseUrl + 'politician/' + id + '/proposals', { cache: true})
 			.then(function(result) {
 				//resolve the promise as the data
 				return result.data;

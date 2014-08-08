@@ -46,7 +46,7 @@ angular.module('projetobrasilFrontApp')
   });
 
 })
-.controller('ProposalVotingCtrl', function($scope, $log, Rating, $http){
+.controller('ProposalVotingCtrl', function($rootScope, $scope, $log, Rating, $http){
 
   //Solucao de contorno para quando o escopo nao tem o ID, apenas o escopo do pai
   $scope.rate = $scope.$parent.userVotes[typeof($scope.proposal)==='undefined' ? $scope.id : $scope.proposal.id ];
@@ -62,7 +62,7 @@ angular.module('projetobrasilFrontApp')
 
   $scope.saveRate = function(id, newVal) {
     if( newVal > 0){
-      $http.post('http://api.projetobrasil.org:4242/v1/rating/' + id, {nota: newVal});
+      $http.post($rootScope.apiBaseUrl+'rating/' + id, {nota: newVal});
       // $log.info('salveis' + id + '----- '+ newVal);
     }
   };

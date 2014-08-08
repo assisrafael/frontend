@@ -1,9 +1,9 @@
 'use strict'
 
 angular.module('projetobrasilFrontApp')
-  .controller('HomepageCtrl', function($scope, $http, $log) {
+  .controller('HomepageCtrl', function($rootScope, $scope, $http, $log) {
 
-    $http.get('http://api.projetobrasil.org:4242/v1/politicians').
+    $http.get($rootScope.apiBaseUrl+'politicians').
       success(function(data, status, headers, config) {
         $scope.politicos = data;
       }).
