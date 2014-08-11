@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('projetobrasilFrontApp')
-.controller('ProfilesCtrl', function ($scope, $state, $filter, $stateParams, $location, profileGetter, UserRatings) {
+.controller('ProfilesCtrl', function ($scope, $state, $filter, $stateParams, $location, profileGetter, UserRatings, headerInfos) {
   var profileName = $stateParams.nameUrl || '',
   proposalId = $stateParams.proposalId || '';
 
@@ -23,14 +23,28 @@ angular.module('projetobrasilFrontApp')
   }
 
   $scope.$parent.setActiveByName = function(nameUrl) {
-    var profiles = $scope.$parent.profiles;
+    var profiles = $scope.$parent.profiles,
+        og = {},
+        politician = {};
 
     for (var i = 0; i < profiles.length; i++) {
       var p = profiles[i];
       if(p.nome_url === nameUrl) {
         $scope.$parent.selectedPolitical = p;
+        politician = p;
       }
     }
+
+    og['url'] =  $location.absUrl();
+    og['siteName'] =  'projetobrasil.org';
+    og['title'] = politician.nome_urna + ' - Projeto Brasil';
+    og['description'] =  'Perfil do candidato ' + politician.nome;
+    og['imageUrl'] =  $location.absUrl() + politician.foto;
+    og['imageWidth'] =  '200';
+    og['imageHeight'] =  '200';
+
+    headerInfos.setTitle(politician.nome_urna + " :: Projeto Brasil");
+    headerInfos.setOGTags(og);
   };
 
   $scope.$parent.isActive = function(political) {
