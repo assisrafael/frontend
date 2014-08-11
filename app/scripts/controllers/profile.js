@@ -45,6 +45,7 @@ angular.module('projetobrasilFrontApp')
 
     headerInfos.setTitle(politician.nome_urna + " :: Projeto Brasil");
     headerInfos.setOGTags(og);
+    $scope.htmlReady();
   };
 
   $scope.$parent.isActive = function(political) {
