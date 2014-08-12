@@ -39,7 +39,7 @@ angular.module('projetobrasilFrontApp')
     og['siteName'] =  'projetobrasil.org';
     og['title'] = politician.nome_urna + ' - Projeto Brasil';
     og['description'] =  'Perfil do candidato ' + politician.nome;
-    og['imageUrl'] =  $location.host() + politician.foto;
+    og['imageUrl'] = $location.protocol() + "://" +  $location.host() + politician.foto;
     og['imageWidth'] =  '200';
     og['imageHeight'] =  '200';
 
