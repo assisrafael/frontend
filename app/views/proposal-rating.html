@@ -1,0 +1,31 @@
+<div class="well" style="padding: 10px">
+<!-- <i class="fa fa-5x fa-star"></i>
+ -->
+
+<!--   <rating
+    class="rating_stars"
+    ng-model="userVotes[proposal.id]"
+    max="5"
+    readonly="isReadonly"
+    on-hover="hoveringOver(value)"
+    on-leave="overStar = null"
+    ng-click="saveRate(proposal.id, userVotes[proposal.id])">
+    </rating> -->
+
+    <div class="row">
+      <div class="col-md-9">
+
+    <angular-ratings ng-model="userVotes[proposal.id]" notify-url="http://api.projetobrasil.org:4242/v1/rating" notify-id="proposal.id"></angular-ratings>
+  </div>
+  <div class="col-md-3">
+     <span style="font-size: 3em; color: #999; ">{{proposal.media | ratingFormat:1}}</span>
+
+   </div>
+<!--   <span ng-show=" userVotes[proposal.id] > 0 ">
+    | Sua avaliação: {{userVotes[proposal.id]}}
+  </span> -->
+  <!-- <div class="nota-geral">
+    Avaliação média: {{proposal.media | ratingFormat:2:"-":5}}
+    <br>
+  </div> -->
+</div>

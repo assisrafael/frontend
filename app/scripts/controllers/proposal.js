@@ -32,7 +32,6 @@ angular.module('projetobrasilFrontApp')
             nameUrl: $stateParams.nameUrl
           })
         }
-
       });
 
       graphRating.get({ratingId: $scope.$parent.proposalId}, function(data) {
@@ -61,4 +60,5 @@ angular.module('projetobrasilFrontApp')
     $scope.userVotes = {};
   });
 
-	}]);
+	}])
+;

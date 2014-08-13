@@ -1,0 +1,28 @@
+@include 'compass/utilities/general/clearfix';
+
+.angular-ratings {
+  @include clearfix;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    float: left;
+    padding: 2px;
+    cursor: pointer;
+    color: #999;
+
+    &:before {
+      content: "\f005";
+    }
+
+    &.over {
+      color: #FFCC28;
+    }
+
+    &.active {
+      color: #FFCC28;
+    }
+
+  }
+}
