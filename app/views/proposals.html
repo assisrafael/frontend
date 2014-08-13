@@ -10,21 +10,25 @@
   <div class="proposals-columns">
     <div class="proposal" ng-repeat="proposal in proposals | propCategoryFilter:myFilter">
     <div class="proposal-content">
-      <div class="theme" ng-style="{'color': proposal.cor}">
+      <div class="proposal-title">
+        <p>{{ proposal.titulo }}</p>
+      </div>
+      <div class="proposal-rating rating">
+        <div style="padding: 10px" ng-controller="ProposalVotingCtrl">
+          <rating class="rating_stars" ng-model="userVotes[proposal.id]" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" ng-click="saveRate(proposal.id, userVotes[proposal.id])"></rating>
+          <span ng-show=" userVotes[proposal.id] > 0 ">| Sua avaliação: {{userVotes[proposal.id]}}</span>
+        </div>
+      </div>
+      <div class="proposal-footer" ng-style="{'background-color': proposal.cor}">
         {{proposal.tema}}
-        <small>
-          {{proposal.subtema}}
-        </small>
+      </div>
+<!--       <div class="theme">
         {{userVote}}
       </div>
       <p class="description">{{proposal.titulo}}</p>
-      <div class="well" style="padding: 10px" ng-controller="ProposalVotingCtrl">
-        Avalie: <rating class="rating_stars" ng-model="userVotes[proposal.id]" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" ng-click="saveRate(proposal.id, userVotes[proposal.id])"></rating>
-        <span ng-show=" userVotes[proposal.id] > 0 ">| Sua avaliação: {{userVotes[proposal.id]}}</span>
         <div class="nota-geral">Avaliação média: {{proposal.media | ratingFormat:2:"-":5}} <br></div>
-      </div>
         <a ui-sref="proposal({nameUrl:selectedPolitical.nome_url, proposalId:proposal.id})" class="detalhes"><i class="fa fa-plus"></i> Detalhes</a>
-
+ -->
       </div>
     </div>
   </div>

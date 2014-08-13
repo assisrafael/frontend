@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('projetobrasilFrontApp')
-.controller('ProposalsCtrl', function ($scope, $stateParams, proposalsGetter, categoryColorGetter, $log, $http) {
+.controller('ProposalsCtrl', function ($scope, $stateParams, proposalsGetter, categoryColorGetter) {
 
   $scope.categories = [
     'Cultura e Turismo',

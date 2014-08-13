@@ -34,34 +34,34 @@
     width: 100%;
 
 
-    &::before{
-      content: "";
-      position: absolute;
-      top: 0;
-      right: 0;
-      border-width: 0 16px 16px 0;
-      border-style: solid;
-      border-color: #eee #fff;
-    }
+    // &::before{
+    //   content: "";
+    //   position: absolute;
+    //   top: 0;
+    //   right: 0;
+    //   border-width: 0 16px 16px 0;
+    //   border-style: solid;
+    //   border-color: #eee #fff;
+    // }
   }
 
 }
 
 .proposal{
-  margin-bottom: 10px;
-  background-color: #F6F6F6;
-  padding: 20px 20px 15px;
+  margin-bottom: 4px;
+  border: 1px solid #EBEBEB;
   border-radius: 3px;
-  position: relative;
+  overflow: hidden;
 
-  &::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    border-width: 0 16px 16px 0;
-    border-style: solid;
-    border-color: #eee #fff;
+  .proposal-title{
+    padding: 20px 12px 0px;
+  }
+
+  .proposal-footer {
+    padding: 4px 7px;
+    text-align: center;
+    color: #fff;
+    font-weight: 700;
   }
 
   .theme{
