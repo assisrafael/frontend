@@ -15,7 +15,7 @@ angular.module('projetobrasilFrontApp')
     'Liberdades civis',
     'Segurança Pública',
     'Meio-ambiente',
-    'Política Economica',
+    'Política Econômica',
     'Política Externa e Defesa Nacional',
     'Políticas Sociais',
     'Saúde',
