@@ -51,44 +51,28 @@
   margin-bottom: 4px;
   border: 1px solid #EBEBEB;
   border-radius: 3px;
-  overflow: hidden;
 
   .proposal-title{
     padding: 20px 12px 0px;
+    text-align: justify;
+
+    a{
+      color: #333;
+      margin-bottom: 10px;
+    }
   }
 
   .proposal-footer {
+    margin-top: 10px;
     padding: 4px 7px;
     text-align: center;
     color: #fff;
     font-weight: 700;
+    border-radius: 0 0 3px 3px;
   }
 
-  .theme{
-    font-size: 1.4em;
-    font-weight: 400;
-    text-shadow: 0 1px 1px #fff;
-
-    &::before{
-      content: '\25c9';
-    }
-
-    small::before{
-      content: '\203A';
-    }
-  }
-
-  .description{
-    padding: 5px 0px;
-    margin-bottom: 0;
-    text-align: justify;
-  }
-
-  .detalhes{
-    float: right;
-    color: #838383;
-    border-bottom: 1px #C4C2C2 dotted;
-    font-weight: 400;
+  .proposal-rating{
+    margin-bottom: 7px;
   }
 }
 
