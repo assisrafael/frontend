@@ -8,23 +8,21 @@
     </label>
   </div>
   <div class="proposals-columns">
-    <div class="proposal" ng-repeat="proposal in proposals | propCategoryFilter:myFilter">
-    <div class="proposal-content">
-      <div class="theme" ng-style="{'color': proposal.cor}">
-        {{proposal.tema}}
-        <small>
-          {{proposal.subtema}}
-        </small>
-        {{userVote}}
-      </div>
-      <p class="description">{{proposal.titulo}}</p>
-      <div class="well" style="padding: 10px" ng-controller="ProposalVotingCtrl">
-        Avalie: <rating class="rating_stars" ng-model="userVotes[proposal.id]" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" ng-click="saveRate(proposal.id, userVotes[proposal.id])"></rating>
-        <span ng-show=" userVotes[proposal.id] > 0 ">| Sua avaliação: {{userVotes[proposal.id]}}</span>
-        <div class="nota-geral">Avaliação média: {{proposal.media | ratingFormat:2:"-":5}} <br></div>
-      </div>
-        <a ui-sref="proposal({nameUrl:selectedPolitical.nome_url, proposalId:proposal.id})" class="detalhes"><i class="fa fa-plus"></i> Detalhes</a>
+         <elementox></elementox>
 
+    <div class="proposal" ng-repeat="proposal in proposals | propCategoryFilter:myFilter" ng-controller="ProposalVotingCtrl" post-repeat-directive>
+      <div class="proposal-content">
+        <div class="proposal-title">
+          <a ui-sref="proposal({nameUrl:selectedPolitical.nome_url, proposalId:proposal.id})">
+            {{ proposal.titulo }}
+          </a>
+        </div>
+        <div class="proposal-rating">
+          <proposalrating></proposalrating>
+        </div>
+        <div class="proposal-footer" ng-style="{'background-color': proposal.cor}">
+          {{proposal.tema}}
+        </div>
       </div>
     </div>
   </div>

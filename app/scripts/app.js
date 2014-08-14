@@ -12,7 +12,8 @@ angular.module('projetobrasilFrontApp', [
   'angular-loading-bar',
   'duScroll',
   'djds4rce.angular-socialshare',
-  'ui-rangeSlider'
+  'ui-rangeSlider',
+  'ratings'
 ])
 
 .run(['$rootScope', '$location', '$window', function($rootScope, $location, $window){

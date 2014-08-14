@@ -10,12 +10,21 @@
         <li>{{proposal.tema}}</li>
         <li class="active">{{proposal.subtema}}</li>
       </ol>
-      <div class="well" style="padding: 10px" ng-controller="ProposalVotingCtrl">
-        Avalie: <rating class="rating_stars" ng-model="userVotes[proposal.id]" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" ng-click="saveRate(proposal.id, userVotes[proposal.id])"></rating>
-        <span ng-show=" userVotes[proposal.id] > 0 ">| Sua avaliação: {{userVotes[proposal.id]}}</span>
-        <div class="nota-geral">Avaliação média: <span>{{proposal.media | ratingFormat:2:"-":5}}</span> <br></div>
-      </div>
+      <!-- <div style="padding: 10px" ng-controller="ProposalVotingCtrl"> -->
+        <!-- <span ng-show=" userVotes[proposal.id] > 0 ">| Sua avaliação: {{userVotes[proposal.id]}}</span> -->
+        <!-- <div class="nota-geral">Avaliação média: <span>{{proposal.media | ratingFormat:2:"-":5}}</span> <br></div> -->
+      <!-- </div> -->
       <p class="proposal-font"><strong>Fonte:</strong> {{proposal.fonte}}</p>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- <h4>Avaliação da proposta</h4> -->
+    </div>
+    <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+      <div class="well">
+        <proposalrating></proposalrating>
+      </div>
+    </div>
   </div>
 
   <div class="row pie-row">
@@ -58,7 +67,6 @@
     </disqus-here>
   </div>
 </div>
-
 
 <!-- <a ui-sref="profile" class="btn btn-default"><i class="fa fa-plus-circle"></i> Mais detalhes da proposta</a>
  -->
