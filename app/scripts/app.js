@@ -34,10 +34,15 @@ angular.module('projetobrasilFrontApp', [
   $locationProvider.hashPrefix('!');
 
 	$stateProvider
-	.state('main', {
+  .state('main', {
+    url: '/',
+    templateUrl: 'views/main.html',
+    controller: 'MainCtrl'
+  })
+	.state('teste-cego', {
 		url: '/',
-		templateUrl: 'views/main.html',
-		controller: 'MainCtrl'
+		templateUrl: 'views/teste-cego.html',
+		controller: 'TesteCegoCtrl'
 	})
 	.state('_', {
 		abstract: true,

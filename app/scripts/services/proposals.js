@@ -27,6 +27,9 @@ angular.module('projetobrasilFrontApp')
 				//resolve the promise as the data
 				return result.data;
 			});
-		}
+		},
+    getRandomProposals: function(count) {
+
+    }
 	}
 });
