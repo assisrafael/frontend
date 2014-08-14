@@ -45,28 +45,9 @@ angular.module('projetobrasilFrontApp')
   });
 })
 .directive('proposalrating', function($http, $log){
-
-   function link(scope, element, attrs){
-      function hoveringOver(value) {
-        // $scope.overStar = value;
-        // $scope.percent = 100 * (value / $scope.max);
-      };
-
-      scope.saveRate = function(id, newVal) {
-        if( newVal > 0){
-          $http.post('http://api.projetobrasil.org:4242/v1/rating/' + id, {nota: newVal})
-          .success(function(){
-            ga('send', 'event', 'rating', 'rated');
-          });
-          $log.info("Mudei");
-        }
-      };
-    }
-
   return {
     controller: 'ProposalVotingCtrl',
     restrict: 'E',
-    templateUrl: 'views/proposal-rating.html',
-    link: link,
+    templateUrl: 'views/proposal-rating.html'
   };
 });

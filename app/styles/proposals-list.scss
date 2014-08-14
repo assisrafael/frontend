@@ -32,17 +32,6 @@
   .proposal{
     display: inline-block;
     width: 100%;
-
-
-    // &::before{
-    //   content: "";
-    //   position: absolute;
-    //   top: 0;
-    //   right: 0;
-    //   border-width: 0 16px 16px 0;
-    //   border-style: solid;
-    //   border-color: #eee #fff;
-    // }
   }
 
 }
@@ -58,7 +47,8 @@
 
     a{
       color: #333;
-      margin-bottom: 10px;
+      padding-bottom: 10px;
+      display: block;
     }
   }
 

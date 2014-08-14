@@ -10,14 +10,21 @@
         <li>{{proposal.tema}}</li>
         <li class="active">{{proposal.subtema}}</li>
       </ol>
-      <div class="col-md-6 col-md-offset-3">
-        <proposalrating></proposalrating>
-      </div>
       <!-- <div style="padding: 10px" ng-controller="ProposalVotingCtrl"> -->
         <!-- <span ng-show=" userVotes[proposal.id] > 0 ">| Sua avaliação: {{userVotes[proposal.id]}}</span> -->
         <!-- <div class="nota-geral">Avaliação média: <span>{{proposal.media | ratingFormat:2:"-":5}}</span> <br></div> -->
       <!-- </div> -->
       <p class="proposal-font"><strong>Fonte:</strong> {{proposal.fonte}}</p>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <!-- <h4>Avaliação da proposta</h4> -->
+    </div>
+    <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+      <div class="well">
+        <proposalrating></proposalrating>
+      </div>
+    </div>
   </div>
 
   <div class="row pie-row">
