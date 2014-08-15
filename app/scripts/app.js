@@ -39,11 +39,6 @@ angular.module('projetobrasilFrontApp', [
     templateUrl: 'views/main.html',
     controller: 'MainCtrl'
   })
-	.state('teste-cego', {
-		url: '/',
-		templateUrl: 'views/teste-cego.html',
-		controller: 'TesteCegoCtrl'
-	})
 	.state('_', {
 		abstract: true,
 		views: {
@@ -63,6 +58,39 @@ angular.module('projetobrasilFrontApp', [
 			},
 		}
 	})
+  // .state('_proposals', {
+  //   parent: '_',
+  //   abstract: true,
+  //   views: {
+  //     '': {
+  //       templateUrl: 'views/structure.html'
+  //     },
+  //     'navbar@_': {
+  //       templateUrl: 'views/navbar.html'
+  //     },
+  //     'usermenu@_': {
+  //       templateUrl: 'views/navbarusermenu.html',
+  //       controller: 'NavbarUserMenuCtrl'
+  //     },
+  //     'sidebar@_': {
+  //       templateUrl: 'views/sidebar.html',
+  //       controller: 'SideBarProfilesCtrl'
+  //     },
+  //   }
+  // })
+  .state('teste-cego', {
+    parent: '_',
+    url: '/teste-cego',
+    views: {
+      '': {
+        templateUrl: 'views/teste-cego.html',
+        controller: 'TesteCegoCtrl'
+      },
+      'sidebar@_': {
+        template: 'opa'
+      }
+    }
+  })
 	.state('profile', {
 		parent: '_',
 		url: '/cand/:nameUrl',

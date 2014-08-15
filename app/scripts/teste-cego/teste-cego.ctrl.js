@@ -1,5 +1,7 @@
+'use strict';
+
 angular.module('projetobrasilFrontApp')
-.controller('ProposalsCtrl', 'proposalsGetter'[
+.controller('TesteCegoCtrl', ['proposalsGetter',
   function ($scope, proposalsGetter) {
 
   }]);
