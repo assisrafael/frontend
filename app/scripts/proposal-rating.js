@@ -10,11 +10,18 @@ angular.module('projetobrasilFrontApp')
       cache : true
     }});
 }])
-.controller('ProposalVotingCtrl', function($scope, $log, Rating, $http, profileGetter, UserRatings){
+.controller('ProposalVotingCtrl', function($scope, $log, Rating, $http, profileGetter, UserRatings, categoryColorGetter){
 
   if(angular.isUndefined($scope.userVotes) || $scope.userVotes === null){
     $scope.userVotes = {};
   }
+
+  $scope.getColor = function(tema){
+    return categoryColorGetter.getColorTheme(tema);
+  };
+
+  //se náo foi definido no scopo do pai, define agora
+  $scope.notifyUrl = typeof($scope.notifyUrl) === 'undefined' ? 'http://api.projetobrasil.org:4242/v1/rating' : $scope.notifyUrl;
 
   profileGetter.getProfile().then(function(profiles) {
     if(!profiles) return;

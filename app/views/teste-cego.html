@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container teste-cego">
   <div class="row">
     <div class="col-md-12">
       <h1>
@@ -9,18 +9,28 @@
   </div>
 
   <div class="row">
-    <div class="col-md-12">
-      <div ng-controller="TesteCegoCtrl">
+    <div class="col-md-12" class="proposals-container">
+      <div
+      ng-controller="TesteCegoCtrl"
+      ng-init="getSomeRandomProposals()"
+      class="proposal-wrapper" >
+        <proposalbox></proposalbox>
+        <button ng-init='i = 0' class="pular-proposta btn bnt-lg" ng-click="i=i+1; getNextProposal()">
+        Pular ({{i}})
+        </button>
 
+        <button class="pular-proposta btn bnt-lg btn-success" ng-disabled="true" ng-click="getNextProposal()">
+        Próxima proposta
+        </button>
       </div>
     </div>
   </div>
 
-  <div class="row rodape-teste-cego">
+<!--   <div class="row rodape">
     <div class="col-md-3">Atalho 1</div>
     <div class="col-md-3">Atalho 2</div>
     <div class="col-md-3">Atalho 3</div>
     <div class="col-md-3">Atalho 4</div>
-  </div>
+  </div> -->
 
 </div>

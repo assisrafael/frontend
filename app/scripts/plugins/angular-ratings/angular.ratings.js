@@ -31,10 +31,10 @@
               // return $http.post($attrs.notifyUrl, {
               //   id: $scope.notifyId,
               //   rating: rating
-
               return $http.post($attrs.notifyUrl + '/'+ $scope.notifyId, {
                 nota: rating
-              }).error(function(data) {
+              })
+              .error(function(data) {
                 if (typeof data === 'string') {
                   alert(data);
                 }
@@ -42,6 +42,17 @@
               });
             }
           };
+
+          // $scope.$on('rate', function(ev, rateNum){
+          //   console.log(rateNum);
+          //   $scope.setRating(parseInt(rateNum));
+
+          // });
+          // $scope.$on('rate2', $scope.setRating(2));
+          // $scope.$on('rate3', $scope.setRating(3));
+          // $scope.$on('rate4', $scope.setRating(4));
+          // $scope.$on('rate5', $scope.setRating(5));
+
           return $scope.setOver = function(n) {
             $scope.over = n;
             return $scope.$apply();

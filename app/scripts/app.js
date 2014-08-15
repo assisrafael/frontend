@@ -13,7 +13,8 @@ angular.module('projetobrasilFrontApp', [
   'duScroll',
   'djds4rce.angular-socialshare',
   'ui-rangeSlider',
-  'ratings'
+  'ratings',
+  'cfp.hotkeys'
 ])
 
 .run(['$rootScope', '$location', '$window', function($rootScope, $location, $window){

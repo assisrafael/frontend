@@ -1,15 +1,15 @@
 <div class="proposal">
-<div class="proposal-content">
-  <div class="proposal-title">
-    <!-- <a ui-sref="proposal({nameUrl:selectedPolitical.nome_url, proposalId:proposal.id})"> -->
-      {{ proposal.titulo }}
-    <!-- </a> -->
+  <div class="proposal-content">
+    <div class="proposal-title">
+      <!-- <a ui-sref="proposal({nameUrl:selectedPolitical.nome_url, proposalId:proposal.id})"> -->
+        {{ proposal.titulo }}
+      <!-- </a> -->
+    </div>
+    <div class="proposal-rating">
+      <proposalrating></proposalrating>
+    </div>
+    <div class="proposal-footer" ng-style="{'background-color': getColor(proposal.tema)}">
+      {{proposal.tema}}
+    </div>
   </div>
-  <div class="proposal-rating">
-    <proposalrating></proposalrating>
-  </div>
-  <div class="proposal-footer" ng-style="{'background-color': proposal.cor}">
-    {{proposal.tema}}
-  </div>
-</div>
 </div>

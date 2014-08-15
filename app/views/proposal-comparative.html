@@ -41,9 +41,9 @@
                       <h4 class="name">{{politician.nome}}</h4>
                     </li>
                   </div>
-                  <proposalbox class="clearfix" ng-repeat="proposal in themeProposal[politician.id].proposals">
+                  <div class="proposal clearfix" ng-repeat="proposal in themeProposal[politician.id].proposals">
 
-                  </proposalbox>
+                  </div>
                   <div class="no-proposal" ng-hide="!!themeProposal[politician.id].proposals.length">
                     <i class="fa fa-file-text"></i>
                     <p>O candidato não submeteu nenhuma proposta para este tema</p>

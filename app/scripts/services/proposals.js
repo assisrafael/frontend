@@ -29,7 +29,10 @@ angular.module('projetobrasilFrontApp')
 			});
 		},
     getRandomProposals: function(count) {
-
+      return $http.get("http://api.projetobrasil.org:4242/v1/blindTest/proposals/sort/" + count)
+      .then(function(result){
+        return result.data;
+      });
     }
 	}
 });
