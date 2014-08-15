@@ -12,7 +12,6 @@ angular.module('projetobrasilFrontApp')
 }])
 .controller('ProposalVotingCtrl', function($scope, $log, Rating, $http, profileGetter, UserRatings){
 
-
   if(angular.isUndefined($scope.userVotes) || $scope.userVotes === null){
     $scope.userVotes = {};
   }
@@ -29,20 +28,11 @@ angular.module('projetobrasilFrontApp')
       $scope.userVotes = {};
   });
 
-  $scope.user_rating = 3;
-    $scope.id = 1;
+  //Solucao de contorno para quando o escopo nao tem o ID,
+  //apenas o escopo do pai
+  var proposalId = typeof($scope.proposal) === 'undefined' ? $scope.id : $scope.proposal.id
+  $scope.rate = $scope.userVotes[proposalId];
 
-  //Solucao de contorno para quando o escopo nao tem o ID, apenas o escopo do pai
-
-  $scope.rate = $scope.userVotes[typeof($scope.proposal)==='undefined' ? $scope.id : $scope.proposal.id ];
-
-  $scope.isReadonly = false;
-
-  $scope.$on('rate', function(newVal, oldVal, scope){
-    $log.info('Mudou!' + scope.proposal.id + " De " + oldVal + ' para ' + newVal);
-   // $scope.saveRate(scope.proposal.id, newVal);
-    //scope.userVote = newVal;
-  });
 })
 .directive('proposalrating', function($http, $log){
   return {

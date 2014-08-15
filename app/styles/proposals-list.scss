@@ -30,7 +30,6 @@
   }
 
   .proposal{
-    display: inline-block;
     width: 100%;
   }
 
@@ -40,6 +39,9 @@
   margin-bottom: 4px;
   border: 1px solid #EBEBEB;
   border-radius: 3px;
+  display: inline-block;
+  width: 100%;
+
 
   .proposal-title{
     padding: 20px 12px 0px;

@@ -8,26 +8,7 @@
     </label>
   </div>
   <div class="proposals-columns">
-         <elementox></elementox>
-
-    <div class="proposal" ng-repeat="proposal in proposals | propCategoryFilter:myFilter" ng-controller="ProposalVotingCtrl" post-repeat-directive>
-      <div class="proposal-content">
-        <div class="proposal-title">
-          <a ui-sref="proposal({nameUrl:selectedPolitical.nome_url, proposalId:proposal.id})">
-            {{ proposal.titulo }}
-          </a>
-        </div>
-        <div class="proposal-rating">
-          <proposalrating></proposalrating>
-        </div>
-        <div class="proposal-footer" ng-style="{'background-color': proposal.cor}">
-          {{proposal.tema}}
-        </div>
-      </div>
-    </div>
+  <proposalbox class="" ng-repeat="proposal in proposals | propCategoryFilter:myFilter" post-repeat-directive>
+  </proposalbox>
   </div>
 </div>
-
-
-
-
