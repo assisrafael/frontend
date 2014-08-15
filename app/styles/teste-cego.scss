@@ -5,12 +5,39 @@
     bottom: 0;
   }
 
+  h1 {
+    text-align: center;
+    margin: 50px;
+  }
+
   .proposal-wrapper {
     text-align: center;
   }
 
+  .buttons-wrapper {
+    text-align: center;
+  }
+
+  .rating-stars{
+    //margin-left: 110px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .rating-icon {
+    display: none;
+  }
+
   .proposal {
     max-width: 500px;
-    font-size: 2.5em;
+    font-size: 1.5em;
+    line-height: 1.5em;
+  }
+
+  button.pular-proposta {
+    font-size: 1.5em;
+    margin: 30px;
+    padding: 10px 50px;
+
   }
 }

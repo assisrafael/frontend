@@ -1,9 +1,10 @@
-<div class="container teste-cego">
+<div class="container teste-cego" ng-controller="TesteCegoCtrl"
+      ng-init="getSomeRandomProposals()">
   <div class="row">
     <div class="col-md-12">
       <h1>
-        Teste cego de propostas
-        <small>Vote nas propostas sem preconceito</small>
+        Teste cego de propostas<br/>
+        <small>Vote nas propostas sem preconceito <i class="fa fa-question-circle" tooltip="Não é informado o canditato autor das propostas."  tooltip-trigger="mouseenter" tooltip-placement="bottom"></i></small>
       </h1>
     </div>
   </div>
@@ -11,18 +12,22 @@
   <div class="row">
     <div class="col-md-12" class="proposals-container">
       <div
-      ng-controller="TesteCegoCtrl"
-      ng-init="getSomeRandomProposals()"
       class="proposal-wrapper" >
-        <proposalbox></proposalbox>
-        <button ng-init='i = 0' class="pular-proposta btn bnt-lg" ng-click="i=i+1; getNextProposal()">
-        Pular ({{i}})
-        </button>
-
-        <button class="pular-proposta btn bnt-lg btn-success" ng-disabled="true" ng-click="getNextProposal()">
-        Próxima proposta
+        <proposalbox showIcon="false"></proposalbox>
         </button>
       </div>
+    </div>
+  </div>
+  <div class="row">
+
+    <div class="col-md-12 buttons-wrapper">
+      <!--    <button ng-init='i = 0' class="pular-proposta btn bnt-lg" ng-click="i=i+1; getNextProposal()">
+        Pular ({{i}})
+        </button>
+ -->
+        <button class="pular-proposta btn bnt-lg btn-success" ng-click="getNextProposal()">
+        <i class="fa fa-arrow-circle-right"></i> Próxima proposta
+        </button>
     </div>
   </div>
 

@@ -36,7 +36,7 @@
               })
               .error(function(data) {
                 if (typeof data === 'string') {
-                  alert(data);
+                  //alert(data);
                 }
                 return $scope.model = 0;
               });

@@ -5,7 +5,7 @@
     notify-url="{{notifyUrl}}"
     notify-id="proposal.id"></angular-ratings>
   </div>
-  <div class="col-xs-4" style="text-align: center;">
+  <div class="col-xs-4 rating-icon" style="text-align: center;">
    <span ng-class="userVotes[proposal.id] ? 'user-rate' :'vote-text'">
    {{userVotes[proposal.id] || 'Avalie'}}
    </span>
