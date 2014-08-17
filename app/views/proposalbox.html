@@ -3,6 +3,8 @@
     <div class="proposal-title">
       <!-- <a ui-sref="proposal({nameUrl:selectedPolitical.nome_url, proposalId:proposal.id})"> -->
         {{ proposal.titulo }}
+        <br>
+        <a class="proposalDetailsLink" ui-sref="proposal({nameUrl:selectedPolitical.nome_url, proposalId:proposal.id})" ng-show="showMoreDetailsLink">Mais detalhes <i class="fa fa-angle-double-right"></i> </a>
       <!-- </a> -->
     </div>
     <div class="proposal-rating">

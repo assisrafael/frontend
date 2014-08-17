@@ -42,6 +42,15 @@
   display: inline-block;
   width: 100%;
 
+  .proposalDetailsLink {
+    text-align: right;
+    text-weight: bold;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
   .proposal-content {
     background-color: #fff;
   }

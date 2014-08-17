@@ -14,16 +14,21 @@ angular.module('projetobrasilFrontApp', [
   'djds4rce.angular-socialshare',
   'ui-rangeSlider',
   'ratings',
-  'cfp.hotkeys'
+  'cfp.hotkeys',
+  'angularytics'
 ])
-
+.config(function(AngularyticsProvider) {
+  AngularyticsProvider.setEventHandlers(['Console', 'GoogleUniversal']);
+}).run(function(Angularytics) {
+  Angularytics.init();
+})
 .run(['$rootScope', '$location', '$window', function($rootScope, $location, $window){
- $rootScope
- .$on('$stateChangeSuccess', function(event){
-    if (!$window.ga)
-      return;
-    $window.ga('send', 'pageview', { page: $location.path() });
-  });
+ // $rootScope
+ // .$on('$stateChangeSuccess', function(event){
+ //    if (!$window.ga)
+ //      return;
+ //    $window.ga('send', 'pageview', { page: $location.path() });
+ //  });
 
  $rootScope._ = window._;
  $rootScope.apiBaseUrl = 'http://api.projetobrasil.org:4242/v1/';
