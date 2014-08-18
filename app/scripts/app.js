@@ -64,6 +64,11 @@ angular.module('projetobrasilFrontApp', [
 			},
 		}
 	})
+  .state('ranking', {
+    url: '/ranking',
+    templateUrl: 'views/politicians-ranking.html',
+    controller: 'PoliticiansRankingCtrl'
+  })
   // .state('_proposals', {
   //   parent: '_',
   //   abstract: true,
