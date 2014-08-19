@@ -3,8 +3,9 @@
   <div class="row">
     <div class="col-md-12">
       <h1>
+        <i class="fa fa-eye-slash fa-2x"></i><br/>
         Teste cego de propostas<br/>
-        <small>Vote nas propostas sem preconceito <i class="fa fa-question-circle" tooltip="Não é informado o canditato autor das propostas."  tooltip-trigger="mouseenter" tooltip-placement="bottom"></i></small>
+        <small>Vote nas propostas sem preconceito <i class="fa fa-asterisk" tooltip="Não é informado o canditato autor das propostas."  tooltip-trigger="mouseenter" tooltip-placement="bottom"></i></small>
       </h1>
     </div>
   </div>
@@ -13,8 +14,7 @@
     <div class="col-md-12" class="proposals-container">
       <div
       class="proposal-wrapper" >
-        <proposalbox showIcon="false"></proposalbox>
-        </button>
+        <proposalbox showIcon="false" teste-cego></proposalbox>
       </div>
     </div>
   </div>
@@ -30,6 +30,15 @@
         </button>
     </div>
   </div>
+  <!-- <div class="row">
+    <div class="col-md-12">
+      <div class="progress">
+        <div class="progress-bar progress-bar-success" ng-style="{'width': progress }">
+        {{progress}}
+        </div>
+      </div>
+    </div>
+  </div> -->
 
 <!--   <div class="row rodape">
     <div class="col-md-3">Atalho 1</div>

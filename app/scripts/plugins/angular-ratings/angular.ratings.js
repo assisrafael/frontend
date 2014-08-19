@@ -1,11 +1,9 @@
 // Based on https://github.com/thomporter/angular-ratings
 
-(function() {
-  var app;
+'use strict';
 
-  app = angular.module('ratings', []);
-
-  app.directive("angularRatings", function() {
+angular.module('projetobrasilFrontApp')
+  .directive("angularRatings", function() {
     return {
       restrict: 'E',
       scope: {
@@ -20,19 +18,33 @@
               + '<li id="3" ng-class="{active:model>2,over:over>2}" class="fa fa-2x"></li>'
               + '<li id="4" ng-class="{active:model>3,over:over>3}" class="fa fa-2x"></li>'
               + '<li id="5" ng-class="{active:model>4,over:over>4}" class="fa fa-2x"></li>'
+              + '<li id="checkmark" class="fa fa-2x"></li>'
               + '</ol></div>',
       controller: [
-        '$scope', '$attrs', '$http', function($scope, $attrs, $http) {
+        '$scope', '$attrs', '$http', function($scope, $rootScope, $attrs, $http) {
           $scope.over = 0;
-          $scope.setRating = function(rating) {
+          $scope.setRating = function(event) {
+
+            var rating = event.target.id;
             $scope.model = rating;
+
+            if($scope.$parent.testeCego){
+              $scope.disableRating();
+            }
+
             $scope.$apply();
             if ($attrs.notifyUrl !== void 0 && $scope.notifyId) {
               // return $http.post($attrs.notifyUrl, {
               //   id: $scope.notifyId,
               //   rating: rating
+
+              $rootScope.$broadcast('rated');
+
               return $http.post($attrs.notifyUrl + '/'+ $scope.notifyId, {
                 nota: rating
+              })
+              .success(function(data){
+                alert(data);
               })
               .error(function(data) {
                 if (typeof data === 'string') {
@@ -53,32 +65,53 @@
           // $scope.$on('rate4', $scope.setRating(4));
           // $scope.$on('rate5', $scope.setRating(5));
 
-          return $scope.setOver = function(n) {
-            $scope.over = n;
-            return $scope.$apply();
+          return $scope.setOver = function(event) {
+            var overValue;
+            if(event.type == "mouseover"){
+              overValue = event.target.id;
+            } else if(event.type == "mouseout"){
+              overValue = 0;
+            }
+              $scope.over = overValue;
+              return $scope.$apply();
           };
         }
       ],
       link: function(scope, iElem, iAttrs) {
-        if (iAttrs.notifyUrl !== void 0) {
-          return angular.forEach(iElem.children(), function(ol) {
-            return angular.forEach(ol.children, function(li) {
-              li.addEventListener('mouseover', function() {
-                return scope.setOver(parseInt(li.id));
-              });
-              li.addEventListener('mouseout', function() {
-                return scope.setOver(0);
-              });
-              return li.addEventListener('click', function() {
-                return scope.setRating(parseInt(li.id));
-              });
+
+        scope.disableRating = function(){
+           angular.forEach(iElem.children(), function(ol) {
+             angular.forEach(ol.children, function(li) {
+              if(li.id == "checkmark"){
+                li.style.display = "block";
+                return;
+              }
+              li.removeEventListener('mouseover', scope.setOver);
+              li.removeEventListener('mouseout', scope.setOver);
+              li.removeEventListener('click', scope.setRating);
+              li.style.cursor = "default";
             });
           });
+        };
+
+        scope.enableRating = function(){
+          angular.forEach(iElem.children(), function(ol) {
+             angular.forEach(ol.children, function(li) {
+              if(li.id == "checkmark"){
+                li.style.display = "none";
+                return;
+              }
+              li.addEventListener('mouseover', scope.setOver);
+              li.addEventListener('mouseout', scope.setOver);
+              li.addEventListener('click', scope.setRating);
+              li.style.cursor = "pointer";
+            });
+          });
+        };
+
+        if (iAttrs.notifyUrl !== void 0) {
+           scope.enableRating();
         }
       }
     };
   });
-
-}).call(this);
-
-//# sourceMappingURL=angular.ratings.js.map

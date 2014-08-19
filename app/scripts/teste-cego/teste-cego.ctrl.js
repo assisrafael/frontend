@@ -5,6 +5,14 @@ angular.module('projetobrasilFrontApp')
   function ($scope, $rootScope, proposalsGetter, hotkeys, profileGetter, $filter) {
 
     $scope.proposals = {};
+    var progressNumber = 10;
+    $scope.progress = progressNumber + '%';
+
+    $scope.$on('rated', function(){
+      progressNumber += 10;
+      $scope.progress = progressNumber + '%';
+    });
+
     var proposalIndex = 0;
 
     profileGetter.getProfile().then(function(profiles) {
@@ -35,6 +43,7 @@ angular.module('projetobrasilFrontApp')
     };
 
     $scope.getNextProposal = function(){
+      $scope.$$childTail.enableRating();
       $scope.proposal = $scope.proposals[proposalIndex++];
     };
 
