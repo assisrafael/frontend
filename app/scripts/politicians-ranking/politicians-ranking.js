@@ -10,4 +10,14 @@ angular.module('projetobrasilFrontApp')
         $scope.politicians = profiles;
       });
 
+  }])
+  .directive('politiciansRanking', [function(){
+    function link(scope, element, attrs){}
+
+    return {
+      restrict: 'E',
+      templateUrl: 'views/politicians-ranking.html',
+      controller: 'PoliticiansRankingCtrl',
+      link: link
+    }
   }]);
