@@ -2,7 +2,7 @@
 
 angular.module('projetobrasilFrontApp')
 .controller('TesteCegoCtrl',
-  function ($scope, $rootScope, proposalsGetter, hotkeys, profileGetter, $filter) {
+  function ($scope, $filter, $rootScope, proposalsGetter, hotkeys, profileGetter) {
 
     $scope.proposals = {};
     var progressNumber = 10;
@@ -11,6 +11,7 @@ angular.module('projetobrasilFrontApp')
     $scope.$on('rated', function(){
       progressNumber += 10;
       $scope.progress = progressNumber + '%';
+      console.log('Opa! Votei! ');
     });
 
     var proposalIndex = 0;
@@ -21,7 +22,6 @@ angular.module('projetobrasilFrontApp')
       // profiles = $filter('orderBy')(profiles, 'nome_urna');
       $scope.profiles = profiles;
       // $scope.$parent.setActiveByName(profileName);
-
     });
 
     hotkeys.bindTo($scope)
@@ -44,7 +44,18 @@ angular.module('projetobrasilFrontApp')
 
     $scope.getNextProposal = function(){
       $scope.$$childTail.enableRating();
+      $scope.$$childTail.over = 0;
       $scope.proposal = $scope.proposals[proposalIndex++];
+      $scope.politicalName = getNomeUrna($scope.profiles, $scope.proposal.politicians_id);
+    };
+
+    function getNomeUrna(obj, id) {
+      for (var i=0; i<obj.length;i++) {
+        console.log('id: ' + obj[i].id + '- id2: ' + id);
+        if(obj[i].id == id){
+          return obj[i].nome_urna;
+        }
+      }
     };
 
 
