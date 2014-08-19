@@ -1,0 +1,100 @@
+<div class="container">
+  <div class="cl-mont">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="politicians-horizontal-list block-flat">
+          <h2>Candidatos a presidência</h2>
+          <div ng-repeat="politician in politicians | orderBy:'nome_urna'" class="politician-selector grow" tooltip="{{politician.nome_urna}}" tooltip-placement="bottom" >
+            <img ng-src="{{politician.foto}}" class="profile-avatar" width="100%">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-5">
+        <div class="block-flat col-md-12 no-padding user-infos">
+          <div class="row">
+            <div class="col-md-3">
+              <img src="/images/dashboard/no-photo-user.png" class="circle-avatar dash-avatar" alt="Foto do usuário">
+            </div>
+            <div class="col-md-9 dash-user-info">
+              <h3>Usuário Sobrenome da Silva</h3>
+              <p>meuemail@coldmail.com</p>
+            </div>
+          </div>
+          <div class="row dash-badges-board">
+            <div class="col-md-12">
+              <h4>Quadro de conquistas</h4>
+            </div>
+            <div class="col-md-3 dash-badge">
+              <img src="/images/badges/badge-1.png" class="" alt="">
+            </div>
+            <div class="col-md-3 dash-badge">
+              <img src="/images/badges/badge-2.png" class="" alt="">
+            </div>
+            <div class="col-md-3 dash-badge">
+              <img src="/images/badges/badge-3.png" class="" alt="">
+            </div>
+            <div class="col-md-3 dash-badge">
+              <img src="/images/badges/badge-1.png" class="" alt="">
+            </div>
+            <div class="col-md-3 dash-badge">
+              <img src="/images/badges/badge-2.png" class="" alt="">
+            </div>
+            <div class="col-md-3 dash-badge">
+              <img src="/images/badges/badge-3.png" class="disabled" alt="">
+            </div>
+            <div class="col-md-3 dash-badge">
+              <img src="/images/badges/badge-1.png" class="disabled" alt="">
+            </div>
+            <div class="col-md-3 dash-badge">
+              <img src="/images/badges/badge-2.png" class="disabled" alt="">
+            </div>
+            <div class="col-md-3 dash-badge">
+              <img src="/images/badges/badge-3.png" class="disabled" alt="">
+            </div>
+            <div class="col-md-3 dash-badge">
+              <img src="/images/badges/badge-1.png" class="disabled" alt="">
+            </div>
+            <div class="col-md-3 dash-badge">
+              <img src="/images/badges/badge-2.png" class="disabled" alt="">
+            </div>
+            <div class="col-md-3 dash-badge">
+              <img src="/images/badges/badge-3.png" class="disabled" alt="">
+            </div>
+          </div>
+          <div class="status-bar">
+            <div class="progres"></div>
+          </div>
+        </div>
+        <div class="block-flat col-md-12">
+          Redes sociais
+        </div>
+        <div class="block-flat col-md-12">
+          Chamada para comparativo
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="block-flat col-md-12">
+          <div class="col-md-6 proposal-wrapper" ng-repeat="proposal in proposalsBucket">
+            <div class="proposal">
+              <div class="proposal-content">
+                <div class="proposal-title">
+                    {{ proposal.titulo }}
+                </div>
+                <div class="proposal-rating">
+                  <proposalrating></proposalrating>
+                </div>
+                <div class="proposal-footer" ng-style="{'background-color': getColor(proposal.tema)}">
+                  {{proposal.tema}}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="block-flat col-md-6">Ranking 1</div>
+        <div class="block-flat col-md-6">Ranking 2</div>
+      </div>
+    </div>
+  </div>
+</div>

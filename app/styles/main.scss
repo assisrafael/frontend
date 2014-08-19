@@ -71,6 +71,8 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 
 /*== ESTILOS ADICIONADOS ======================================= */
 
+@import "general.scss";
+@import "dashboard.scss";
 @import "politician-profile.scss";
 @import "proposal-comparative.scss";
 @import "homepage.scss";

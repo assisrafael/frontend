@@ -64,10 +64,26 @@ angular.module('projetobrasilFrontApp', [
 			},
 		}
 	})
-  .state('ranking', {
-    url: '/ranking',
-    templateUrl: 'views/politicians-ranking.html',
-    controller: 'PoliticiansRankingCtrl'
+  .state('dashboard', {
+    abstract: true,
+    views: {
+      '':{
+        templateUrl: 'views/dashboard.html'
+      },
+      'navbar@dashboard':{
+        templateUrl: 'views/navbar.html'
+      }
+    }
+  })
+  .state('dashoboard-initial', {
+    parent: 'dashboard',
+    url: '/dashboard',
+    views: {
+      '':{
+        templateUrl: 'views/dashboard.initial.html',
+        controller: 'DashboardCtrl'
+      }
+    }
   })
   // .state('_proposals', {
   //   parent: '_',

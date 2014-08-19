@@ -1,0 +1,29 @@
+.dash-avatar{
+  width: 80%;
+  margin: 20px auto;
+  float: right;
+}
+
+.dash-user-info{
+  h3{
+    margin: 30px auto 0;
+  }
+}
+
+.dash-badges-board{
+  padding: 15px;
+
+  h4{
+    text-align: center;
+  }
+}
+
+.dash-badge img {
+  width: 70%;
+  margin: auto;
+  display: block;
+}
+
+.dash-badge img.disabled{
+  opacity: 0.3;
+}
