@@ -1,17 +1,33 @@
 <div class="proposal">
   <div class="proposal-content">
     <div class="proposal-title">
-      <!-- <a ui-sref="proposal({nameUrl:selectedPolitical.nome_url, proposalId:proposal.id})"> -->
-        {{ proposal.titulo }}
-        <br>
-        <a class="proposalDetailsLink" ui-sref="proposal({nameUrl:selectedPolitical.nome_url, proposalId:proposal.id})" ng-show="showMoreDetailsLink">Mais detalhes <i class="fa fa-angle-double-right"></i> </a>
-      <!-- </a> -->
+      {{ proposal.titulo }}
+      <br>
+      <a class="proposalDetailsLink" ui-sref="proposal({nameUrl:selectedPolitical.nome_url, proposalId:proposal.id})" ng-show="showMoreDetailsLink">Mais detalhes <i class="fa fa-angle-double-right"></i> </a>
     </div>
     <div class="proposal-rating">
-      <proposalrating></proposalrating>
-    </div>
-    <div class="proposal-footer" ng-style="{'background-color': getColor(proposal.tema)}">
-      {{proposal.tema}}
+      <div class="clearfix rating-stars">
+        <div class="col-xs-8" style="text-align: center;">
+          <angular-ratings
+          ng-model="userVotes[proposal.id]"
+          notify-url="{{notifyUrl}}"
+          notify-id="proposal.id">
+        </angular-ratings>
+      </div>
+      <div class="col-xs-4 rating-icon" style="text-align: center;">
+        <span ng-class="userVotes[proposal.id] ? 'user-rate' :'vote-text'">
+          {{userVotes[proposal.id] || 'Avalie'}}
+        </span>
+      </div>
+      <div class="col-xs-12 nome-candidato" ng-show="testeCego && showRatingInfo">
+      Proposta protocolada por {{politicalName}}</div>
+      <div class="col-xs-12 nota-media" style="text-align: center;" ng-show="showRatingInfo">
+        Avaliação média: {{proposal.media | ratingFormat:2:userVotes[proposal.id]:5}}
+      </div>
     </div>
   </div>
+  <div class="proposal-footer" ng-style="{'background-color': getColor(proposal.tema)}">
+    {{proposal.tema}}
+  </div>
+</div>
 </div>

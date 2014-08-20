@@ -1,48 +1,57 @@
 'use strict';
 
 angular.module('projetobrasilFrontApp')
-  .controller('TesteCegoCtrl', [ '$scope', '$rootScope', 'proposalsGetter', 'hotkeys', 'profileGetter', '$filter',
-    function ($scope, $rootScope, proposalsGetter, hotkeys, profileGetter, $filter) {
+.controller('TesteCegoCtrl',
+  function ($scope, $filter, $rootScope, $timeout, proposalsGetter, hotkeys, profileGetter) {
 
-      $scope.proposals = {};
-      var proposalIndex = 0;
+    $scope.proposals = {};
+    var progressNumber = 10;
+    $scope.progress = progressNumber + '%';
 
-      profileGetter.getProfile().then(function(profiles) {
-        if(!profiles) return;
-        // $scope.userVotes = UserRatings.get();
-        // profiles = $filter('orderBy')(profiles, 'nome_urna');
-        $scope.profiles = profiles;
-        // $scope.$parent.setActiveByName(profileName);
+    $scope.$on('rated', function(){
+      progressNumber += 10;
+      $scope.progress = progressNumber + '%';
+      $timeout($scope.getNextProposal, 3000);
+    });
 
-      });
+    var proposalIndex = 0;
 
-      hotkeys.bindTo($scope)
-      .add({
-        combo: '1',
-        description: 'Vota 1',
-        callback: function(){
-          $rootScope.$broadcast('rate', 1);
+    profileGetter.getProfile().then(function(profiles) {
+      if(!profiles) return;
+      $scope.profiles = profiles;
+    });
+
+    hotkeys.bindTo($scope)
+    .add({
+      combo: '1',
+      description: 'Vota 1',
+      callback: function(){
+        $rootScope.$broadcast('rate', 1);
+      }
+    });
+
+    $scope.getSomeRandomProposals = function(){
+      proposalsGetter.getRandomProposals(150).then(
+        function(proposalsList){
+          $scope.proposals = proposalsList;
+          $scope.getNextProposal();
+          proposalIndex = 1;
+        });
+    };
+
+    $scope.getNextProposal = function(){
+      $scope.$$childTail.enableRating();
+      $scope.$$childTail.over = 0;
+      $scope.proposal = $scope.proposals[proposalIndex++];
+      $scope.politicalName = getNomeUrna($scope.profiles, $scope.proposal.politicians_id);
+      $scope.showRatingInfo = false;
+    };
+
+    function getNomeUrna(obj, id) {
+      for (var i=0; i<obj.length;i++) {
+        if(obj[i].id == id){
+          return obj[i].nome_urna;
         }
-      })
-
-      $scope.getSomeRandomProposals = function(){
-        proposalsGetter.getRandomProposals(150).then(
-          function(proposalsList){
-            $scope.proposals = proposalsList;
-            $scope.getNextProposal();
-            proposalIndex = 1;
-          });
-      };
-
-      $scope.getNextProposal = function(){
-        $scope.proposal = $scope.proposals[proposalIndex++];
-      };
-
-
-      // $scope.$on('successfulRating', function(){
-      //   alert('oi');
-      // });
-
-
-
-  }]);
+      }
+    };
+  });

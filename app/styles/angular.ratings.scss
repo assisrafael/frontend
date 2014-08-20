@@ -1,4 +1,5 @@
 @import 'compass/utilities/general/clearfix';
+@import 'cleanzone/config';
 
 .angular-ratings {
   @include clearfix;
@@ -9,7 +10,6 @@
   li {
     float: left;
     padding: 2px;
-    cursor: pointer;
     color: #999;
 
     &:before {
@@ -22,6 +22,16 @@
 
     &.active {
       color: #FFCC28;
+    }
+
+    &#checkmark {
+      color: $verde-claro;
+      margin-left: 15px;
+      display: none;
+
+      &:before {
+        content: "\f058";
+      }
     }
 
   }
@@ -48,6 +58,8 @@
       text-decoration: inherit;
       margin-right: 6px;
     }
+
+
 
   }
 
