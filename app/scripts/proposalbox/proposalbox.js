@@ -14,12 +14,17 @@ angular.module('projetobrasilFrontApp')
     $scope.userVotes = {};
   }
 
+  $scope.showRatingInfo = false;
+
   $scope.getColor = function(tema){
     return categoryColorGetter.getColorTheme(tema);
   };
 
+  $scope.$on('rated', function(){
+    $scope.showRatingInfo = true;
+  });
+
   //se náo foi definido no scopo do pai, define agora
-  $scope.notifyUrl = typeof($scope.notifyUrl) === 'undefined' ? 'http://api.projetobrasil.org:4242/v1/rating' : $scope.notifyUrl;
 
   profileGetter.getProfile().then(function(profiles) {
     if(!profiles) return;
@@ -43,16 +48,15 @@ angular.module('projetobrasilFrontApp')
 
     function link(scope, element, attrs){
 
-      scope.testeCego = false;
-
-      if(attrs.hasOwnProperty('showMoreDetailsLink')){
-        scope.showMoreDetailsLink = true;
+      scope.testeCego = attrs.hasOwnProperty('testeCego');
+      scope.showMoreDetailsLink = attrs.hasOwnProperty('showMoreDetailsLink')
+      if(typeof(scope.notifyUrl) === 'undefined'){
+        if(scope.testeCego){
+          scope.notifyUrl = scope.apiBaseUrl + 'blindTest/rating'
+        } else {
+          scope.notifyUrl =  scope.apiBaseUrl + 'rating';
+        }
       }
-
-      if(attrs.hasOwnProperty('testeCego')){
-        scope.testeCego = true;
-      }
-
     }
 
     return {

@@ -21,36 +21,27 @@ angular.module('projetobrasilFrontApp')
               + '<li id="checkmark" class="fa fa-2x"></li>'
               + '</ol></div>',
       controller: [
-        '$scope', '$attrs', '$http', function($scope, $rootScope, $attrs, $http) {
+        '$scope', '$rootScope', '$attrs', '$http', function($scope, $rootScope, $attrs, $http) {
           $scope.over = 0;
           $scope.setRating = function(event) {
 
             var rating = event.target.id;
             $scope.model = rating;
 
-            if($scope.$parent.testeCego){
-              $scope.disableRating();
-            }
-
             $scope.$apply();
-            if ($attrs.notifyUrl !== void 0 && $scope.notifyId) {
-              // return $http.post($attrs.notifyUrl, {
-              //   id: $scope.notifyId,
-              //   rating: rating
-
-              $rootScope.$broadcast('rated');
-
-              return $http.post($attrs.notifyUrl + '/'+ $scope.notifyId, {
-                nota: rating
-              })
+            if ($scope.notifyUrl !== void 0 && $scope.notifyId) {
+              $http.post($attrs.notifyUrl + '/'+ $scope.notifyId, { nota: parseInt(rating) })
               .success(function(data){
-                alert(data);
+                $scope.$emit('rated');
+                  if($scope.$parent.testeCego){
+                    $scope.disableRating();
+                  }
               })
               .error(function(data) {
                 if (typeof data === 'string') {
                   //alert(data);
                 }
-                return $scope.model = 0;
+                $scope.model = 0;
               });
             }
           };
@@ -111,6 +102,8 @@ angular.module('projetobrasilFrontApp')
 
         if (iAttrs.notifyUrl !== void 0) {
            scope.enableRating();
+           scope.notifyUrl = iAttrs.notifyUrl;
+           scope.notifyId = iAttrs.notifyId;
         }
       }
     };

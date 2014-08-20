@@ -18,10 +18,7 @@ angular.module('projetobrasilFrontApp')
 
     profileGetter.getProfile().then(function(profiles) {
       if(!profiles) return;
-      // $scope.userVotes = UserRatings.get();
-      // profiles = $filter('orderBy')(profiles, 'nome_urna');
       $scope.profiles = profiles;
-      // $scope.$parent.setActiveByName(profileName);
     });
 
     hotkeys.bindTo($scope)
@@ -31,7 +28,7 @@ angular.module('projetobrasilFrontApp')
       callback: function(){
         $rootScope.$broadcast('rate', 1);
       }
-    })
+    });
 
     $scope.getSomeRandomProposals = function(){
       proposalsGetter.getRandomProposals(150).then(
@@ -47,11 +44,11 @@ angular.module('projetobrasilFrontApp')
       $scope.$$childTail.over = 0;
       $scope.proposal = $scope.proposals[proposalIndex++];
       $scope.politicalName = getNomeUrna($scope.profiles, $scope.proposal.politicians_id);
+      $scope.showRatingInfo = false;
     };
 
     function getNomeUrna(obj, id) {
       for (var i=0; i<obj.length;i++) {
-        console.log('id: ' + obj[i].id + '- id2: ' + id);
         if(obj[i].id == id){
           return obj[i].nome_urna;
         }

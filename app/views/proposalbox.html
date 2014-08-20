@@ -19,9 +19,9 @@
           {{userVotes[proposal.id] || 'Avalie'}}
         </span>
       </div>
-      <div class="col-xs-12 nome-candidato" ng-show="testeCego && userVotes[proposal.id] > 0">
+      <div class="col-xs-12 nome-candidato" ng-show="testeCego && showRatingInfo">
       Proposta protocolada por {{politicalName}}</div>
-      <div class="col-xs-12 nota-media" style="text-align: center;" ng-show="userVotes[proposal.id] > 0">
+      <div class="col-xs-12 nota-media" style="text-align: center;" ng-show="showRatingInfo">
         Avaliação média: {{proposal.media | ratingFormat:2:userVotes[proposal.id]:5}}
       </div>
     </div>
