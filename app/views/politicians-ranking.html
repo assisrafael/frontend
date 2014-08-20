@@ -12,10 +12,10 @@
         </div>
         <div class="politician-info">
           <h4>{{politician.nome_urna}}</h4>
-          <small>Propostas avaliadas: {{Math.random()*5}}</small>
+          <small>Propostas avaliadas: {{ranking[politician.id].num_propostas}}</small>
         </div>
         <div class="pull-right value">
-          <div>3.5</div>
+          <div>{{ranking[politician.id].soma / ranking[politician.id].num_propostas | number:1}}</div>
         </div>
       </li>
     </ul>
@@ -24,17 +24,17 @@
   <div class="content-footer">
     <div class="stat-data">
       <div class="stat-blue">
-        <h2>254</h2>
+        <h2>{{ ranking.num_total_propostas }}</h2>
         <span>propostas avaliadas</span>
       </div>
     </div>
     <div class="stat-data">
       <div class="stat-number">
-        <div><h2>3.4</h2></div>
+        <div><h2>{{ ranking.somatorio_notas / ranking.num_total_propostas | number:1}}</h2></div>
         <div>Avaliação<br><span>média</span></div>
       </div>
       <div class="stat-number">
-        <div><h2>57</h2></div>
+        <div><h2>{{}}</h2></div>
         <div>Candidatos<br><span>votados</span></div>
       </div>
     </div>
