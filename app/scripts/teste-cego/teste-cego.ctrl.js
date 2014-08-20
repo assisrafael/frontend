@@ -2,7 +2,7 @@
 
 angular.module('projetobrasilFrontApp')
 .controller('TesteCegoCtrl',
-  function ($scope, $filter, $rootScope, proposalsGetter, hotkeys, profileGetter) {
+  function ($scope, $filter, $rootScope, $timeout, proposalsGetter, hotkeys, profileGetter) {
 
     $scope.proposals = {};
     var progressNumber = 10;
@@ -11,7 +11,7 @@ angular.module('projetobrasilFrontApp')
     $scope.$on('rated', function(){
       progressNumber += 10;
       $scope.progress = progressNumber + '%';
-      console.log('Opa! Votei! ');
+      $timeout($scope.getNextProposal, 3000);
     });
 
     var proposalIndex = 0;
@@ -54,12 +54,4 @@ angular.module('projetobrasilFrontApp')
         }
       }
     };
-
-
-    // $scope.$on('successfulRating', function(){
-    //   alert('oi');
-    // });
-
-
-
   });
