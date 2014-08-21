@@ -36,6 +36,9 @@ angular.module('projetobrasilFrontApp')
       });
 
       angular.forEach($scope.politicians, function(politician){
+        if(typeof(this[politician.id]) == "undefined"){
+          return;
+        };
         politician.media = this[politician.id].media;
         // $scope.politicians[id].media = this[politician.id].media;
       }, $scope.ranking);

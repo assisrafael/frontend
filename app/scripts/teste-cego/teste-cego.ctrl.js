@@ -35,8 +35,6 @@ angular.module('projetobrasilFrontApp')
       }
     });
 
-    $scope.$watch('$scope.progressCount')
-
     var proposalIndex = 0;
 
     profileGetter.getProfile().then(function(profiles) {
