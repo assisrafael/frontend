@@ -5,14 +5,14 @@
   </div>
   <div class="content no-padding">
     <ul class="items">
-      <li ng-repeat="politician in politicians | orderBy:'-media'" class="item-ranking clearfix">
+      <li ng-repeat="politician in politicians | orderBy:['media', 'nome_urna']:true" class="item-ranking clearfix">
         <div class="position-wrapper">
           <span class="position">{{$index+1}}</span>
           <img class="avatar" ng-src="{{politician.foto}}">
         </div>
         <div class="politician-info">
           <h4>{{politician.nome_urna}}</h4>
-          <small>Propostas avaliadas: {{ranking[politician.id].num_propostas}}</small>
+          <small>Propostas avaliadas: {{politician.num_propostas}}</small>
         </div>
         <div class="pull-right value">
           <div>{{politician.media | number:1}}</div>
@@ -29,13 +29,9 @@
       </div>
     </div>
     <div class="stat-data">
-      <div class="stat-number">
-        <div><h2>{{ ranking.somatorio_notas / ranking.num_total_propostas | number:1}}</h2></div>
-        <div>Avaliação<br><span>média</span></div>
-      </div>
-      <div class="stat-number">
-        <div><h2>{{}}</h2></div>
-        <div>Candidatos<br><span>votados</span></div>
+      <div class="stat-blue">
+        <h2>{{ ranking.somatorio_notas / ranking.num_total_propostas | number:1}}</h2>
+        <span>Avaliação média</span>
       </div>
     </div>
     <div class="clear"></div>
