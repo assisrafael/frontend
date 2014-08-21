@@ -21,7 +21,6 @@ angular.module('projetobrasilFrontApp')
         return prop.politicians_id
       });
 
-
       _.each(propostas_agrupadas, function(grupo, id){
 
         $scope.ranking[id] = {}

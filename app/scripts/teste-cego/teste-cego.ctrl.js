@@ -24,6 +24,8 @@ angular.module('projetobrasilFrontApp')
       updateProgress(propostas.length);
     });
 
+    $scope.proposalAuthor = {};
+    setDefaultAuthor();
 
     $scope.$on('rated', function(ev, count){
       updateProgress(count);
@@ -60,16 +62,25 @@ angular.module('projetobrasilFrontApp')
     };
 
     $scope.getNextProposal = function(){
+      setDefaultAuthor();
       $scope.$broadcast('newproposalblindtest');
       $scope.proposal = $scope.proposals[proposalIndex++];
-      $scope.politicalName = getNomeUrna($scope.profiles, $scope.proposal.politicians_id);
       $scope.showRatingInfo = false;
     };
 
-    function getNomeUrna(obj, id) {
+    function setDefaultAuthor(){
+      $scope.proposalAuthor.foto = '/images/generic_avatar.jpg';
+      $scope.proposalAuthor.nome_urna = 'Candidato';
+      $scope.proposalAuthor.partido = 'Partido';
+    }
+
+    $scope.getProposalAuthor = function() {
+      var obj = $scope.profiles;
+      var id = $scope.proposal.politicians_id;
+
       for (var i=0; i<obj.length;i++) {
         if(obj[i].id == id){
-          return obj[i].nome_urna;
+          $scope.proposalAuthor = obj[i];
         }
       }
     };

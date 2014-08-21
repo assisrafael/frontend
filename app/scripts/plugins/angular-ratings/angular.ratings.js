@@ -34,6 +34,10 @@ angular.module('projetobrasilFrontApp')
             var rating = event.target.id;
             $scope.model = rating;
 
+            if($scope.$parent.getProposalAuthor){
+              $scope.$parent.getProposalAuthor();
+            }
+
             $scope.$apply();
             if ($scope.notifyUrl !== void 0 && $scope.notifyId) {
               $http.post($attrs.notifyUrl + '/'+ $scope.notifyId, { nota: parseInt(rating) })
