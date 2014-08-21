@@ -8,7 +8,7 @@ angular.module('projetobrasilFrontApp')
       cache : true
     }});
 }])
-.controller('ProposalboxCtrl', function($scope, $log, $http, profileGetter, UserRatings, categoryColorGetter){
+.controller('ProposalboxCtrl', function($scope, $log, $http, profileGetter, UserRatings, categoryColorGetter, testeCego){
 
   if(angular.isUndefined($scope.userVotes) || $scope.userVotes === null){
     $scope.userVotes = {};
@@ -16,13 +16,13 @@ angular.module('projetobrasilFrontApp')
 
   $scope.showRatingInfo = false;
 
-  $scope.getColor = function(tema){
-    return categoryColorGetter.getColorTheme(tema);
-  };
-
   $scope.$on('rated', function(){
     $scope.showRatingInfo = true;
   });
+
+  $scope.getColor = function(tema){
+    return categoryColorGetter.getColorTheme(tema);
+  };
 
   //se náo foi definido no scopo do pai, define agora
 

@@ -13,7 +13,7 @@
           <proposalbox showIcon="false" teste-cego></proposalbox>
         </div>
       </div>
-      <div class="col-md-12 buttons-wrapper">
+      <div class="col-md-12 buttons-wrapper" style="padding-bottom: 70px;">
        <!--    <button ng-init='i = 0' class="pular-proposta btn bnt-lg" ng-click="i=i+1; getNextProposal()">
          Pular ({{i}})
          </button>
@@ -25,18 +25,19 @@
       </div>
     </div>
     <div class="col-md-4">
-      <politicians-ranking></politicians-ranking>
+      <politicians-ranking ng-show="showRanking"></politicians-ranking>
     </div>
   </div>
-<!--   <div class="row loadingbarcontainer">
-    <div class="col-md-12">
+  <div class="row loadingbarcontainer" style="background-color: #F6F6F6" ng-hide="showRanking">
+    <div class="col-md-8" style="padding: 0 30px;">
+    Avalie mais {{votinglevel - progressCount}} propostas para visualizar seu ranking do teste cego
       <div class="progress">
-        <div class="progress-bar progress-bar-success" ng-style="{'width': progress }">
-        {{progress}}
+        <div class="progress-bar progress-bar-success" ng-style="{'width': progressSize }">
+        {{progressCount}}
         </div>
       </div>
     </div>
-  </div> -->
+  </div>
 
 <!--   <div class="row rodape">
     <div class="col-md-3">Atalho 1</div>

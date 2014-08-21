@@ -2,20 +2,37 @@
 
 angular.module('projetobrasilFrontApp')
 .controller('TesteCegoCtrl',
-  function ($scope, $filter, $rootScope, $timeout, proposalsGetter, hotkeys, profileGetter) {
+  function ($scope, $filter, $rootScope, $timeout, proposalsGetter, hotkeys, profileGetter, testeCego) {
 
     $scope.proposals = {};
-    var progressNumber = 10;
-    $scope.progress = progressNumber + '%';
     $scope.automaticfoward = true;
+    $scope.showRanking = false;
+    $scope.progressSize = 0;
+    $scope.progressCount = 0;
+    $scope.votinglevel = 20;
 
-    $scope.$on('rated', function(){
-      progressNumber += 10;
-      $scope.progress = progressNumber + '%';
+    function updateProgress(count){
+      if(count >= $scope.votinglevel){
+        $scope.showRanking = true;
+      } else {
+        $scope.progressCount = count;
+        $scope.progressSize = 100*$scope.progressCount/$scope.votinglevel + '%';
+      }
+    };
+
+    testeCego.propostasAvaliadas.query(function(propostas){
+      updateProgress(propostas.length);
+    });
+
+
+    $scope.$on('rated', function(ev, count){
+      updateProgress(count);
       if($scope.automaticfoward){
         $timeout($scope.getNextProposal, 3000);
       }
     });
+
+    $scope.$watch('$scope.progressCount')
 
     var proposalIndex = 0;
 

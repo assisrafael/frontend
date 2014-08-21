@@ -38,7 +38,7 @@ angular.module('projetobrasilFrontApp')
             if ($scope.notifyUrl !== void 0 && $scope.notifyId) {
               $http.post($attrs.notifyUrl + '/'+ $scope.notifyId, { nota: parseInt(rating) })
               .success(function(data){
-                $scope.$emit('rated');
+                $scope.$emit('rated', data.count);
                   if($scope.$parent.testeCego){
                     $scope.disableRating();
                   }
