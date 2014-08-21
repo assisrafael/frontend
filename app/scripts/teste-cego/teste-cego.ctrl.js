@@ -2,7 +2,7 @@
 
 angular.module('projetobrasilFrontApp')
 .controller('TesteCegoCtrl',
-  function ($scope, $filter, $rootScope, $timeout, proposalsGetter, hotkeys, profileGetter, testeCego) {
+  function ($scope, $filter, $rootScope, $timeout, proposalsGetter, hotkeys, profileGetter, testeCego, Angularytics) {
 
     $scope.proposals = {};
     $scope.automaticfoward = true;
@@ -12,6 +12,7 @@ angular.module('projetobrasilFrontApp')
     $scope.votinglevel = 20;
 
     function updateProgress(count){
+      Angularytics.trackEvent("Teste cego", "voto cego", '' , count);
       if(count >= $scope.votinglevel){
         $scope.showRanking = true;
       } else {
