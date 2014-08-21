@@ -113,7 +113,7 @@ angular.module('projetobrasilFrontApp')
         if (iAttrs.notifyUrl !== void 0) {
            scope.enableRating();
            scope.notifyUrl = iAttrs.notifyUrl;
-           scope.notifyId = iAttrs.notifyId;
+           //scope.notifyId = iAttrs.notifyId;
         }
       }
     };

@@ -40,7 +40,7 @@ angular.module('projetobrasilFrontApp')
 
   //Solucao de contorno para quando o escopo nao tem o ID,
   //apenas o escopo do pai
-  var proposalId = typeof($scope.proposal) === 'undefined' ? $scope.id : $scope.proposal.id
+  var proposalId = typeof($scope.proposal) === 'undefined' ? $scope.id : $scope.proposal.id;
   $scope.rate = $scope.userVotes[proposalId];
 
 })
