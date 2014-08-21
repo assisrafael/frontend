@@ -5,7 +5,7 @@
   </div>
   <div class="content no-padding">
     <ul class="items">
-      <li ng-repeat="politician in politicians" class="item-ranking clearfix">
+      <li ng-repeat="politician in politicians | orderBy:'-media'" class="item-ranking clearfix">
         <div class="position-wrapper">
           <span class="position">{{$index+1}}</span>
           <img class="avatar" ng-src="{{politician.foto}}">
@@ -15,7 +15,7 @@
           <small>Propostas avaliadas: {{ranking[politician.id].num_propostas}}</small>
         </div>
         <div class="pull-right value">
-          <div>{{ranking[politician.id].soma / ranking[politician.id].num_propostas | number:1}}</div>
+          <div>{{politician.media | number:1}}</div>
         </div>
       </li>
     </ul>

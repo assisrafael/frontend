@@ -32,10 +32,17 @@ angular.module('projetobrasilFrontApp')
 
         $scope.ranking[id].soma = soma_notas;
         $scope.ranking[id].num_propostas = grupo.length;
+        $scope.ranking[id].media = soma_notas/grupo.length;
 
       });
 
+      angular.forEach($scope.politicians, function(politician){
+        politician.media = this[politician.id].media;
+        // $scope.politicians[id].media = this[politician.id].media;
+      }, $scope.ranking);
+
     });
+
 
     }
   ])
