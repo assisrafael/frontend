@@ -57,6 +57,7 @@ angular.module('projetobrasilFrontApp')
           scope.notifyUrl =  scope.apiBaseUrl + 'rating';
         }
       }
+
     }
 
     return {
