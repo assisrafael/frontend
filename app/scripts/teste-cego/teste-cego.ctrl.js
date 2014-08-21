@@ -7,6 +7,7 @@ angular.module('projetobrasilFrontApp')
     $scope.proposals = {};
     var progressNumber = 10;
     $scope.progress = progressNumber + '%';
+    $scope.automaticfoward = true;
 
     $scope.proposalAuthor = {};
     setDefaultAuthor();
@@ -14,7 +15,9 @@ angular.module('projetobrasilFrontApp')
     $scope.$on('rated', function(){
       progressNumber += 10;
       $scope.progress = progressNumber + '%';
-      $timeout($scope.getNextProposal, 3000);
+      if($scope.automaticfoward){
+        $timeout($scope.getNextProposal, 3000);
+      }
     });
 
     var proposalIndex = 0;
@@ -43,11 +46,8 @@ angular.module('projetobrasilFrontApp')
     };
 
     $scope.getNextProposal = function(){
-      $scope.$$childTail.enableRating();
-      $scope.$$childTail.over = 0;
-
       setDefaultAuthor();
-
+      $scope.$broadcast('newproposalblindtest');
       $scope.proposal = $scope.proposals[proposalIndex++];
       $scope.showRatingInfo = false;
     };

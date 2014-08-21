@@ -23,6 +23,12 @@ angular.module('projetobrasilFrontApp')
       controller: [
         '$scope', '$rootScope', '$attrs', '$http', function($scope, $rootScope, $attrs, $http) {
           $scope.over = 0;
+
+          $scope.$on('newproposalblindtest', function(){
+            $scope.enableRating();
+            $scope.over = 0;
+          });
+
           $scope.setRating = function(event) {
 
             var rating = event.target.id;
