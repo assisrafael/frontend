@@ -17,6 +17,19 @@ angular.module('projetobrasilFrontApp')
     $scope.ranking.num_total_propostas = 0;
     $scope.ranking.somatorio_notas = 0;
 
+    $scope.$on('rated', function(ev, count, rating){
+
+      var cand = $scope.proposalAuthor.nome_urna;
+      // Calcula a posição do político no vetor politicians
+      var tempArray = _.map($scope.politicians, function(p){ return p.nome_urna });
+      var position = _.indexOf(tempArray, cand);
+
+      $scope.politicians[position].num_propostas += 1;
+      $scope.politicians[position].soma += parseInt(rating);
+      $scope.politicians[position].media = $scope.politicians[position].soma / $scope.politicians[position].num_propostas;
+
+    });
+
     // Inicializa os dados dos políticos para o ranking
     function initializePoliticianStats(){
       _.each($scope.politicians, function(politician){
