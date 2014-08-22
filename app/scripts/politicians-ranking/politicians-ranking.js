@@ -24,6 +24,9 @@ angular.module('projetobrasilFrontApp')
       var tempArray = _.map($scope.politicians, function(p){ return p.nome_urna });
       var position = _.indexOf(tempArray, cand);
 
+      // Atualiza os dados do ranking
+      $scope.ranking.num_total_propostas += 1;
+      $scope.ranking.somatorio_notas += parseInt(rating);
       $scope.politicians[position].num_propostas += 1;
       $scope.politicians[position].soma += parseInt(rating);
       $scope.politicians[position].media = $scope.politicians[position].soma / $scope.politicians[position].num_propostas;
