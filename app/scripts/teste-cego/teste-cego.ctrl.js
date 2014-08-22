@@ -31,11 +31,9 @@ angular.module('projetobrasilFrontApp')
     $scope.$on('rated', function(ev, count){
       updateProgress(count);
       if($scope.automaticfoward){
-        $timeout($scope.getNextProposal, 3000);
+        $timeout($scope.getNextProposal, 1500);
       }
     });
-
-    $scope.$watch('$scope.progressCount')
 
     var proposalIndex = 0;
 
@@ -81,8 +79,11 @@ angular.module('projetobrasilFrontApp')
 
       for (var i=0; i<obj.length;i++) {
         if(obj[i].id == id){
-          $scope.proposalAuthor = obj[i];
+          $scope.proposalAuthor['foto'] = obj[i]['foto'];
+          $scope.proposalAuthor['nome_urna'] = obj[i]['nome_urna'];
+          $scope.proposalAuthor['partido'] = obj[i]['partido'];
         }
       }
+      console.log($scope.proposalAuthor);
     };
   });

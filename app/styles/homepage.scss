@@ -152,10 +152,13 @@
 
     .btn.verde-claro{
       font-weight: 700;
-      width: 475px;
-      height: 57px;
       font-size: 1.8em;
       border-radius: 4px;
+      padding: 11px 39px;
+
+      i{
+        font-size: 1.2em;
+      }
     }
 
     .sort-message{
