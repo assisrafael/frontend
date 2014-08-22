@@ -11,16 +11,6 @@ angular.module('projetobrasilFrontApp')
     $scope.progressCount = 0;
     $scope.votinglevel = 20;
 
-    function updateProgress(count){
-      Angularytics.trackEvent("Teste cego", "voto cego", '' , count);
-      if(count >= $scope.votinglevel){
-        $scope.showRanking = true;
-      } else {
-        $scope.progressCount = count;
-        $scope.progressSize = 100*$scope.progressCount/$scope.votinglevel + '%';
-      }
-    };
-
     testeCego.propostasAvaliadas.query(function(propostas){
       updateProgress(propostas.length);
     });
@@ -33,6 +23,16 @@ angular.module('projetobrasilFrontApp')
       if($scope.automaticfoward){
         $timeout($scope.getNextProposal, 1500);
       }
+    });
+
+    $scope.$on('login', function(){
+      testeCego.propostasAvaliadas.query(function(propostas){
+        updateProgress(propostas.length);
+      });
+    });
+
+    $scope.$on('logout', function(){
+      $scope.showRanking = false;
     });
 
     var proposalIndex = 0;
@@ -50,6 +50,16 @@ angular.module('projetobrasilFrontApp')
         $rootScope.$broadcast('rate', 1);
       }
     });
+
+    function updateProgress(count){
+      Angularytics.trackEvent("Teste cego", "voto cego", '' , count);
+      if(count >= $scope.votinglevel){
+        $scope.showRanking = true;
+      } else {
+        $scope.progressCount = count;
+        $scope.progressSize = 100*$scope.progressCount/$scope.votinglevel + '%';
+      }
+    };
 
     $scope.getSomeRandomProposals = function(){
       proposalsGetter.getRandomProposals(150).then(

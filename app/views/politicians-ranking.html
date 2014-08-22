@@ -24,13 +24,13 @@
   <div class="content-footer">
     <div class="stat-data">
       <div class="stat-blue">
-        <h2>{{ ranking.num_total_propostas }}</h2>
+        <h2>{{ num_total_propostas }}</h2>
         <span>propostas avaliadas</span>
       </div>
     </div>
     <div class="stat-data">
       <div class="stat-blue">
-        <h2>{{ ranking.somatorio_notas / ranking.num_total_propostas | number:1}}</h2>
+        <h2>{{ media_propostas | number:1 }}</h2>
         <span>Avaliação média</span>
       </div>
     </div>
