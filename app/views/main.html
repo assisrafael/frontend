@@ -28,13 +28,6 @@
         <h2>CONHEÇA OS CANDIDATOS À PRESIDÊNCIA<small style="vertical-align: top;">*</small></h2>
         <p>Clique nas fotos para ver as propostas, histórico e outras informações</p>
         <div class="row">
-          <div class="hp-candidato col-lg-3 col-md-4 col-sm-6 col-xs-12 grow" ng-repeat="politico in politicos | orderBy:'nome_urna' ">
-            <a ui-sref="profile({nameUrl:politico.nome_url})">
-              <div class="avatar" ng-style="{'background-image':'url('+politico.foto+')'}"></div>
-              <h3 class="nome">{{politico.nome_urna}} - <span class="numero">{{politico.numero}}</span></h3>
-              <div class="partido">{{politico.partido}}</div>
-            </a>
-          </div>
           <div class="hp-candidato col-lg-3 col-md-4 col-sm-6 col-xs-12 grow">
             <a ui-sref="proposal-comparative">
               <div class="compare-btn">
@@ -42,6 +35,13 @@
                 <h3 class="nome">Compare</h3>
               </div>
               <div class="compare-text nome">as propostas dos candidatos</div>
+            </a>
+          </div>
+          <div class="hp-candidato col-lg-3 col-md-4 col-sm-6 col-xs-12 grow" ng-repeat="politico in politicos | orderBy:'nome_urna' ">
+            <a ui-sref="profile({nameUrl:politico.nome_url})">
+              <div class="avatar" ng-style="{'background-image':'url('+politico.foto+')'}"></div>
+              <h3 class="nome">{{politico.nome_urna}} - <span class="numero">{{politico.numero}}</span></h3>
+              <div class="partido">{{politico.partido}}</div>
             </a>
           </div>
           <p class="col-sm-12 sort-message">* Ordenados alfabeticamente pelo nome para urna</p>
