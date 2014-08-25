@@ -8,18 +8,20 @@ angular.module('projetobrasilFrontApp')
     $scope.automaticfoward = true;
     $scope.showRanking = false;
     $scope.progressSize = 0;
-    $scope.progressCount = 0;
     $scope.votinglevel = 20;
+    $scope.votingCount = 0;
 
     testeCego.propostasAvaliadas.query(function(propostas){
-      updateProgress(propostas.length);
+      $scope.votingCount = propostas.length;
+      updateProgress();
     });
 
     $scope.proposalAuthor = {};
     setDefaultAuthor();
 
-    $scope.$on('rated', function(ev, count){
-      updateProgress(count);
+    $scope.$on('rated', function(){
+      $scope.votingCount++;
+      updateProgress();
       if($scope.automaticfoward){
         $timeout($scope.getNextProposal, 1500);
       }
@@ -27,7 +29,8 @@ angular.module('projetobrasilFrontApp')
 
     $scope.$on('login', function(){
       testeCego.propostasAvaliadas.query(function(propostas){
-        updateProgress(propostas.length);
+       $scope.votingCount = propostas.length;
+        updateProgress();
       });
     });
 
@@ -51,13 +54,12 @@ angular.module('projetobrasilFrontApp')
       }
     });
 
-    function updateProgress(count){
-      Angularytics.trackEvent("Teste cego", "voto cego", '' , count);
-      if(count >= $scope.votinglevel){
+    function updateProgress(){
+      Angularytics.trackEvent("Teste cego", "voto cego", '' , $scope.votingCount);
+      if($scope.votingCount >= $scope.votinglevel){
         $scope.showRanking = true;
       } else {
-        $scope.progressCount = count;
-        $scope.progressSize = 100*$scope.progressCount/$scope.votinglevel + '%';
+        $scope.progressSize = 100*$scope.votingCount/$scope.votinglevel + '%';
       }
     };
 
