@@ -17,7 +17,7 @@ angular.module('projetobrasilFrontApp')
     $scope.somatorio_notas = 0;
     $scope.media_propostas = 0;
 
-    $scope.$on('rated', function(ev, count, rating){
+    $scope.$on('rated', function(ev, rating){
 
       var cand = $scope.proposalAuthor.nome_urna;
       // Calcula a posição do político no vetor politicians
