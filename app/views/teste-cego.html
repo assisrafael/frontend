@@ -1,56 +1,66 @@
-<div class="teste-cego" ng-init="getSomeRandomProposals()">
-  <div class="row">
-    <div ng-class="{true: 'col-md-8', false: 'col-md-12'}[showRanking]">
-      <div class="col-md-12">
-        <h1>
-          <i class="fa fa-eye-slash fa-2x"></i><br/>
-          Teste cego de propostas<br/>
-          <small>Vote nas propostas sem preconceito
-          <!-- <i class="fa fa-asterisk" tooltip="Não é informado o canditato autor das propostas."  tooltip-trigger="mouseenter" tooltip-placement="bottom"></i> -->
-          </small>
-        </h1>
-      </div>
-      <div class="col-md-12" class="proposals-container">
-        <div class="proposal-wrapper" >
-          <proposalbox showIcon="false" teste-cego></proposalbox>
+<div>
+  <div ui-view="navbar"></div>
+  <div id="cl-wrapper">
+    <div class="container-fluid" id="pcont">
+
+      <div class="teste-cego" ng-init="getSomeRandomProposals()">
+        <div class="row">
+          <div ng-class="{true: 'col-md-8', false: 'col-md-12'}[showRanking]">
+            <div class="col-md-12">
+              <h1>
+                <i class="fa fa-eye-slash fa-2x"></i><br/>
+                Teste cego de propostas<br/>
+                <small>Vote nas propostas sem preconceito
+                <!-- <i class="fa fa-asterisk" tooltip="Não é informado o canditato autor das propostas."  tooltip-trigger="mouseenter" tooltip-placement="bottom"></i> -->
+                </small>
+              </h1>
+            </div>
+            <div class="col-md-12" class="proposals-container">
+              <div class="proposal-wrapper" >
+                <proposalbox showIcon="false" teste-cego></proposalbox>
+              </div>
+            </div>
+            <div class="col-md-12 buttons-wrapper" style="padding-bottom: 70px;">
+             <!--    <button ng-init='i = 0' class="pular-proposta btn bnt-lg" ng-click="i=i+1; getNextProposal()">
+               Pular ({{i}})
+               </button>
+            -->
+            <div><label><input ng-model="automaticfoward" type="checkbox"> Carregar próxima proposta automaticamente após voto</label></div>
+               <button class="pular-proposta btn bnt-lg btn-success" ng-click="getNextProposal()">
+               <i class="fa fa-arrow-circle-right"></i> Próxima proposta
+               </button>
+            </div>
+            <div class="row parceria">
+              <div class="col-md-12">Uma parceria com:</div>
+              <div class="col-md-12"><a href="http://www.muitointeressante.com.br" target="_blank"><img src="images/logo-muitointeressante.png" alt="MuitoInteressante.com.br"></a></div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <politicians-ranking ng-show="showRanking"></politicians-ranking>
+          </div>
         </div>
+
+        <div class="row loadingbarcontainer" style="background-color: #F6F6F6" ng-hide="showRanking">
+          <div class="col-md-8" style="padding: 0 30px;">
+          Avalie mais {{votinglevel - votingCount}} propostas para visualizar seu ranking do teste cego
+            <div class="progress">
+              <div class="progress-bar progress-bar-success" ng-style="{'width': progressSize }">
+              {{progressCount}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <!--   <div class="row rodape">
+          <div class="col-md-3">Atalho 1</div>
+          <div class="col-md-3">Atalho 2</div>
+          <div class="col-md-3">Atalho 3</div>
+          <div class="col-md-3">Atalho 4</div>
+        </div> -->
+
       </div>
-      <div class="col-md-12 buttons-wrapper" style="padding-bottom: 70px;">
-       <!--    <button ng-init='i = 0' class="pular-proposta btn bnt-lg" ng-click="i=i+1; getNextProposal()">
-         Pular ({{i}})
-         </button>
-      -->
-      <div><label><input ng-model="automaticfoward" type="checkbox"> Carregar próxima proposta automaticamente após voto</label></div>
-         <button class="pular-proposta btn bnt-lg btn-success" ng-click="getNextProposal()">
-         <i class="fa fa-arrow-circle-right"></i> Próxima proposta
-         </button>
-      </div>
-      <div class="row parceria">
-        <div class="col-md-12">Uma parceria com:</div>
-        <div class="col-md-12"><a href="http://www.muitointeressante.com.br" target="_blank"><img src="images/logo-muitointeressante.png" alt="MuitoInteressante.com.br"></a></div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <politicians-ranking ng-show="showRanking"></politicians-ranking>
+
     </div>
   </div>
-
-  <div class="row loadingbarcontainer" style="background-color: #F6F6F6" ng-hide="showRanking">
-    <div class="col-md-8" style="padding: 0 30px;">
-    Avalie mais {{votinglevel - votingCount}} propostas para visualizar seu ranking do teste cego
-      <div class="progress">
-        <div class="progress-bar progress-bar-success" ng-style="{'width': progressSize }">
-        {{progressCount}}
-        </div>
-      </div>
-    </div>
-  </div>
-
-<!--   <div class="row rodape">
-    <div class="col-md-3">Atalho 1</div>
-    <div class="col-md-3">Atalho 2</div>
-    <div class="col-md-3">Atalho 3</div>
-    <div class="col-md-3">Atalho 4</div>
-  </div> -->
-
 </div>
+
