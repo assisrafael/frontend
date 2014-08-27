@@ -15,7 +15,8 @@ angular.module('projetobrasilFrontApp', [
   'ui-rangeSlider',
   'seo',
   'cfp.hotkeys',
-  'angularytics'
+  'angularytics',
+  'viewhead'
 ])
 .config(function(AngularyticsProvider) {
   AngularyticsProvider.setEventHandlers(['Console', 'GoogleUniversal']);

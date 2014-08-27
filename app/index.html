@@ -1,29 +1,16 @@
 <!DOCTYPE html>
 <html lang="pt-br" ng-app="projetobrasilFrontApp" xmlns:fb="http://ogp.me/ns/fb#">
-<head ng-controller="HeaderCtrl">
+<head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="Projeto Brasil">
   <link rel="shortcut icon" type="image/x-icon" href="http://projetobrasil.org/favicon.ico" />
 
-	<title>{{ headerInfos.title() || "Projeto Brasil" }}</title>
+	<title ng-bind-template="{{viewTitle}}">Projeto Brasil</title>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,400italic,700,800' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
-
-  <!-- Facebook Meta-tags -->
-  <meta property="og:locale" content="pt_BR">
-  <meta property="og:image:type" content="image/jpeg">
-  <meta property="og:url" content="{{ headerInfos.ogTags().url }}">
-  <meta property="og:site_name" content="{{ headerInfos.ogTags().siteName }}">
-  <meta property="og:title" content="{{ headerInfos.ogTags().title }}">
-  <meta property="og:description" content="{{ headerInfos.ogTags().description }}">
-  <meta property="og:image" content="{{ headerInfos.ogTags().imageUrl }}">
-  <meta property="og:image:url" content="{{ headerInfos.ogTags().imageUrl }}">
-  <meta property="og:image:width" content="{{ headerInfos.ogTags().imageWidth }}">
-  <meta property="og:image:height" content="{{ headerInfos.ogTags().imageHeight }}">
-  <link rel="image_src" type="image/jpeg" href="{{ headerInfos.ogTags().imageUrl }}" />
 
   <!-- SEO Meta-tags -->
   <meta name="fragment" content="!" />
@@ -135,6 +122,7 @@
 	<script src="bower_components/angular-rangeslider/angular.rangeSlider.js"></script>
 	<script src="bower_components/angular-hotkeys/build/hotkeys.min.js"></script>
 	<script src="bower_components/angularytics/dist/angularytics.min.js"></script>
+	<script src="bower_components/angularjs-viewhead/angularjs-viewhead.js"></script>
 	<!-- endbower -->
 	<!-- endbuild -->
 
@@ -144,7 +132,6 @@
 	<script src="scripts/controllers/comparison.js"></script>
   <script src="scripts/controllers/goods.js"></script>
   <script src="scripts/controllers/history.js"></script>
-  <script src="scripts/controllers/header-infos.js"></script>
 	<script src="scripts/controllers/homepage.js"></script>
 	<script src="scripts/controllers/main.js"></script>
 	<script src="scripts/controllers/navbarusermenu.js"></script>
@@ -161,7 +148,6 @@
   <script src="scripts/services/proposal.js"></script>
   <script src="scripts/services/proposals.js"></script>
   <script src="scripts/services/graph-rating.js"></script>
-  <script src="scripts/services/header-infos.js"></script>
   <script src="scripts/services/politician-goods.js"></script>
   <script src="scripts/services/politician-history.js"></script>
   <script src="scripts/services/theme-color.js"></script>

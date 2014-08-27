@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('projetobrasilFrontApp')
-.controller('ProfilesCtrl', function ($scope, $state, $filter, $stateParams, $location, profileGetter, UserRatings, headerInfos) {
+.controller('ProfilesCtrl', function ($scope, $state, $filter, $stateParams, $location, profileGetter, UserRatings) {
   var profileName = $stateParams.nameUrl || '',
   proposalId = $stateParams.proposalId || '';
 
@@ -35,17 +35,17 @@ angular.module('projetobrasilFrontApp')
       }
     }
 
-    og['url'] =  $location.absUrl();
-    og['siteName'] =  'projetobrasil.org';
-    og['title'] = politician.nome_urna + ' - Projeto Brasil';
-    og['description'] =  'Conheça as propostas, histórico politico e outras informações de (nome do candidato) no ProjetoBrasil.org';
-    og['imageUrl'] = $location.protocol() + "://" +  $location.host() + politician.foto;
-    og['imageWidth'] =  '200';
-    og['imageHeight'] =  '200';
+    $scope.pageTitle = politician.nome_urna + " :: Projeto Brasil";
+    $scope.og = {
+      url : $location.absUrl(),
+      siteName : 'projetobrasil.org',
+      title : politician.nome_urna + ' - Projeto Brasil',
+      description : 'Conheça as propostas, histórico politico e outras informações de '+politician.nome_urna+' no ProjetoBrasil.org',
+      imageUrl : $location.protocol() + "://" +  $location.host() + politician.foto,
+      imageWidth : '200',
+      imageHeight : '200'
+    };
 
-    headerInfos.setTitle(politician.nome_urna + " :: Projeto Brasil");
-    headerInfos.setOGTags(og);
-    $scope.htmlReady();
   };
 
   $scope.$parent.isActive = function(political) {

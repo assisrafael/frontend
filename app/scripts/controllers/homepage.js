@@ -6,7 +6,6 @@ angular.module('projetobrasilFrontApp')
     profileGetter.getProfile().then(function(profiles) {
         if(!profiles) return;
         $scope.politicos = profiles;
-        $scope.htmlReady();
       });
 
   });
