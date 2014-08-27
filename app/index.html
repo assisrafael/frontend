@@ -35,6 +35,7 @@
 	<link rel="stylesheet" href="bower_components/toastr/toastr.css" />
 	<link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.css" />
 	<link rel="stylesheet" href="bower_components/nanoscroller/bin/css/nanoscroller.css" />
+	<link rel="stylesheet" href="bower_components/angular-hotkeys/build/hotkeys.min.css" />
 	<!-- endbower -->
 	<!-- endbuild -->
 
@@ -44,7 +45,8 @@
 	<![endif]-->
 
 	<!-- build:css({.tmp,app}) styles/main.css -->
-	<link href="styles/main.css" rel="stylesheet" />
+  <link href="styles/main.css" rel="stylesheet" />
+	<link href="styles/angular.ratings.css" rel="stylesheet" />
 	<!-- endbuild -->
 
 </head>
@@ -81,7 +83,7 @@
 		m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 		})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-		ga('create', 'UA-52366317-1');
+		ga('create', 'UA-52366317-1', 'auto');
 		ga('require', 'displayfeatures');
 		ga('send', 'pageview');
 	</script>
@@ -131,6 +133,8 @@
 	<script src="bower_components/d3/d3.js"></script>
 	<script src="bower_components/topojson/topojson.js"></script>
 	<script src="bower_components/angular-rangeslider/angular.rangeSlider.js"></script>
+	<script src="bower_components/angular-hotkeys/build/hotkeys.min.js"></script>
+	<script src="bower_components/angularytics/dist/angularytics.min.js"></script>
 	<!-- endbower -->
 	<!-- endbuild -->
 
@@ -150,6 +154,7 @@
   <script src="scripts/controllers/proposals.js"></script>
   <script src="scripts/controllers/sidebar.js"></script>
   <script src="scripts/controllers/edit-user-data.js"></script>
+  <script src="scripts/politicians-ranking/politicians-ranking.js"></script>
 
   <!-- SERVICES -->
   <script src="scripts/services/profile.js"></script>
@@ -159,7 +164,6 @@
   <script src="scripts/services/header-infos.js"></script>
   <script src="scripts/services/politician-goods.js"></script>
   <script src="scripts/services/politician-history.js"></script>
-  <script src="scripts/services/rating.js"></script>
   <script src="scripts/services/theme-color.js"></script>
   <script src="scripts/services/user-register.js"></script>
 
@@ -167,6 +171,7 @@
   <script src="scripts/directives/pieChart.js"></script>
   <script src="scripts/directives/brasilMap.js"></script>
   <script src="scripts/directives/categorySelector.js"></script>
+  <script src="scripts/proposalbox/proposalbox.js"></script>
 
   <!-- FILTERS -->
   <script src="scripts/filters/currency.js"></script>
@@ -174,8 +179,14 @@
   <script src="scripts/filters/rating-format.js"></script>
 
   <!-- PLUGINS -->
-	<script src="scripts/plugins/map/map.js"></script>
   <script src="angular-seo.js"></script>
+  <script src="scripts/plugins/map/map.js"></script>
+  <script src="scripts/plugins/angular-ratings/angular.ratings.js"></script>
+
+  <!-- MODULO: TESTE-CEGO -->
+  <script src="scripts/teste-cego/teste-cego.ctrl.js"></script>
+  <script src="scripts/teste-cego/teste-cego.services.js"></script>
+
 	<!-- endbuild -->
 
   <script>

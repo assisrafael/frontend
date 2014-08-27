@@ -13,16 +13,21 @@ angular.module('projetobrasilFrontApp', [
   'duScroll',
   'djds4rce.angular-socialshare',
   'ui-rangeSlider',
-  'seo'
+  'cfp.hotkeys',
+  'angularytics'
 ])
-
+.config(function(AngularyticsProvider) {
+  AngularyticsProvider.setEventHandlers(['Console', 'GoogleUniversal']);
+}).run(function(Angularytics) {
+  Angularytics.init();
+})
 .run(['$rootScope', '$location', '$window', function($rootScope, $location, $window){
- $rootScope
- .$on('$stateChangeSuccess', function(event){
-    if (!$window.ga)
-      return;
-    $window.ga('send', 'pageview', { page: $location.path() });
-  });
+ // $rootScope
+ // .$on('$stateChangeSuccess', function(event){
+ //    if (!$window.ga)
+ //      return;
+ //    $window.ga('send', 'pageview', { page: $location.path() });
+ //  });
 
  $rootScope._ = window._;
  $rootScope.apiBaseUrl = 'http://api.projetobrasil.org:4242/v1/';
@@ -34,11 +39,11 @@ angular.module('projetobrasilFrontApp', [
   $locationProvider.hashPrefix('!');
 
 	$stateProvider
-	.state('main', {
-		url: '/',
-		templateUrl: 'views/main.html',
-		controller: 'MainCtrl'
-	})
+  .state('main', {
+    url: '/',
+    templateUrl: 'views/main.html',
+    controller: 'MainCtrl'
+  })
 	.state('_', {
 		abstract: true,
 		views: {
@@ -58,6 +63,27 @@ angular.module('projetobrasilFrontApp', [
 			},
 		}
 	})
+  .state('ranking', {
+    url: '/ranking',
+    templateUrl: 'views/politicians-ranking.html',
+    controller: 'PoliticiansRankingCtrl'
+  })
+  .state('teste-cego', {
+    url: '/teste-cego',
+    views: {
+      '': {
+        templateUrl: 'views/teste-cego.html',
+        controller: 'TesteCegoCtrl'
+      },
+      'navbar@teste-cego':{
+        templateUrl: 'views/navbar.html',
+      },
+      'usermenu@teste-cego': {
+        templateUrl: 'views/navbarusermenu.html',
+        controller: 'NavbarUserMenuCtrl'
+      }
+    }
+  })
 	.state('profile', {
 		parent: '_',
 		url: '/cand/:nameUrl',

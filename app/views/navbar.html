@@ -1,6 +1,6 @@
 <div id="head-nav" class="navbar navbar-default navbar-fixed-top">
 	<div class="container-fluid">
-		<div class="navbar-header">
+		<div class="navbar-header navbar-pb-logo">
 			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
 				<span class="fa fa-gear"></span>
 			</button>
@@ -8,14 +8,17 @@
         <span class="url">projetobrasil<span class="url-domain">.org</span></span>
       </a>
 		</div>
-		<div class="navbar-collapse collapse">
+		<div class="navbar-collapse collapse navbar-pb-actions">
 			<ul class="nav navbar-nav">
 				<!-- <li>
           <button class="btn btn-primary" style="margin-top: 7px"  ui-sref="profile"><i class="fa fa-bullseye"></i> Conheça os candidatos</button>
         </li> -->
         <li>
-					<button class="btn btn-primary" style="margin-top: 7px"  ui-sref="proposal-comparative"><i class="fa fa-th"></i> Compare os candidatos</button>
-				</li>
+          <button class="btn btn-primary" style="margin-top: 7px"  ui-sref="proposal-comparative"><i class="fa fa-th"></i> Compare os candidatos</button>
+        </li>
+        <li>
+          <button class="btn btn-primary" style="margin-top: 7px"  ui-sref="teste-cego"><i class="fa fa-eye-slash"></i> Teste cego <span class="badge">Novo</span></button>
+        </li>
 			</ul>
 			<div ui-view="usermenu"></div>
 		</div>

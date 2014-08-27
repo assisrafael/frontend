@@ -6,7 +6,8 @@ angular.module('projetobrasilFrontApp')
     register: function(user, success, error){
       $http.post($rootScope.apiBaseUrl+'user/register', user)
       .success(function(res, status, headers) {
-       success();
+         success();
+         ga('send', 'event', 'form', 'register');
       }).error(error);
     }
   };

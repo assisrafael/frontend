@@ -1,0 +1,70 @@
+@import 'compass/utilities/general/clearfix';
+@import 'cleanzone/config';
+
+.angular-ratings {
+  @include clearfix;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  li {
+    float: left;
+    padding: 2px;
+    color: #999;
+
+    &:before {
+      content: "\f005";
+    }
+
+    &.over {
+      color: #FFCC28;
+    }
+
+    &.active {
+      color: #FFCC28;
+    }
+
+    &#checkmark {
+      color: $verde-claro;
+      margin-left: 15px;
+      display: none;
+
+      &:before {
+        content: "\f058";
+      }
+    }
+
+  }
+}
+
+.rating-stars{
+
+  .user-rate{
+    font-size: 3em;
+    color: #999;
+  }
+
+  .vote-text{
+    font-size: 1.4em;
+    text-align: right;
+    line-height: 1.7em;
+    color: #999;
+
+    &:before{
+      content:  "\f0e3";
+      font-family: FontAwesome;
+      font-style: normal;
+      font-weight: normal;
+      text-decoration: inherit;
+      margin-right: 6px;
+    }
+
+
+
+  }
+
+  .nota-media{
+    margin-top: 8px;
+  }
+
+}

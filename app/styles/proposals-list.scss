@@ -30,65 +30,71 @@
   }
 
   .proposal{
-    display: inline-block;
     width: 100%;
-
-
-    &::before{
-      content: "";
-      position: absolute;
-      top: 0;
-      right: 0;
-      border-width: 0 16px 16px 0;
-      border-style: solid;
-      border-color: #eee #fff;
-    }
   }
 
 }
 
 .proposal{
-  margin-bottom: 10px;
-  background-color: #F6F6F6;
-  padding: 20px 20px 15px;
+  margin-bottom: 4px;
+  border: 1px solid #EBEBEB;
   border-radius: 3px;
-  position: relative;
+  display: inline-block;
+  width: 100%;
 
-  &::before{
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    border-width: 0 16px 16px 0;
-    border-style: solid;
-    border-color: #eee #fff;
-  }
+  .proposalDetailsLink {
+    text-align: right;
+    text-weight: bold;
 
-  .theme{
-    font-size: 1.4em;
-    font-weight: 400;
-    text-shadow: 0 1px 1px #fff;
-
-    &::before{
-      content: '\25c9';
-    }
-
-    small::before{
-      content: '\203A';
+    &:hover {
+      text-decoration: underline;
     }
   }
 
-  .description{
-    padding: 5px 0px;
-    margin-bottom: 0;
+  .proposal-content {
+    background-color: #fff;
+  }
+
+  .proposal-title{
+    padding: 20px 12px 0px;
     text-align: justify;
+
+    a{
+      color: #333;
+      padding-bottom: 10px;
+      display: block;
+    }
   }
 
-  .detalhes{
-    float: right;
-    color: #838383;
-    border-bottom: 1px #C4C2C2 dotted;
-    font-weight: 400;
+  .proposal-footer {
+    margin-top: 10px;
+    padding: 4px 7px;
+    text-align: center;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 0 0 3px 3px;
+  }
+
+  .proposal-rating{
+    margin-bottom: 7px;
+  }
+
+  .proposal-author{
+
+    .avatar{
+      width: 70px;
+      border-radius: 50%;
+      margin-top: 20px;
+    }
+
+    .politician-info{
+      text-align: left;
+
+      h3{
+        margin: 30px auto 0;
+      }
+    }
+
   }
 }
 

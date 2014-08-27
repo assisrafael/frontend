@@ -1,0 +1,74 @@
+
+.teste-cego {
+
+  .politicians-ranking{
+    float: right;
+  }
+
+  .rodape{
+    position: fixed;
+    bottom: 0;
+  }
+
+  h1 {
+    text-align: center;
+    margin: 50px;
+  }
+
+  .proposal-wrapper {
+    text-align: center;
+  }
+
+  .buttons-wrapper {
+    text-align: center;
+  }
+
+  .rating-stars{
+    //margin-left: 110px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .rating-icon {
+    display: none;
+  }
+
+  .proposal {
+    max-width: 500px;
+    font-size: 1.5em;
+    line-height: 1.5em;
+  }
+
+  button.pular-proposta {
+    font-size: 1.5em;
+    margin: 30px;
+    padding: 10px 50px;
+
+  }
+
+  .loadingbarcontainer {
+    position: fixed;
+    bottom: 0;
+    width: 90%;
+    padding-top: 10px;
+  }
+
+  .proposal-author .avatar{
+    float: left;
+    margin-right: 10px;
+    border-radius: 50%;
+    height: 100%;
+    margin-left: 15px;
+    min-height: 70px;
+  }
+
+  .politician-info {
+    padding-left: 0;
+  }
+
+  .parceria{
+    text-align: center;
+    font-weight: 600;
+  }
+
+}

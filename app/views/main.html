@@ -18,16 +18,25 @@
   <section class="meio">
     <div class="container">
       <div class="descricao-meio">
-        <a ui-sref="proposal-comparative">
+        <a ui-sref="teste-cego">
           <button class="btn btn-lg btn-flat verde-claro">
-            Compare as propostas dos candidatos
+            <i class="fa fa-eye-slash"></i> Teste cego de propostas
           </button>
         </a>
-        <p>Conheça, compare e comente as propostas por tema</p>
+        <p>Descubra se você realmente conhece as propostas dos seus candiadtos</p>
         <p class="ou">ou</p>
         <h2>CONHEÇA OS CANDIDATOS À PRESIDÊNCIA<small style="vertical-align: top;">*</small></h2>
         <p>Clique nas fotos para ver as propostas, histórico e outras informações</p>
         <div class="row">
+          <div class="hp-candidato col-lg-3 col-md-4 col-sm-6 col-xs-12 grow">
+            <a ui-sref="proposal-comparative">
+              <div class="compare-btn">
+                <i class="fa fa-th"></i>
+                <h3 class="nome">Compare</h3>
+              </div>
+              <div class="compare-text nome">as propostas dos candidatos</div>
+            </a>
+          </div>
           <div class="hp-candidato col-lg-3 col-md-4 col-sm-6 col-xs-12 grow" ng-repeat="politico in politicos | orderBy:'nome_urna' ">
             <a ui-sref="profile({nameUrl:politico.nome_url})">
               <div class="avatar" ng-style="{'background-image':'url('+politico.foto+')'}"></div>

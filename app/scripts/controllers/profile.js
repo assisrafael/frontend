@@ -9,7 +9,7 @@ angular.module('projetobrasilFrontApp')
 
   profileGetter.getProfile().then(function(profiles) {
     if(!profiles) return;
-    $scope.userVotes = UserRatings.get();
+    // $scope.userVotes = UserRatings.get();
     profiles = $filter('orderBy')(profiles, 'nome_urna');
     $scope.$parent.profiles = profiles;
     $scope.$parent.setActiveByName(profileName);
@@ -51,15 +51,6 @@ angular.module('projetobrasilFrontApp')
   $scope.$parent.isActive = function(political) {
     return $state.current.name === 'profile' && $scope.$parent.selectedPolitical === political;
   };
-
-  $scope.userVotes = {};
-
-  $scope.$on('login', function(){
-    $scope.userVotes = UserRatings.get();
-  });
-  $scope.$on('logout', function(){
-    $scope.userVotes = {};
-  });
 
   $scope.url = $location.absUrl();
 });
