@@ -13,11 +13,10 @@ angular.module('projetobrasilFrontApp')
           siteName : 'projetobrasil.org',
           title : 'Projeto Brasil',
           description : 'Seus próximos 4 anos serão impactados por uma decisão que demora menos de 4 segundos: o voto para presidente! Por isso conheça, compare e avalie propostas e candidatos no Projeto Brasil! A hora é essa!',
-          imageUrl : 'http://www.projetobrasil.org/images/urna.jpg',
+          imageUrl : $location.protocol() + "://" +  $location.host() + '/images/urna.jpg',
           imageWidth : '640',
           imageHeight : '304'
         };
-        $scope.htmlReady();
 
       });
 

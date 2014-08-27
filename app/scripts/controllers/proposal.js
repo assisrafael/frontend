@@ -7,7 +7,6 @@ angular.module('projetobrasilFrontApp')
 
     $scope.id = $scope.$parent.proposalId;
 
-    $scope.proposal = $scope.$parent.proposal;
     $scope.url = $location.absUrl();
 
     $scope.coresPizza = {
@@ -50,15 +49,14 @@ angular.module('projetobrasilFrontApp')
       });
     });
 
-
-        $scope.userVotes = {};
-
-  $scope.$on('login', function(){
-    $scope.userVotes = UserRatings.get();
-  });
-  $scope.$on('logout', function(){
     $scope.userVotes = {};
-  });
+
+    $scope.$on('login', function(){
+      $scope.userVotes = UserRatings.get();
+    });
+    $scope.$on('logout', function(){
+      $scope.userVotes = {};
+    });
 
 	}])
 ;

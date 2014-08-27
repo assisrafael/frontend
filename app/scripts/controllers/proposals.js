@@ -46,7 +46,6 @@ angular.module('projetobrasilFrontApp')
          for (var i = 0; i < data.length; i++) {
           $scope.proposals[i].cor = categoryColorGetter.getColorTheme($scope.proposals[i].tema);
         };
-        $scope.htmlReady();
       });
     });
 

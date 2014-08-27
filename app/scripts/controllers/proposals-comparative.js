@@ -1,14 +1,14 @@
 'use strict';
 
 angular.module('projetobrasilFrontApp')
-.controller('ProposalsComparativeCtrl', ['$scope', '$document', '$timeout', '$anchorScroll', 'profileGetter', 'proposalsGetter', 'categoryColorGetter', 'UserRatings',
-	function($scope, $document, $timeout ,$anchorScroll, profileGetter, proposalsGetter, categoryColorGetter, UserRatings){
+.controller('ProposalsComparativeCtrl', ['$scope', '$document', '$timeout', '$location', '$anchorScroll', 'profileGetter', 'proposalsGetter', 'categoryColorGetter', 'UserRatings',
+	function($scope, $document, $timeout, $location, $anchorScroll, profileGetter, proposalsGetter, categoryColorGetter, UserRatings){
 		profileGetter.getProfile().then(function(politicians) {
 			$scope.politicians = politicians;
 			$scope.selectedPoliticians = [];
 		});
 
-        proposalsGetter.getAllProposals().then(function(proposals) {
+    proposalsGetter.getAllProposals().then(function(proposals) {
       $scope.allProposals = proposals;
       $scope.userVotes = UserRatings.get();
 
@@ -19,6 +19,18 @@ angular.module('projetobrasilFrontApp')
 
       buildProposals();
     });
+
+
+    $scope.pageTitle = "Comparativo de Propostas :: Projeto Brasil";
+    $scope.og = {
+      url : $location.absUrl(),
+      siteName : 'projetobrasil.org',
+      title : 'Compare os candidatos a presidência - Projeto Brasil',
+      description : 'No ProjetoBrasil.org você pode comparar as propostas dos políticos dos mais diversos temas, como economia, educação, segurança, entre outros.',
+      imageUrl : $location.protocol() + "://" +  $location.host() + 'images/facebook-share-images/comparativo.jpg',
+      imageWidth : '200',
+      imageHeight : '200'
+    };
 
 		$scope.isSelected = function(politician) {
 			return politician.isSelected;
@@ -99,14 +111,12 @@ angular.module('projetobrasilFrontApp')
 			$scope.proposals = proposals;
 		}
 
-
-
-        $scope.userVotes = {};
-
-  $scope.$on('login', function(){
-    $scope.userVotes = UserRatings.get();
-  });
-  $scope.$on('logout', function(){
     $scope.userVotes = {};
-  });
+
+    $scope.$on('login', function(){
+      $scope.userVotes = UserRatings.get();
+    });
+    $scope.$on('logout', function(){
+      $scope.userVotes = {};
+    });
 }]);
