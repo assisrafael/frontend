@@ -45,7 +45,6 @@ angular.module('projetobrasilFrontApp')
       imageWidth : '200',
       imageHeight : '200'
     };
-
   };
 
   $scope.$parent.isActive = function(political) {
