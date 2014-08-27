@@ -13,6 +13,7 @@ angular.module('projetobrasilFrontApp', [
   'duScroll',
   'djds4rce.angular-socialshare',
   'ui-rangeSlider',
+  'seo',
   'cfp.hotkeys',
   'angularytics'
 ])
