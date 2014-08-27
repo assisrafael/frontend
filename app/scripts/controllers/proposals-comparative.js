@@ -27,7 +27,7 @@ angular.module('projetobrasilFrontApp')
       siteName : 'projetobrasil.org',
       title : 'Compare os candidatos a presidência - Projeto Brasil',
       description : 'No ProjetoBrasil.org você pode comparar as propostas dos políticos dos mais diversos temas, como economia, educação, segurança, entre outros.',
-      imageUrl : $location.protocol() + "://" +  $location.host() + 'images/facebook-share-images/comparativo.jpg',
+      imageUrl : $location.protocol() + "://" +  $location.host() + '/images/facebook-share-images/comparativo.jpg',
       imageWidth : '200',
       imageHeight : '200'
     };
