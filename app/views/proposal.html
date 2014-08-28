@@ -21,9 +21,12 @@
       <!-- <h4>Avaliação da proposta</h4> -->
     </div>
     <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-      <div class="well">
-        <proposalrating></proposalrating>
-      </div>
+      <div class="well" style="text-align: center">
+        <angular-ratings
+          ng-model="userVotes[proposal.id]"
+          notify-url="{{notifyUrl}}"
+          notify-id="proposal.id">
+        </angular-ratings>      </div>
     </div>
   </div>
 

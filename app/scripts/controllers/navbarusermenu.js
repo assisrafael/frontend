@@ -148,7 +148,7 @@ angular.module('projetobrasilFrontApp')
       var timer = setInterval(function() {
         if(signinWin.closed) {
             clearInterval(timer);
-            $scope.checkLoginNavbar();
+            $scope.checkLoginNavbar('action');
             $scope.cancel();
         }
       }, 1000);
@@ -166,18 +166,14 @@ angular.module('projetobrasilFrontApp')
       }
     });
 
-    $scope.$on('login', function() {
-      if( !$scope.modalOpened ){
-        // $log.info('ACHEI UM LOGIN AQUI!');
-      }
-    });
-
-    $scope.checkLoginNavbar = function(){
+    $scope.checkLoginNavbar = function(loginType){
       UserLogin.isUserLogged(function(userData){
         $scope.loggedUserData = userData;
         $scope.userIsLogged = true;
         $scope.changeUser(userData);
-        $rootScope.$broadcast('login');
+        if(loginType == 'action'){
+          $rootScope.$broadcast('login');
+        }
       },
       function(){
         $scope.userIsLogged = false;

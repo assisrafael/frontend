@@ -37,15 +37,15 @@ angular.module('projetobrasilFrontApp')
             if($scope.$parent.getProposalAuthor){
               $scope.$parent.getProposalAuthor();
             }
+            if($scope.$parent.testeCego){
+              $scope.disableRating();
+            }
 
             $scope.$apply();
             if ($scope.notifyUrl !== void 0 && $scope.notifyId) {
               $http.post($attrs.notifyUrl + '/'+ $scope.notifyId, { nota: parseInt(rating) })
               .success(function(data){
                 $scope.$emit('rated', rating);
-                  if($scope.$parent.testeCego){
-                    $scope.disableRating();
-                  }
               })
               .error(function(data) {
                 if (typeof data === 'string') {
