@@ -68,36 +68,19 @@ angular.module('projetobrasilFrontApp', [
     templateUrl: 'views/politicians-ranking.html',
     controller: 'PoliticiansRankingCtrl'
   })
-  // .state('_proposals', {
-  //   parent: '_',
-  //   abstract: true,
-  //   views: {
-  //     '': {
-  //       templateUrl: 'views/structure.html'
-  //     },
-  //     'navbar@_': {
-  //       templateUrl: 'views/navbar.html'
-  //     },
-  //     'usermenu@_': {
-  //       templateUrl: 'views/navbarusermenu.html',
-  //       controller: 'NavbarUserMenuCtrl'
-  //     },
-  //     'sidebar@_': {
-  //       templateUrl: 'views/sidebar.html',
-  //       controller: 'SideBarProfilesCtrl'
-  //     },
-  //   }
-  // })
   .state('teste-cego', {
-    parent: '_',
     url: '/teste-cego',
     views: {
       '': {
         templateUrl: 'views/teste-cego.html',
         controller: 'TesteCegoCtrl'
       },
-      'sidebar@_': {
-        template: 'opa'
+      'navbar@teste-cego':{
+        templateUrl: 'views/navbar.html',
+      },
+      'usermenu@teste-cego': {
+        templateUrl: 'views/navbarusermenu.html',
+        controller: 'NavbarUserMenuCtrl'
       }
     }
   })

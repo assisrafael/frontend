@@ -9,7 +9,6 @@ angular.module('projetobrasilFrontApp')
     profileGetter.getProfile().then(function(profiles) {
       if(!profiles) return;
       $scope.politicians = profiles;
-      initializePoliticianStats();
       getUserHistory();
     });
 
@@ -24,9 +23,11 @@ angular.module('projetobrasilFrontApp')
       var tempArray = _.map($scope.politicians, function(p){ return p.nome_urna });
       var position = _.indexOf(tempArray, cand);
 
-      // Atualiza os dados do ranking
+      // Atualiza os dados gerais do ranking
       $scope.num_total_propostas += 1;
       $scope.somatorio_notas += parseInt(rating);
+      $scope.media_propostas = $scope.somatorio_notas / $scope.num_total_propostas;
+      // Atualiza os dados do político dono da proposta votada no ranking
       $scope.politicians[position].num_propostas += 1;
       $scope.politicians[position].soma += parseInt(rating);
       $scope.politicians[position].media = $scope.politicians[position].soma / $scope.politicians[position].num_propostas;
@@ -39,9 +40,6 @@ angular.module('projetobrasilFrontApp')
 
     $scope.$on('logout', function(){
       initializePoliticianStats();
-      $scope.num_total_propostas = 0;
-      $scope.somatorio_notas = 0;
-      $scope.media_propostas = 0;
     });
 
     // Inicializa os dados dos políticos para o ranking
@@ -51,17 +49,24 @@ angular.module('projetobrasilFrontApp')
         politician.num_propostas = 0;
         politician.media = 0;
       });
+      $scope.num_total_propostas = 0;
+      $scope.somatorio_notas = 0;
+      $scope.media_propostas = 0;
     }
 
     function getUserHistory(){
 
       testeCego.propostasAvaliadas.query(function(propostas){
+
+        initializePoliticianStats();
+
         // Agrupa propostas por politico
         var propostas_agrupadas = _.groupBy(propostas, function(prop){
           $scope.somatorio_notas += prop.nota;
-          $scope.num_total_propostas += 1;
           return prop.politicians_id
         });
+
+        $scope.num_total_propostas = propostas.length;;
 
         if($scope.num_total_propostas === 0){
           $scope.media_propostas = 0;

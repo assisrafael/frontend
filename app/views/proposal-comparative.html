@@ -41,7 +41,7 @@
                       <h4 class="name">{{politician.nome}}</h4>
                     </li>
                   </div>
-                  <proposalbox class="proposal clearfix" ng-repeat="proposal in themeProposal[politician.id].proposals" show-more-details-link>
+                  <proposalbox class="proposal clearfix" ng-repeat="proposal in themeProposal[politician.id].proposals">
                   </proposalbox>
                   <div class="no-proposal" ng-hide="!!themeProposal[politician.id].proposals.length">
                     <i class="fa fa-file-text"></i>
