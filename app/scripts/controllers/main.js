@@ -1,8 +1,6 @@
 'use strict';
 
 angular.module('projetobrasilFrontApp')
-.controller('MainCtrl', function ($scope) {})
-.controller('ProfileCtrl', function ($scope) {})
 .directive('profile', function(){
 	return {
 		restrict: 'E',

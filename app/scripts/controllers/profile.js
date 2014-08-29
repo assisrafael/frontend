@@ -23,14 +23,28 @@ angular.module('projetobrasilFrontApp')
   }
 
   $scope.$parent.setActiveByName = function(nameUrl) {
-    var profiles = $scope.$parent.profiles;
+    var profiles = $scope.$parent.profiles,
+        og = {},
+        politician = {};
 
     for (var i = 0; i < profiles.length; i++) {
       var p = profiles[i];
       if(p.nome_url === nameUrl) {
         $scope.$parent.selectedPolitical = p;
+        politician = p;
       }
     }
+
+    $scope.pageTitle = politician.nome_urna + " :: Projeto Brasil";
+    $scope.og = {
+      url : $location.absUrl(),
+      siteName : 'projetobrasil.org',
+      title : politician.nome_urna + ' - Projeto Brasil',
+      description : 'Conheça as propostas, histórico politico e outras informações de '+politician.nome_urna+' no ProjetoBrasil.org',
+      imageUrl : $location.protocol() + "://" +  $location.host() + politician.foto,
+      imageWidth : '200',
+      imageHeight : '200'
+    };
   };
 
   $scope.$parent.isActive = function(political) {

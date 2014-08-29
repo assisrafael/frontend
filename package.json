@@ -2,7 +2,8 @@
   "name": "projetobrasilfront",
   "version": "0.0.0",
   "dependencies": {
-    "grunt-contrib-imagemin": "git://github.com/gruntjs/grunt-contrib-imagemin"
+    "grunt-contrib-imagemin": "git://github.com/gruntjs/grunt-contrib-imagemin",
+    "phantomjs": "~1.9.7-15"
   },
   "devDependencies": {
     "grunt": "~0.4.1",

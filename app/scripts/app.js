@@ -14,7 +14,8 @@ angular.module('projetobrasilFrontApp', [
   'djds4rce.angular-socialshare',
   'ui-rangeSlider',
   'cfp.hotkeys',
-  'angularytics'
+  'angularytics',
+  'viewhead'
 ])
 .config(function(AngularyticsProvider) {
   AngularyticsProvider.setEventHandlers(['Console', 'GoogleUniversal']);
@@ -42,7 +43,7 @@ angular.module('projetobrasilFrontApp', [
   .state('main', {
     url: '/',
     templateUrl: 'views/main.html',
-    controller: 'MainCtrl'
+    controller: 'HomepageCtrl'
   })
 	.state('_', {
 		abstract: true,

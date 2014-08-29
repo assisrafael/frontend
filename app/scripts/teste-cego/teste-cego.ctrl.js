@@ -2,7 +2,7 @@
 
 angular.module('projetobrasilFrontApp')
 .controller('TesteCegoCtrl',
-  function ($scope, $filter, $rootScope, $timeout, proposalsGetter, hotkeys, profileGetter, testeCego, Angularytics) {
+  function ($scope, $filter, $rootScope, $timeout, $location, proposalsGetter, hotkeys, profileGetter, testeCego, Angularytics) {
 
     $scope.proposals = {};
     $scope.automaticfoward = true;
@@ -96,6 +96,16 @@ angular.module('projetobrasilFrontApp')
           $scope.proposalAuthor['partido'] = obj[i]['partido'];
         }
       }
-      console.log($scope.proposalAuthor);
+    };
+
+    $scope.pageTitle = "Teste Cego :: Projeto Brasil";
+    $scope.og = {
+      url : $location.absUrl(),
+      siteName : 'projetobrasil.org',
+      title : 'Teste cego de propostas - Projeto Brasil',
+      description : 'Vote nas propostas sem preconceito e descubra com quais candidatos você tem mais afinidade',
+      imageUrl : $location.protocol() + "://" +  $location.host() + '/images/facebook-share-images/teste-cego.jpg',
+      imageWidth : '248',
+      imageHeight : '248'
     };
   });

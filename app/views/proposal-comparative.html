@@ -57,3 +57,17 @@
   </div>
 
 </div>
+
+<view-title>{{pageTitle}}</view-title>
+<!-- Facebook Meta-tags -->
+<meta view-head property="og:locale" content="pt_BR">
+<meta view-head property="og:image:type" content="image/jpeg">
+<meta view-head property="og:url" content="{{ og.url }}">
+<meta view-head property="og:site_name" content="{{ og.siteName }}">
+<meta view-head property="og:title" content="{{ og.title }}">
+<meta view-head property="og:description" content="{{ og.description }}">
+<meta view-head property="og:image" content="{{ og.imageUrl }}">
+<meta view-head property="og:image:url" content="{{ og.imageUrl }}">
+<meta view-head property="og:image:width" content="{{ og.imageWidth }}">
+<meta view-head property="og:image:height" content="{{ og.imageHeight }}">
+<link view-head rel="image_src" type="image/jpeg" href="{{ og.imageUrl }}" />
