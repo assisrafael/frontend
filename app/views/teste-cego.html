@@ -1,9 +1,8 @@
 <div>
   <div ui-view="navbar"></div>
   <div id="cl-wrapper">
-    <div class="container-fluid" id="pcont">
-
-      <div class="teste-cego" ng-init="getSomeRandomProposals()">
+    <div class="container-fluid teste-cego" id="pcont" ng-init="getSomeRandomProposals()">
+      <div class="cl-mcont">
         <div class="row">
           <div ng-class="{true: 'col-md-8', false: 'col-md-12'}[showRanking]">
             <div class="col-md-12">
@@ -56,7 +55,6 @@
           </div>
         </div>
       </div>
-
     </div>
   </div>
 </div>
