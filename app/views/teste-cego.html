@@ -34,7 +34,7 @@
               <div class="col-md-12">Uma parceria com:</div>
               <div class="col-md-12"><a href="http://www.muitointeressante.com.br" target="_blank"><img src="images/logo-muitointeressante.png" alt="MuitoInteressante.com.br"></a></div>
             </div> -->
-            <div class="col-md-6 col-md-offset-3 disclaimer">
+            <div ng-class="{true: 'col-md-6 col-md-offset-3', false: 'col-md-4 col-md-offset-4'}[showRanking]" class="disclaimer">
               Esse teste tem propósito informativo e não busca sugerir ao eleitor que vote em quaisquer canditados(as).
             </div>
           </div>
@@ -43,12 +43,14 @@
           </div>
         </div>
 
-        <div class="row loadingbarcontainer" style="background-color: #F6F6F6" ng-hide="showRanking">
-          <div class="col-md-8" style="padding: 0 30px;">
-          Avalie mais {{votinglevel - votingCount}} propostas para visualizar seu ranking do teste cego
-            <div class="progress">
-              <div class="progress-bar progress-bar-success" ng-style="{'width': progressSize }">
-              {{progressCount}}
+        <div class="row">
+          <div class="loadingbarcontainer" style="background-color: #F6F6F6" ng-hide="showRanking">
+            <div class="loadingbar-title">
+            Avalie mais {{votinglevel - votingCount}} propostas para visualizar seu ranking do teste cego
+              <div class="progress">
+                <div class="progress-bar progress-bar-success" ng-style="{'width': progressSize }">
+                {{progressCount}}
+                </div>
               </div>
             </div>
           </div>
