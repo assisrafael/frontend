@@ -4,6 +4,10 @@ angular.module('projetobrasilFrontApp')
 .controller('TesteCegoCtrl',
   function ($scope, $filter, $rootScope, $timeout, proposalsGetter, hotkeys, profileGetter, testeCego, Angularytics) {
 
+    $rootScope.$on('$stateChangeSuccess', function(){
+      console.log('ERRO NO ESTADO');
+    });
+
     $scope.proposals = {};
     $scope.automaticfoward = true;
     $scope.showRanking = false;
@@ -36,6 +40,8 @@ angular.module('projetobrasilFrontApp')
 
     $scope.$on('logout', function(){
       $scope.showRanking = false;
+      $scope.votingCount = 0;
+      $scope.progressSize = 0;
     });
 
     var proposalIndex = 0;
@@ -80,9 +86,11 @@ angular.module('projetobrasilFrontApp')
     };
 
     function setDefaultAuthor(){
-      $scope.proposalAuthor.foto = '/images/generic_avatar.jpg';
-      $scope.proposalAuthor.nome_urna = 'Candidato';
-      $scope.proposalAuthor.partido = 'Partido';
+      $scope.proposalAuthor = {
+        foto: '/images/generic_avatar.jpg',
+        nome_urna: 'Candidato',
+        partido: 'Partido'
+      };
     }
 
     $scope.getProposalAuthor = function() {
@@ -91,9 +99,7 @@ angular.module('projetobrasilFrontApp')
 
       for (var i=0; i<obj.length;i++) {
         if(obj[i].id == id){
-          $scope.proposalAuthor['foto'] = obj[i]['foto'];
-          $scope.proposalAuthor['nome_urna'] = obj[i]['nome_urna'];
-          $scope.proposalAuthor['partido'] = obj[i]['partido'];
+          $scope.proposalAuthor = obj[i];
         }
       }
       console.log($scope.proposalAuthor);

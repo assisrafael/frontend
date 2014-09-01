@@ -30,8 +30,10 @@
           {{userVotes[proposal.id] || 'Avalie'}}
         </span>
       </div>
-      <div class="col-xs-12 nota-media" style="text-align: center;" ng-hide="testeCego" ng-show="showRatingInfo">
-        Avaliação média: {{proposal.media | ratingFormat:2:userVotes[proposal.id]:5}}
+      <div ng-hide="testeCego">
+        <div class="col-xs-12 nota-media" style="text-align: center;" ng-show="showRatingInfo">
+          Avaliação média: {{proposal.media | ratingFormat:2:userVotes[proposal.id]:5}}
+        </div>
       </div>
     </div>
   </div>

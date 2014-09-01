@@ -5,7 +5,7 @@ angular.module('projetobrasilFrontApp')
   return {
     register: function(user, success, error){
       $http.post($rootScope.apiBaseUrl+'user/register', user)
-      .success(function(res, status, headers) {
+      .success(function(data, status, headers) {
          success();
          ga('send', 'event', 'form', 'register');
       }).error(error);
@@ -13,22 +13,49 @@ angular.module('projetobrasilFrontApp')
   };
 }])
 .factory('UserLogin', ['$rootScope', '$http', '$log', '$cookies', function($rootScope, $http, $log, $cookies){
+
+  var isUserLogged = false;
+  var loggedUserData = {};
+
+  var promise = $http.get($rootScope.apiBaseUrl + 'profile')
+    .success(function(data) {
+      isUserLogged = true;
+      loggedUserData = data;
+      // success(userData);
+    }).error(function(){
+      console.log('Deu errado');
+    });
+
   return {
+    promise: promise,
     login: function(user, success, error){
        $http.post($rootScope.apiBaseUrl+'user/login', user)
-      .success(function(res, status, headers) {
-        success(res);
+      .success(function(data, status, headers) {
+        isUserLogged = true;
+        loggedUserData = data;
+        $rootScope.$broadcast('login');
+        success(data);
       }).error(error);
     },
     logout: function(success, error){
        $http.get($rootScope.apiBaseUrl+'user/logout')
-       .success(success)
+       .success(function(data, status, headers){
+          isUserLogged = false;
+          loggedUserData = {};
+          $rootScope.$broadcast('logout');
+          success(data);
+        })
        .error(error);
     },
-    isUserLogged: function(success){
-     $http.get($rootScope.apiBaseUrl+'profile')
-      .success( function(userData) { success(userData); } )
-      .error( function(){ return false; } );
+    isUserLogged: function(){
+      return isUserLogged;
+    },
+    getUserData: function(){
+      if(isUserLogged){
+        return loggedUserData;
+      } else {
+        return false;
+      }
     }
   };
 }])
@@ -36,8 +63,8 @@ angular.module('projetobrasilFrontApp')
   return {
     setRate: function(user, rate, success, error){
       $http.post($rootScope.apiBaseUrl+'user/login', rate)
-      .success(function(res) {
-        //changeUser(res);
+      .success(function(data) {
+        //changeUser(data);
         success();
       }).error(error);
     }
