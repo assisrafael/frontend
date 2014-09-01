@@ -9,6 +9,10 @@ angular.module('projetobrasilFrontApp')
 
     $scope.url = $location.absUrl();
 
+    if(typeof(scope.notifyUrl) === 'undefined'){
+      scope.notifyUrl =  scope.apiBaseUrl + 'rating';
+    }
+
     $scope.coresPizza = {
           '1' : '#7EC5AC',
           '2' : '#4DA485',

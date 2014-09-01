@@ -21,7 +21,7 @@ angular.module('projetobrasilFrontApp')
               + '<li id="checkmark" class="fa fa-2x"></li>'
               + '</ol></div>',
       controller: [
-        '$scope', '$rootScope', '$attrs', '$http', function($scope, $rootScope, $attrs, $http) {
+        '$scope', '$rootScope', '$attrs', '$http', 'UserLogin', function($scope, $rootScope, $attrs, $http, UserLogin) {
           $scope.over = 0;
 
           $scope.$on('newproposalblindtest', function(){
@@ -31,21 +31,29 @@ angular.module('projetobrasilFrontApp')
 
           $scope.setRating = function(event) {
 
+            if(!UserLogin.isUserLogged()){
+              $rootScope.$broadcast('event:auth-loginRequired');
+              return;
+            }
+
             var rating = event.target.id;
             $scope.model = rating;
 
-            if($scope.$parent.getProposalAuthor){
-              $scope.$parent.getProposalAuthor();
-            }
+            UserLogin.promise.then(function() {
+              if($scope.$parent.getProposalAuthor){
+                $scope.$parent.getProposalAuthor();
+              }
+              if($scope.$parent.testeCego){
+                $scope.disableRating();
+              }
+
+            });
 
             $scope.$apply();
             if ($scope.notifyUrl !== void 0 && $scope.notifyId) {
               $http.post($attrs.notifyUrl + '/'+ $scope.notifyId, { nota: parseInt(rating) })
               .success(function(data){
                 $scope.$emit('rated', rating);
-                  if($scope.$parent.testeCego){
-                    $scope.disableRating();
-                  }
               })
               .error(function(data) {
                 if (typeof data === 'string') {

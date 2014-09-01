@@ -5,7 +5,8 @@
   @include clearfix;
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin: auto;
+  display: table;
 
   li {
     float: left;

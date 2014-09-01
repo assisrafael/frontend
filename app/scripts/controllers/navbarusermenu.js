@@ -44,21 +44,6 @@ angular.module('projetobrasilFrontApp')
     $scope.showName = true;
   }
 
-
-  // $scope.setLoadingOn = function(){
-  //   $scope.isDisabled = true;
-  //   $scope.registerButtonText = "Aguarde...";
-  // };
-
-  // $scope.setLoadingOff = function(){
-  //   $scope.isDisabled = false;
-  //   $scope.registerButtonText = "Registrar agora";
-  // };
-
-  // $log.info($scope.modalType);
-  // $log.info($scope.loginMessage);
-
-
   $scope.register = function (registeredUser) {
     UserRegister.register(registeredUser,
       function(res) {
@@ -73,8 +58,6 @@ angular.module('projetobrasilFrontApp')
         $rootScope.$broadcast('login');
       },
       function(err) {
-          //$scope.setLoadingOff();
-
         toastr.options = {
           "closeButton": true,
           "showMethod": 'slideDown',
@@ -82,7 +65,6 @@ angular.module('projetobrasilFrontApp')
         };
         toastr.error('Erro: ' + err.error);
         });
-
   };
 
   $scope.login = function (loginUser){
@@ -95,17 +77,13 @@ angular.module('projetobrasilFrontApp')
           "hideMethod": 'slideUp'
         };
         toastr.info('Login realizado com sucesso!');
-        // $log.info('Sucesso no login: Usuario ' + res.user.username );
         $scope.sucessRegister = true;
         $modalInstance.close(loginUser);
-
         $rootScope.$broadcast('login');
-
       },
       function(err){
         $scope.passwordOrLoginErrorMsg = 'Login ou senha inválidos.';
         $scope.isLoginError = true;
-        $log.error('Erro no login');
       }
       );
   };
@@ -148,7 +126,7 @@ angular.module('projetobrasilFrontApp')
       var timer = setInterval(function() {
         if(signinWin.closed) {
             clearInterval(timer);
-            $scope.checkLoginNavbar();
+            $scope.checkLoginNavbar('action');
             $scope.cancel();
         }
       }, 1000);
@@ -162,58 +140,32 @@ angular.module('projetobrasilFrontApp')
 
     $scope.$on('event:auth-loginRequired', function() {
       if( !$scope.modalOpened ){
-        $scope.open('register', 'Você precisa se registrar para avaliar e comentar as propostas dos candidatos!');
+        $scope.open('register', 'Registre-se para avaliar e comentar as propostas dos candidatos!');
       }
     });
 
-    $scope.$on('login', function() {
-      if( !$scope.modalOpened ){
-        // $log.info('ACHEI UM LOGIN AQUI!');
-      }
-    });
-
-    $scope.checkLoginNavbar = function(){
-      UserLogin.isUserLogged(function(userData){
-        $scope.loggedUserData = userData;
-        $scope.userIsLogged = true;
-        $scope.changeUser(userData);
-        $rootScope.$broadcast('login');
-      },
-      function(){
-        $scope.userIsLogged = false;
+    $scope.checkLoginNavbar = function(loginType){
+      UserLogin.promise.then(function() {
+        $scope.userIsLogged = UserLogin.isUserLogged();
+        $scope.user = UserLogin.getUserData();
       });
     }
 
     $scope.checkLoginNavbar();
-    //$scope.loggedUserData = false;
-
-    $scope.changeUser = function(userData){
-      $scope.user = userData;
-      $scope.userIsLogged = true;
-    };
 
     $scope.logoutUser = function() {
       UserLogin.logout(function(){
-        $scope.user = {};
-        $scope.userIsLogged = false;
-
         toastr.options = {
           "closeButton": true,
           "showMethod": 'slideDown',
           "hideMethod": 'slideUp'
         };
         toastr.info('Desconectado com sucesso');
-        $rootScope.$broadcast('logout');
-
       },
       function(){
         $log.error('Erro ao efetuar LOGOUT');
       });
     };
-
-  // $scope.items = ['item1', 'item2', 'item3'];
-
-
 
   $scope.open = function (modalType, loginMessage) {
     $scope.modalOpened = true;
@@ -235,32 +187,10 @@ angular.module('projetobrasilFrontApp')
     });
 
     modalInstance.result.then(function (userData) {
-      $scope.changeUser(userData);
+      $scope.checkLoginNavbar();
       $scope.modalOpened = false;
-      // $log.info('Login realizado!!' + userData);
     }, function () {
       $scope.modalOpened = false;
-      // $log.info('Modal dismissed at: ' + new Date());
-    });
-  };
-
-  $scope.editUserData = function () {
-    var modalInstance = $modal.open({
-      templateUrl: 'views/edit-user-data-form.html',
-      controller: 'editUserDataCtrl',
-      size: 'sm',
-      // resolve: {
-      //   modalType: function () {
-      //     return modalType;
-      //   },
-      // }
-    });
-
-    modalInstance.result.then(function (userData) {
-      //$scope.changeUser(userData);
-      // $log.info('Login realizado!!' + userData);
-    }, function () {
-      // $log.info('Modal dismissed at: ' + new Date());
     });
   };
 })
