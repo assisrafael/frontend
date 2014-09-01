@@ -34,7 +34,10 @@
         content: "\f058";
       }
     }
+  }
 
+  @media(max-width: 350px){
+    font-size: 0.9em;
   }
 }
 
