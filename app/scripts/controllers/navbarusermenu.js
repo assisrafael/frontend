@@ -2,7 +2,7 @@
 
 angular.module('projetobrasilFrontApp')
 .controller('loginFormCtrl',
-  function ($scope, $rootScope, $modalInstance, UserRegister, UserLogin, $log, modalType, loginMessage, checklogin) {
+  function ($scope, $rootScope, $modalInstance, UserLogin, $log, modalType, loginMessage, checklogin) {
 
   // $scope.items = items;
   // $scope.selected = {
@@ -37,7 +37,7 @@ angular.module('projetobrasilFrontApp')
   }
 
   $scope.register = function (registeredUser) {
-    UserRegister.register(registeredUser,
+    UserLogin.register(registeredUser,
       function(res) {
         toastr.options = {
           "closeButton": true,
@@ -47,7 +47,6 @@ angular.module('projetobrasilFrontApp')
         toastr.info('Registro realizado com sucesso!');
         $scope.successRegister = true;
         $modalInstance.close(registeredUser);
-        $rootScope.$broadcast('login');
       },
       function(err) {
         toastr.options = {
@@ -110,7 +109,7 @@ angular.module('projetobrasilFrontApp')
   };
 })
 .controller('NavbarUserMenuCtrl',
-  function ($scope, $rootScope, $modal, $log, UserRegister, UserLogin) {
+  function ($scope, $rootScope, $modal, $log, UserLogin) {
 
     $scope.modalOpened = false;
 

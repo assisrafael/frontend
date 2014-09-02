@@ -1,17 +1,6 @@
 'use strict';
 
 angular.module('projetobrasilFrontApp')
-.factory('UserRegister', ['$rootScope', '$http', '$log', '$cookies', function($rootScope, $http, $log, $cookies){
-  return {
-    register: function(user, success, error){
-      $http.post($rootScope.apiBaseUrl+'user/register', user)
-      .success(function(data, status, headers) {
-         success();
-         ga('send', 'event', 'form', 'register');
-      }).error(error);
-    }
-  };
-}])
 .factory('UserLogin', ['$rootScope', '$http', '$log', '$cookies', function($rootScope, $http, $log, $cookies){
 
   var isUserLogged = false;
@@ -29,6 +18,16 @@ angular.module('projetobrasilFrontApp')
   return {
     promise: function(){
       return promise;
+    },
+    register: function(user, success, error){
+      $http.post($rootScope.apiBaseUrl + 'user/register', user)
+      .success(function(data, status, headers) {
+        isUserLogged = true;
+        loggedUserData = data.user;
+        $rootScope.$broadcast('login');
+        success();
+        ga('send', 'event', 'form', 'register');
+      }).error(error);
     },
     facebookLogin: function(modalDismiss){
       var left = (screen.width/2)-(780/2);
@@ -62,7 +61,7 @@ angular.module('projetobrasilFrontApp')
        $http.post($rootScope.apiBaseUrl+'user/login', user)
       .success(function(data, status, headers) {
         isUserLogged = true;
-        loggedUserData = data;
+        loggedUserData = data.user;
         $rootScope.$broadcast('login');
         success(data);
       }).error(error);
