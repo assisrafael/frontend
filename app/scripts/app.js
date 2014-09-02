@@ -45,6 +45,10 @@ angular.module('projetobrasilFrontApp', [
     templateUrl: 'views/main.html',
     controller: 'HomepageCtrl'
   })
+  .state('politica-privacidade', {
+    url: '/politica-privacidade',
+    templateUrl: 'views/politica-privacidade.html'
+  })
 	.state('_', {
 		abstract: true,
 		views: {
