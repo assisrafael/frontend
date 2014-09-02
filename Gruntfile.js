@@ -204,18 +204,6 @@ module.exports = function (grunt) {
       }
     },
 
-    // Renames files for browser caching purposes
-    filerev: {
-      dist: {
-        src: [
-          '<%= yeoman.dist %>/scripts/{,*/}*.js',
-          '<%= yeoman.dist %>/styles/{,*/}*.css',
-          // '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
-          '<%= yeoman.dist %>/styles/fonts/*'
-        ]
-      }
-    },
-
     // Reads HTML for usemin blocks to enable smart builds that automatically
     // concat, minify and revision files. Creates configurations in memory so
     // additional tasks can operate on them
@@ -233,6 +221,17 @@ module.exports = function (grunt) {
           }
         }
       }
+    },
+
+    cachebreaker: {
+        dist: {
+            options: {
+                match: ['scripts.js', 'vendor.js', 'main.css', 'vendor.css']
+            },
+            files: {
+                src: ['dist/index.html']
+            }
+        }
     },
 
     // Performs rewrites based on filerev and the useminPrepare configuration
@@ -445,9 +444,9 @@ module.exports = function (grunt) {
     'cdnify',
     'cssmin',
     'uglify',
-    'filerev',
     'usemin',
-    'htmlmin'
+    'htmlmin',
+    'cachebreaker:dist'
   ]);
 
   grunt.registerTask('default', [
