@@ -9,8 +9,8 @@ angular.module('projetobrasilFrontApp')
 
     $scope.url = $location.absUrl();
 
-    if(typeof(scope.notifyUrl) === 'undefined'){
-      scope.notifyUrl =  scope.apiBaseUrl + 'rating';
+    if(typeof($scope.notifyUrl) === 'undefined'){
+      $scope.notifyUrl = $scope.apiBaseUrl + 'rating';
     }
 
     $scope.coresPizza = {
