@@ -39,7 +39,7 @@ angular.module('projetobrasilFrontApp')
             var rating = event.target.id;
             $scope.model = rating;
 
-            UserLogin.promise.then(function() {
+            UserLogin.promise().then(function() {
               if($scope.$parent.getProposalAuthor){
                 $scope.$parent.getProposalAuthor();
               }

@@ -1,14 +1,6 @@
 'use strict';
 
 angular.module('projetobrasilFrontApp')
-.controller('editUserDataFormCtrl',
-  function ($scope, $modalInstance, $log, modalType) {
-
-
-  $scope.cancel = function () {
-    $modalInstance.dismiss('cancel');
-  };
-})
 .controller('loginFormCtrl',
   function ($scope, $rootScope, $modalInstance, UserRegister, UserLogin, $log, modalType, loginMessage, checklogin) {
 
@@ -79,15 +71,13 @@ angular.module('projetobrasilFrontApp')
         toastr.info('Login realizado com sucesso!');
         $scope.sucessRegister = true;
         $modalInstance.close(loginUser);
-        $rootScope.$broadcast('login');
       },
       function(err){
         $scope.passwordOrLoginErrorMsg = 'Login ou senha inválidos.';
         $scope.isLoginError = true;
       }
-      );
+    );
   };
-
 
   $scope.formAction = function(userData) {
     if($scope.modalType == 'register') {
@@ -115,22 +105,8 @@ angular.module('projetobrasilFrontApp')
     $scope.showName = false;
   };
 
-    $scope.facebookLogin = function(){
-    // $log.info('Vou logar com o Facebook');
-    // $http.get('').success(function(res){
-      var left = (screen.width/2)-(780/2);
-      var top = (screen.height/2)-(410/2);
-      var signinWin = window.open("http://api.projetobrasil.org:4242/v1/auth/facebook", "SignIn", "width=780,height=410,toolbar=0,scrollbars=0,status=0,resizable=0,location=0,menuBar=0,left=" + left + ",top=" + top);
-    //   setTimeout(CheckLoginStatus, 2000);
-      signinWin.focus();
-      var timer = setInterval(function() {
-        if(signinWin.closed) {
-            clearInterval(timer);
-            $scope.checkLoginNavbar('action');
-            $scope.cancel();
-        }
-      }, 1000);
-    // // });
+  $scope.facebookLogin = function(){
+    UserLogin.facebookLogin($scope.cancel);
   };
 })
 .controller('NavbarUserMenuCtrl',
@@ -144,12 +120,15 @@ angular.module('projetobrasilFrontApp')
       }
     });
 
-    $scope.checkLoginNavbar = function(loginType){
-      UserLogin.promise.then(function() {
+    $scope.checkLoginNavbar = function(){
+      UserLogin.promise().then(function() {
         $scope.userIsLogged = UserLogin.isUserLogged();
         $scope.user = UserLogin.getUserData();
       });
     }
+
+    $scope.$on('login', $scope.checkLoginNavbar);
+    $scope.$on('logout', $scope.checkLoginNavbar);
 
     $scope.checkLoginNavbar();
 
