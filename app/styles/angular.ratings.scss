@@ -30,8 +30,17 @@
       margin-left: 15px;
       display: none;
 
+      @media(max-width: 379px){
+        width: 100%;
+        margin-left: 0;
+      }
+
       &:before {
         content: "\f058";
+
+        @media(max-width: 379px){
+          text-align: center;
+        }
       }
     }
   }
