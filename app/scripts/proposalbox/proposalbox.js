@@ -5,7 +5,8 @@ angular.module('projetobrasilFrontApp')
   return $resource('http://api.projetobrasil.org:4242/v1/profile/ratings', {},  {
     list : {
       method : 'GET',
-      cache : true
+      cache : true,
+      isArray: true
     }});
 }])
 .controller('ProposalboxCtrl', function($scope, $log, $http, profileGetter, UserRatings, categoryColorGetter, testeCego){
