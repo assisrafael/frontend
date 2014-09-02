@@ -1,6 +1,35 @@
 
 .teste-cego {
 
+  h1 {
+    color: $verde-escuro;
+    margin-top: 20px;
+  }
+
+  .beta-icon{
+    font-size: 0.4em;
+    position: relative;
+    bottom: 19px;
+    left: -1px;
+    font-family: initial;
+    color: #777;
+  }
+
+  .subtitle-text {
+    font-size: 1.4em;
+    text-transform: uppercase;
+    font-family: initial;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .title-text {
+    font-family: 'aller_displayregular';
+    font-weight: normal;
+    text-align: left;
+    text-transform: uppercase;
+  }
+
   .politicians-ranking{
     float: right;
   }
@@ -12,7 +41,6 @@
 
   h1 {
     text-align: center;
-    margin: 50px;
   }
 
   .proposal-wrapper {
