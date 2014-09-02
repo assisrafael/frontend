@@ -4,10 +4,6 @@ angular.module('projetobrasilFrontApp')
 .controller('TesteCegoCtrl',
   function ($scope, $filter, $rootScope, $timeout, $location, proposalsGetter, hotkeys, profileGetter, testeCego, Angularytics) {
 
-    $rootScope.$on('$stateChangeSuccess', function(){
-      console.log('ERRO NO ESTADO');
-    });
-
     $scope.proposals = {};
     $scope.automaticfoward = true;
     $scope.showRanking = false;
@@ -24,6 +20,7 @@ angular.module('projetobrasilFrontApp')
     setDefaultAuthor();
 
     $scope.$on('rated', function(){
+      Angularytics.trackEvent("Teste cego", "voto cego", '' , $scope.votingCount);
       $scope.votingCount++;
       updateProgress();
       if($scope.automaticfoward){
@@ -61,7 +58,6 @@ angular.module('projetobrasilFrontApp')
     });
 
     function updateProgress(){
-      Angularytics.trackEvent("Teste cego", "voto cego", '' , $scope.votingCount);
       if($scope.votingCount >= $scope.votinglevel){
         $scope.showRanking = true;
       } else {
